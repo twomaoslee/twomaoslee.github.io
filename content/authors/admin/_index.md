@@ -52,16 +52,16 @@ education:
 skills:
   - name: Technical
     items:
-      - name: Python
-        description: ''
-        percent: 80
-        icon: python
-        icon_pack: fab
       - name: Mathematica
         description: ''
         percent: 100
         icon: chart-line
         icon_pack: fas
+      - name: Python
+        description: ''
+        percent: 80
+        icon: python
+        icon_pack: fab
       - name: LaTeX
         description: ''
         percent: 80
