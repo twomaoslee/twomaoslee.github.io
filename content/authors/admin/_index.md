@@ -112,4 +112,4 @@ social:
 highlight_name: true
 ---
 
-Zimin Li is a Lecturer of physics at Central South University in Changsha, China. His research interests include quantum optics, non-hermitian physics and quantum computations. {style="text-align: justify;"}
+Zimin Li is a Lecturer of physics at Central South University in Changsha, China. His research interests include quantum optics, non-hermitian physics and quantum computations. 
