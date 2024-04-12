@@ -3,7 +3,7 @@
 title: 李梓民
 
 # Name pronunciation (optional)
-name_pronunciation: Zi-Min Li
+name_pronunciation: Li Zi-Min
 
 # Full name (for SEO)
 first_name: Zimin
@@ -118,7 +118,4 @@ social:
 highlight_name: true
 ---
 
-Zimin Li is a Lecturer of physics at Central South University in Changsha, China. His research interests include quantum optics, non-hermitian physics and quantum computations.
-
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-{style="text-align: justify;"}
+Zimin Li is a Lecturer of physics at Central South University in Changsha, China. His research interests include quantum optics, non-hermitian physics and quantum computations. {style="text-align: justify;"}
