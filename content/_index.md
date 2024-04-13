@@ -234,11 +234,11 @@ sections:
       # Contact (add or remove contact options as necessary)
       email: zimin.li@csu.edu.cn
       # phone: 888 888 88 88
-      appointment_url: 'https://calendly.com'
+      # appointment_url: 'https://calendly.com'
       address:
         street: Central South University
         city: Changsha
-        region: Hunan
+        region: Hunan, China
         postcode: '410000'
         country: China
         country_code: CN

@@ -31,13 +31,13 @@ bio: My research interests include quantum optics, non-hermitian physics and qua
 interests:
   - Quantum Optics
   - Non-Hermitian Physics
-  - Ultrastrong Light-Matter Interactions
+  - Light-Matter Interactions
   - Quantum Computing
 
 # Education to show in About widget
 education:
   courses:
-    - course: PhD in Theoretical Physics
+    - course: Ph.D. in Theoretical Physics
       institution: Australian National University, Australia
       year: 2021
     - course: Masters in Physics
