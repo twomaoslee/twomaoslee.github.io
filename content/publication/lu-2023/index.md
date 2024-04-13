@@ -1,5 +1,5 @@
 ---
-title: $mathcalp̌hantomPTȟantom$-Symmetric Quantum Rabi Model
+title: PT-Symmetric Quantum Rabi Model
 authors:
 - Xilin Lu
 - Hui Li
