@@ -1,6 +1,6 @@
 ---
 title: An introduction to our group
-date: '2024-4-13'
+date: '2024-04-13'
 ---
 
 Hello, this is an introduction to our group. 
