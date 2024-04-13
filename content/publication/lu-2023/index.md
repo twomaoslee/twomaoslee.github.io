@@ -28,5 +28,6 @@ abstract: In this work, we explore the PT-symmetric quantum Rabi model, which de
   regime and provides insights that can be readily enlarged to a broad class of quantum
   optical systems.
 tags:
-- /unread
+- Source Themes
+featured: true
 ---
