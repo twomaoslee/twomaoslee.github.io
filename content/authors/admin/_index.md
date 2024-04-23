@@ -30,8 +30,9 @@ bio: My research interests include quantum optics, non-hermitian physics and qua
 # Interests to show in About widget
 interests:
   - Quantum Optics
+  - Ultrastrong Coupling
+  - Cavity QED
   - Non-Hermitian Physics
-  - Light-Matter Interactions
   - Quantum Computing
 
 # Education to show in About widget
