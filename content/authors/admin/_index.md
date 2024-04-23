@@ -40,7 +40,7 @@ education:
     - course: Ph.D. in Theoretical Physics
       institution: Australian National University, Australia
       year: 2021
-    - course: Masters in Physics
+    - course: MSc in Physics
       institution: Chongqing University, China
       year: 2017
     - course: BSc in Physics
