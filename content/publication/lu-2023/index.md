@@ -12,7 +12,7 @@ date: '2023-11-01'
 publishDate: '2024-04-13T17:38:41.782915Z'
 publication_types:
 - article-journal
-publication: '*Physical Review A*'
+publication: '*Physical Review A* **108**, 053712'
 doi: 10.1103/PhysRevA.108.053712
 abstract: In this work, we explore the PT-symmetric quantum Rabi model, which describes
   a PT-symmetric qubit coupled to a quantized light field. By employing the adiabatic
@@ -27,7 +27,5 @@ abstract: In this work, we explore the PT-symmetric quantum Rabi model, which de
   Our work extends the theory of PT symmetry into the full quantum light-matter interaction
   regime and provides insights that can be readily enlarged to a broad class of quantum
   optical systems.
-tags:
-- Source Themes
 featured: true
 ---

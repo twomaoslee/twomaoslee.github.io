@@ -13,7 +13,7 @@ date: '2026-04-15'
 publishDate: '2026-04-15T00:00:00Z'
 publication_types:
 - article-journal
-publication: '*Physical Review A*'
+publication: '*Physical Review A* **113**, 042213'
 doi: 10.1103/4klp-kw27
 abstract: 本文研究了一个基于 Su-Schrieffer-Heeger 晶格的非厄米量子电池。该系统通过在两个子晶格之间交替增益和损耗的 PT 对称方案进行充电。拓扑与非厄米性的相互作用产生体态和边缘态例外点，并进一步影响充电动力学。在拓扑相中，边缘态例外点会在比体态阈值更弱的增益-损耗强度下出现，从而改善瞬态和长时充电性能。
 tags:
