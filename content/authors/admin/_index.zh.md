@@ -6,8 +6,8 @@ title: 李梓民
 name_pronunciation: Li Zi-Min
 
 # Full name (for SEO)
-first_name: Zimin
-last_name: Li
+first_name: 梓民
+last_name: 李
 
 # Status emoji
 status:
@@ -17,42 +17,41 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Associate Professor in Physics
+role: 中南大学物理学院副教授
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Central South University
+  - name: 中南大学
     url: https://www.csu.edu.cn
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include quantum optics, open quantum systems, non-Hermitian physics, and quantum computation.
+bio: 我的研究兴趣包括量子光学、开放量子系统、非厄米物理和量子计算。
 
 # Interests to show in About widget
 interests:
-  - Quantum Optics
-  - Ultrastrong Coupling
-  - Cavity QED
-  - Open quantum systems
-  - Non-Hermitian Physics
-  - Quantum Computing
+  - 量子光学
+  - 超强耦合
+  - 腔量子电动力学
+  - 开放量子系统
+  - 非厄米物理
+  - 量子计算
 
 # Education to show in About widget
 education:
   courses:
-    - course: Ph.D. in Theoretical Physics
-      institution: Australian National University, Australia
+    - course: 理论物理博士
+      institution: 澳大利亚国立大学，澳大利亚
       year: 2021
-    - course: MSc in Physics
-      institution: Chongqing University, China
+    - course: 物理学硕士
+      institution: 重庆大学，中国
       year: 2017
-    - course: BSc in Physics
-      institution: Chongqing University, China
+    - course: 物理学学士
+      institution: 重庆大学，中国
       year: 2014
 
 # Skills
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
 skills:
-  - name: Technical
+  - name: 专业技能
     items:
       - name: Mathematica
         description: ''
@@ -69,49 +68,40 @@ skills:
         percent: 80
         icon: database
         icon_pack: fas
-  - name: Hobbies
+  - name: 兴趣爱好
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Football
+      - name: 足球
         description: ''
         percent: 60
         icon: person-hiking
         icon_pack: fas
-      - name: Badminton
+      - name: 羽毛球
         description: ''
         percent: 100
         icon: cat
         icon_pack: fas
-      - name: Cycling
+      - name: 骑行
         description: ''
         percent: 80
         icon: camera-retro
         icon_pack: fas
 
 # Social/Academic Networking
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "/#contact" for contact widget.
 social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'
-  - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
+  - icon: graduation-cap
     icon_pack: fas
     link: https://scholar.google.com/citations?user=-sviX2cAAAAJ&hl=en
   - icon: github
     icon_pack: fab
     link: https://github.com/twomaoslee
-  # Link to a PDF of your resume/CV.
-  # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.yaml`,
-  # and uncomment the lines below.
-  # - icon: cv
-  #   icon_pack: ai
-  #   link: uploads/resume.pdf
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
 
-Zimin Li is an Associate Professor of Physics at Central South University in Changsha, China. His research interests include quantum optics, open quantum systems, non-Hermitian physics, and quantum computation.
+李梓民是中南大学物理学院副教授，工作地点为湖南长沙。我的研究兴趣包括量子光学、开放量子系统、非厄米物理和量子计算。
