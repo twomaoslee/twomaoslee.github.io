@@ -42,6 +42,22 @@ sections:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
+  - block: people
+    id: team
+    content:
+      title: Team
+      text: ''
+      user_groups:
+        - Principal Investigator
+        - Graduate Students
+        - Undergraduate Students
+        - Collaborators
+      sort_by: Params.last_name
+      sort_ascending: true
+    design:
+      show_interests: true
+      show_role: true
+      show_social: true
   # - block: experience
   #   content:
   #     title: Experience

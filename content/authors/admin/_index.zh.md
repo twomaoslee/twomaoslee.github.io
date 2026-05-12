@@ -19,6 +19,10 @@ superuser: true
 # Role/position/tagline
 role: 中南大学物理学院副教授
 
+# Team groups
+user_groups:
+  - 课题组负责人
+
 # Organizations/Affiliations to show in About widget
 organizations:
   - name: 中南大学

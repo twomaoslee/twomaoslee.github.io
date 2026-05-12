@@ -29,6 +29,9 @@ zh:
       - name: 项目
         url: '#projects'
         weight: 30
+      - name: 团队
+        url: '#team'
+        weight: 35
       - name: 报告
         url: '#talks'
         weight: 40

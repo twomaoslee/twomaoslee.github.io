@@ -9,6 +9,22 @@ sections:
     content:
       title: 个人简介
       username: admin
+  - block: people
+    id: team
+    content:
+      title: 团队成员
+      text: ''
+      user_groups:
+        - 课题组负责人
+        - 研究生
+        - 本科生
+        - 合作者
+      sort_by: Params.last_name
+      sort_ascending: true
+    design:
+      show_interests: true
+      show_role: true
+      show_social: true
   - block: collection
     id: featured
     content:

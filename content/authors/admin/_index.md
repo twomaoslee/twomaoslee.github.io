@@ -19,6 +19,10 @@ superuser: true
 # Role/position/tagline
 role: Associate Professor in Physics
 
+# Team groups
+user_groups:
+  - Principal Investigator
+
 # Organizations/Affiliations to show in About widget
 organizations:
   - name: Central South University
