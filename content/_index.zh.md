@@ -10,28 +10,6 @@ sections:
       title: 个人简介
       username: admin
   - block: collection
-    id: posts
-    content:
-      title: 最新文章
-      subtitle: ''
-      text: ''
-      count: 5
-      filters:
-        folders:
-          - post
-        author: ""
-        category: ""
-        tag: ""
-        exclude_featured: false
-        exclude_future: false
-        exclude_past: false
-        publication_type: ""
-      offset: 0
-      order: desc
-    design:
-      view: compact
-      columns: '2'
-  - block: collection
     id: featured
     content:
       title: 代表性论文
@@ -52,35 +30,6 @@ sections:
     design:
       columns: '2'
       view: citation
-  - block: collection
-    id: talks
-    content:
-      title: 近期与即将进行的报告
-      filters:
-        folders:
-          - event
-    design:
-      columns: '2'
-      view: compact
-  - block: portfolio
-    id: projects
-    content:
-      title: 研究项目
-      filters:
-        folders:
-          - project
-      default_button_index: 0
-      buttons:
-        - name: 全部
-          tag: '*'
-        - name: 深度学习
-          tag: Deep Learning
-        - name: 其他
-          tag: Demo
-    design:
-      columns: '1'
-      view: showcase
-      flip_alt_rows: false
   - block: skills
     content:
       title: 技能
@@ -88,19 +37,6 @@ sections:
       username: admin
     design:
       columns: '1'
-  - block: markdown
-    content:
-      title: 图片
-      subtitle: ''
-      text: |-
-        {{< gallery album="demo" >}}
-    design:
-      columns: '1'
-  - block: tag_cloud
-    content:
-      title: 热门主题
-    design:
-      columns: '2'
   - block: contact
     id: contact
     content:
