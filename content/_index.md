@@ -242,7 +242,7 @@ sections:
         postcode: '410000'
         country: China
         country_code: CN
-      directions: Physics Building, Room 616
+      directions: Physics Building, Room 437
       # office_hours:
       #   - 'Monday 10:00 to 13:00'
       #   - 'Wednesday 09:00 to 10:00'

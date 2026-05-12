@@ -52,7 +52,7 @@ sections:
         postcode: '410000'
         country: 中国
         country_code: CN
-      directions: 物理楼 616
+      directions: 物理楼 437
       coordinates:
         latitude: '28.1471'
         longitude: '112.9459'
