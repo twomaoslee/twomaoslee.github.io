@@ -10,7 +10,7 @@ authors:
 - Zi-Min Li
 - Chuan-Cun Shu
 date: '2026-04-15'
-publishDate: '2026-05-13T00:00:00Z'
+publishDate: '2026-04-15T00:00:00Z'
 publication_types:
 - article-journal
 publication: '*Physical Review A*'
