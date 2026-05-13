@@ -92,7 +92,6 @@ sections:
     title: Team
     text: ''
     user_groups:
-    - Principal Investigator
     - Graduate Students
     - Undergraduate Students
     - Alumni

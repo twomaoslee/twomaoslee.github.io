@@ -57,7 +57,6 @@ sections:
     title: 团队成员
     text: ''
     user_groups:
-    - 课题组负责人
     - 研究生
     - 本科生
     - 已毕业学生
