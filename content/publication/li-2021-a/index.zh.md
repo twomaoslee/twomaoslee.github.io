@@ -9,4 +9,5 @@ publication_types:
 - article-journal
 publication: '*Physical Review A* **103**, 023719'
 doi: 10.1103/physreva.103.023719
+featured: true
 ---
