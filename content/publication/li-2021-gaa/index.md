@@ -9,6 +9,6 @@ publication_types:
 - article-journal
 publication: '*Physical Review A* **104**, 033712'
 doi: 10.1103/physreva.104.033712
-summary: This work develops a generalized adiabatic approximation for the quantum Rabi model beyond the simplest displaced-oscillator picture. It provides a compact analytical framework for describing spectra and eigenstates across a broader parameter regime.
+summary: A generalized adiabatic approximation gives a compact analytical description of quantum Rabi spectra and eigenstates.
 featured: true
 ---

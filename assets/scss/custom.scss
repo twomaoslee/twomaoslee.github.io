@@ -19,8 +19,19 @@
   order: 2;
 }
 
+#featured .card-simple.view-card .article-title {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  margin-top: 1rem !important;
+}
+
 #featured .card-simple.view-card > .article-metadata {
   order: 3;
+}
+
+#featured .card-simple.view-card .article-metadata {
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
 #featured .card-simple.view-card > .summary-link {
@@ -28,16 +39,14 @@
 }
 
 #featured .card-simple.view-card .article-style {
-  display: -webkit-box;
-  min-height: 4.5rem;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-top: 0.75rem;
 }
 
 #featured .card-simple.view-card > .btn-links {
   order: 5;
-  margin-top: auto;
+  margin-top: 1rem;
 }
 
 #featured .img-hover-zoom {
