@@ -100,9 +100,9 @@ social:
   - icon: graduation-cap
     icon_pack: fas
     link: https://scholar.google.com/citations?user=-sviX2cAAAAJ&hl=en
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/twomaoslee
+  - icon: university
+    icon_pack: fas
+    link: https://faculty.csu.edu.cn/lizimin/zh_CN/index.htm
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
