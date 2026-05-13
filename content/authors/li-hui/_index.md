@@ -5,6 +5,7 @@ last_name: Li
 role: Alumni; PhD Student at the Australian National University
 user_groups:
   - Alumni
+order: 10
 organizations:
   - name: Australian National University
     url: https://www.anu.edu.au

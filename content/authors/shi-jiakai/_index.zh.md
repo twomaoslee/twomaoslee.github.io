@@ -5,6 +5,7 @@ last_name: 施
 role: 已毕业学生，中国科学技术大学博士生
 user_groups:
   - 已毕业学生
+order: 20
 organizations:
   - name: 中国科学技术大学
     url: https://www.ustc.edu.cn

@@ -5,6 +5,7 @@ last_name: Zhou
 role: PhD Student
 user_groups:
   - Graduate Students
+order: 10
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn

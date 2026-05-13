@@ -22,6 +22,7 @@ role: Associate Professor in Physics
 # Team groups
 user_groups:
   - Principal Investigator
+order: 10
 
 # Organizations/Affiliations to show in About widget
 organizations:

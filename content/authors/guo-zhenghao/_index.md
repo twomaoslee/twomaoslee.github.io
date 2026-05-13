@@ -5,6 +5,7 @@ last_name: Guo
 role: Undergraduate Student
 user_groups:
   - Undergraduate Students
+order: 40
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn

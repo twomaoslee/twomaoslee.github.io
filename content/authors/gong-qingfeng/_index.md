@@ -5,6 +5,7 @@ last_name: Gong
 role: Undergraduate Student
 user_groups:
   - Undergraduate Students
+order: 50
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn

@@ -5,6 +5,7 @@ last_name: Liu
 role: MSc Student
 user_groups:
   - Graduate Students
+order: 40
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn

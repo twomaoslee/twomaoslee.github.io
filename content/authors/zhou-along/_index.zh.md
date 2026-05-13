@@ -5,6 +5,7 @@ last_name: 周
 role: 博士生
 user_groups:
   - 研究生
+order: 10
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn

@@ -5,6 +5,7 @@ last_name: 陈
 role: 本科生
 user_groups:
   - 本科生
+order: 30
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn

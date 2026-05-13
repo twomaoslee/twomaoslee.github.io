@@ -22,6 +22,7 @@ role: 中南大学物理学院副教授
 # Team groups
 user_groups:
   - 课题组负责人
+order: 10
 
 # Organizations/Affiliations to show in About widget
 organizations:

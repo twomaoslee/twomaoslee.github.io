@@ -61,7 +61,7 @@ sections:
     - 研究生
     - 本科生
     - 已毕业学生
-    sort_by: Params.last_name
+    sort_by: Params.order
     sort_ascending: true
   design:
     show_interests: true

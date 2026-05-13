@@ -5,6 +5,7 @@ last_name: 高
 role: 硕士生
 user_groups:
   - 研究生
+order: 20
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn

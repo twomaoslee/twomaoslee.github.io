@@ -5,6 +5,7 @@ last_name: 刘
 role: 硕士生
 user_groups:
   - 研究生
+order: 40
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn

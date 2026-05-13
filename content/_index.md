@@ -96,7 +96,7 @@ sections:
     - Graduate Students
     - Undergraduate Students
     - Alumni
-    sort_by: Params.last_name
+    sort_by: Params.order
     sort_ascending: true
   design:
     show_interests: true

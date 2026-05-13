@@ -5,6 +5,7 @@ last_name: 李
 role: 硕士生
 user_groups:
   - 研究生
+order: 30
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn

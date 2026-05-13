@@ -5,6 +5,7 @@ last_name: Xu
 role: Undergraduate Student
 user_groups:
   - Undergraduate Students
+order: 20
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn

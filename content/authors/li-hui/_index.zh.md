@@ -5,6 +5,7 @@ last_name: 李
 role: 已毕业学生，澳洲国立大学博士生
 user_groups:
   - 已毕业学生
+order: 10
 organizations:
   - name: 澳洲国立大学
     url: https://www.anu.edu.au
