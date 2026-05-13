@@ -2,15 +2,10 @@
 #   Create a section for each of your site's languages.
 #   Documentation: https://docs.hugoblox.com/reference/language/
 
-# Default language
 en:
   languageCode: en-us
   languageName: English
   weight: 1
-  # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
-  # contentDir: content/en
-
-# Uncomment the lines below to configure your website in a second language.
 zh:
   languageCode: zh-Hans
   languageName: 中文
@@ -20,24 +15,24 @@ zh:
     description: 李梓民，中南大学物理学院副教授，研究方向包括量子光学、开放量子系统、非厄米物理和量子计算。
   menu:
     main:
-      - name: 首页
-        url: '#about'
-        weight: 10
-      - name: 文章
-        url: '#posts'
-        weight: 20
-      - name: 项目
-        url: '#projects'
-        weight: 30
-      - name: 团队
-        url: '#team'
-        weight: 35
-      - name: 报告
-        url: '#talks'
-        weight: 40
-      - name: 论文
-        url: '#featured'
-        weight: 50
-      - name: 联系
-        url: '#contact'
-        weight: 60
+    - name: 首页
+      url: "#about"
+      weight: 10
+    - name: 文章
+      url: "#posts"
+      weight: 20
+    - name: 项目
+      url: "#projects"
+      weight: 50
+    - name: 团队
+      url: "#team"
+      weight: 40
+    - name: 报告
+      url: "#talks"
+      weight: 60
+    - name: 论文
+      url: "#featured"
+      weight: 30
+    - name: 联系
+      url: "#contact"
+      weight: 70
