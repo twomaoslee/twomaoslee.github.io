@@ -2,7 +2,7 @@
 title: 施家凯
 first_name: 家凯
 last_name: 施
-role: 已毕业学生
+role: 已毕业学生，中国科学技术大学博士生
 user_groups:
   - 已毕业学生
 organizations:

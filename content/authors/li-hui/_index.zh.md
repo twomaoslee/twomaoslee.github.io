@@ -2,7 +2,7 @@
 title: 李晖
 first_name: 晖
 last_name: 李
-role: 已毕业学生
+role: 已毕业学生，澳洲国立大学博士生
 user_groups:
   - 已毕业学生
 organizations:

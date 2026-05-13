@@ -2,7 +2,7 @@
 title: Jiakai Shi
 first_name: Jiakai
 last_name: Shi
-role: Alumni
+role: Alumni; PhD Student at the University of Science and Technology of China
 user_groups:
   - Alumni
 organizations:

@@ -2,7 +2,7 @@
 title: Hui Li
 first_name: Hui
 last_name: Li
-role: Alumni
+role: Alumni; PhD Student at the Australian National University
 user_groups:
   - Alumni
 organizations:
