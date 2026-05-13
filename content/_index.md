@@ -95,7 +95,7 @@ sections:
     - Principal Investigator
     - Graduate Students
     - Undergraduate Students
-    - Collaborators
+    - Alumni
     sort_by: Params.last_name
     sort_ascending: true
   design:

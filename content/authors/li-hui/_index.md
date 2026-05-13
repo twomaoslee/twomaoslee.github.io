@@ -1,0 +1,15 @@
+---
+title: Hui Li
+first_name: Hui
+last_name: Li
+role: Alumni
+user_groups:
+  - Alumni
+organizations:
+  - name: Australian National University
+    url: https://www.anu.edu.au
+bio: Alumni; currently a PhD student at the Australian National University.
+highlight_name: false
+---
+
+Hui Li is an alumnus of the group and is currently pursuing a PhD at the Australian National University.

@@ -60,7 +60,7 @@ sections:
     - 课题组负责人
     - 研究生
     - 本科生
-    - 合作者
+    - 已毕业学生
     sort_by: Params.last_name
     sort_ascending: true
   design:
