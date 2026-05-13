@@ -14,6 +14,7 @@ publication_types:
 - article-journal
 publication: '*Physical Review A* **108**, 053712'
 doi: 10.1103/PhysRevA.108.053712
+summary: This paper introduces a PT-symmetric quantum Rabi model in which a PT-symmetric qubit is coupled to a quantized light field. It reveals exceptional points and unusual dynamics that extend PT-symmetric physics into the full quantum light-matter interaction regime.
 abstract: In this work, we explore the PT-symmetric quantum Rabi model, which describes
   a PT-symmetric qubit coupled to a quantized light field. By employing the adiabatic
   approximation (AA), we are able to solve this model analytically in the parameter

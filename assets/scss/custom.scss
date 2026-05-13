@@ -27,6 +27,14 @@
   order: 4;
 }
 
+#featured .card-simple.view-card .article-style {
+  display: -webkit-box;
+  min-height: 4.5rem;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 #featured .card-simple.view-card > .btn-links {
   order: 5;
   margin-top: auto;
