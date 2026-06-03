@@ -72,3 +72,66 @@
     grid-template-columns: 1fr;
   }
 }
+
+#team .people-widget {
+  row-gap: 1.75rem;
+}
+
+#team .people-person {
+  flex: 0 0 16.6667%;
+  max-width: 16.6667%;
+  margin-bottom: 2.25rem;
+  padding-left: 0.55rem;
+  padding-right: 0.55rem;
+}
+
+#team .avatar {
+  height: 210px;
+  width: 210px;
+}
+
+#team .portrait-title h2 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+#team .portrait-title h3 {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+#team .people-interests {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 1199.98px) {
+  #team .people-person {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  #team .avatar {
+    height: 190px;
+    width: 190px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #team .people-person {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  #team .avatar {
+    height: 160px;
+    width: 160px;
+  }
+}
+
+@media (max-width: 479.98px) {
+  #team .people-person {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
