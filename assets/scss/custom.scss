@@ -86,8 +86,9 @@
 }
 
 #team .avatar {
-  height: 210px;
-  width: 210px;
+  height: auto;
+  max-width: 100%;
+  width: 180px;
 }
 
 #team .portrait-title h2 {
@@ -112,8 +113,7 @@
   }
 
   #team .avatar {
-    height: 190px;
-    width: 190px;
+    width: 160px;
   }
 }
 
@@ -124,8 +124,7 @@
   }
 
   #team .avatar {
-    height: 160px;
-    width: 160px;
+    width: 140px;
   }
 }
 
