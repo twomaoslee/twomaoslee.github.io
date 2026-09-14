@@ -25,3 +25,7 @@ main:
 - name: Contact
   url: "#contact"
   weight: 70
+
+- name: 量子光学课程
+  url: "https://zimin.li/quantum-optics/"
+  weight: 65
