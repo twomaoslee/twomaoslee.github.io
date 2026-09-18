@@ -25,3 +25,6 @@ main:
 - name: Courses
   url: "#courses"
   weight: 60
+- name: 量子光学课程
+  url: "https://zimin.li/quantum-optics/"
+  weight: 65
