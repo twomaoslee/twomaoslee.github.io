@@ -45,12 +45,8 @@ zh:
       weight: 70
     - name: 课程
       identifier: courses
-      url: "#courses"
-      weight: 60
-    - name: 课程概览
-      parent: courses
       url: "/#courses"
-      weight: 10
+      weight: 60
     - name: 大学物理
       parent: courses
       url: "/course/university-physics/"

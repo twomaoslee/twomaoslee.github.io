@@ -61,8 +61,8 @@
           {{ range site.Menus.main }}
 
           {{ if .HasChildren }}
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+          <li class="nav-item dropdown{{ if eq .Identifier "courses" }} courses-menu{{ end }}">
+            <a href="{{ if eq .Identifier "courses" }}{{ .URL | relLangURL }}{{ else }}#{{ end }}" class="nav-link dropdown-toggle"{{ if ne .Identifier "courses" }} data-toggle="dropdown" aria-haspopup="true"{{ end }}>
               {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
               <span class="caret"></span>
             </a>

@@ -1,3 +1,22 @@
+#navbar-main .courses-menu > .dropdown-menu {
+  margin-top: 0;
+}
+
+#navbar-main .courses-menu:hover > .dropdown-menu,
+#navbar-main .courses-menu:focus-within > .dropdown-menu {
+  display: block;
+}
+
+@media (hover: none) {
+  #navbar-main .courses-menu > .dropdown-menu {
+    display: block;
+    position: static;
+    border: 0;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+}
+
 #projects .row > .col-12:not(.section-heading) {
   display: grid;
   gap: 1.5rem;

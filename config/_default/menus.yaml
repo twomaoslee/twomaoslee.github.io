@@ -24,12 +24,8 @@ main:
   weight: 70
 - name: Courses
   identifier: courses
-  url: "#courses"
-  weight: 60
-- name: Course Overview
-  parent: courses
   url: "/#courses"
-  weight: 10
+  weight: 60
 - name: University Physics
   parent: courses
   url: "/course/university-physics/"
