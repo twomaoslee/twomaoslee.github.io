@@ -30,7 +30,7 @@ sections:
   design:
     view: compact
     columns: '2'
-- block: collection
+- block: featured-carousel
   id: featured
   content:
     title: 代表性论文
@@ -39,7 +39,7 @@ sections:
       - publication
       featured_only: true
   design:
-    columns: '2'
+    columns: '1'
     view: card
 - block: collection
   content:

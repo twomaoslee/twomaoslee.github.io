@@ -1,0 +1,17 @@
+{{ .wcPage.Store.Set "has_featured_carousel" true }}
+{{ $zh := eq site.Language.Lang "zh" }}
+{{ $papers := (where (where site.RegularPages "Type" "publication") "Params.featured" true).ByDate.Reverse }}
+<div class="col-12" data-publication-carousel>
+  <div class="gallery-toolbar">
+    <a href="{{ "publication/" | relLangURL }}">{{ if $zh }}全部论文{{ else }}All Publications{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="gallery-controls">
+      <button type="button" class="gallery-prev" aria-label="{{ if $zh }}上一组论文{{ else }}Previous publications{{ end }}" title="{{ if $zh }}上一组论文{{ else }}Previous publications{{ end }}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+      <button type="button" class="gallery-next" aria-label="{{ if $zh }}下一组论文{{ else }}Next publications{{ end }}" title="{{ if $zh }}下一组论文{{ else }}Next publications{{ end }}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="featured-paper-strip">
+    {{ range $index, $paper := $papers }}
+      {{ partial "functions/render_view" (dict "page" $.wcBlock "item" $paper "view" "card" "index" $index) }}
+    {{ end }}
+  </div>
+</div>

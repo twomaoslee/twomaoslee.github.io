@@ -1,4 +1,4 @@
-{{ if .Page.Store.Get "has_gallery" }}
+{{ if or (.Page.Store.Get "has_gallery") (.Page.Store.Get "has_featured_carousel") }}
   {{ $js := resources.Get "js/gallery.js" | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" defer></script>
 {{ end }}
