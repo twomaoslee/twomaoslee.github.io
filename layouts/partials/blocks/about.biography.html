@@ -10,7 +10,7 @@
 {{ if .author }}
   {{ $author = .author }}
 {{ else }}
-  {{ $author = $block.Params.author }}
+  {{ $author = $block.content.username }}
 {{end}}
 
 {{ $person_page_path := (printf "/authors/%s" $author) }}
@@ -30,7 +30,7 @@
       {{ if site.Params.features.avatar.gravatar }}
       <img class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}" src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=270')" alt="{{$person_page.Title}}">
       {{ else if $avatar }}
-      {{ $avatar_image := $avatar.Fill (printf "270x270 %s" ($person.avatar_anchor | default "Center")) }}
+      {{ $avatar_image := $avatar.Fill "270x270 Center" }}
       <img class="avatar {{if eq $avatar_shape "square"}}avatar-square{{else}}avatar-circle{{end}}"
            width="{{ $avatar_image.Width }}" height="{{ $avatar_image.Height }}"
            src="{{ $avatar_image.RelPermalink }}" alt="{{$person_page.Title}}">
@@ -88,23 +88,27 @@
   <div class="col-12 col-lg-8">
 
     {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
-    {{ if and $block.Params.widget $block.Title }}<h1>{{ $block.Title | markdownify | emojify }}</h1>{{ end }}
+    {{ with $block.content.title }}<h1>{{ . | markdownify | emojify }}</h1>{{ end }}
 
+    {{ with $person_page.Content }}
     <div class="article-style">
-      {{ $person_page.Content }}
+      {{ . }}
     </div>
+    {{ end }}
 
     <div class="row">
 
       {{ with $person.interests }}
       <div class="col-md-5">
         <div class="section-subheading">{{ i18n "interests" | markdownify }}</div>
-        <ul class="ul-interests{{ if $person.interest_icons }} fa-ul{{ end }} mb-0">
+        <ul class="ul-interests fa-ul mb-0">
           {{ range $index, $interest := . }}
+          {{ $icon := "book-open" }}
+          {{ with $person.interest_icons }}
+            {{ if lt $index (len .) }}{{ $icon = index . $index }}{{ end }}
+          {{ end }}
           <li>
-            {{ with $person.interest_icons }}
-              {{ if lt $index (len .) }}<i class="fa-li fa-solid fa-{{ index . $index }}" aria-hidden="true"></i>{{ end }}
-            {{ end }}
+            <i class="fa-li fa-solid fa-{{ $icon }}" aria-hidden="true"></i>
             {{ $interest | markdownify | emojify }}
           </li>
           {{ end }}
@@ -118,7 +122,7 @@
         <ul class="ul-edu fa-ul mb-0">
           {{ range .courses }}
           <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
+            <i class="fa-li fa-solid fa-graduation-cap"></i>
             <div class="description">
               <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
               <p class="institution">{{ .institution }}</p>

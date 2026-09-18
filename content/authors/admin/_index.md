@@ -26,6 +26,7 @@ organizations:
 bio: My research spans ultrastrong light-matter coupling, non-Hermitian physics and open quantum systems, quantum chaos and entanglement dynamics, and quantum batteries and quantum energy control.
 
 # Interests to show in About widget
+interest_icons: [atom, arrows-left-right, diagram-project, battery-full]
 interests:
   - Ultrastrong Light-Matter Coupling
   - Non-Hermitian Physics and Open Quantum Systems

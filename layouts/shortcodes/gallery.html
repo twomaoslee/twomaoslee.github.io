@@ -1,6 +1,18 @@
 {{ .Page.Store.Set "has_gallery" true }}
 {{ $album := .Get "album" | default "gallery" }}
-<div class="group-photo-grid">
+{{ $carousel := eq (.Get "mode") "carousel" }}
+{{ $zh := eq site.Language.Lang "zh" }}
+<div class="group-gallery" {{ if $carousel }}data-gallery-carousel{{ end }}>
+{{ if $carousel }}
+  <div class="gallery-toolbar">
+    <a href="{{ "gallery/" | relLangURL }}">{{ if $zh }}全部照片{{ else }}All Photos{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    <div class="gallery-controls">
+      <button type="button" class="gallery-prev" aria-label="{{ if $zh }}上一组照片{{ else }}Previous photos{{ end }}" title="{{ if $zh }}上一组照片{{ else }}Previous photos{{ end }}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+      <button type="button" class="gallery-next" aria-label="{{ if $zh }}下一组照片{{ else }}Next photos{{ end }}" title="{{ if $zh }}下一组照片{{ else }}Next photos{{ end }}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+{{ end }}
+<div class="{{ if $carousel }}group-photo-strip{{ else }}group-photo-grid{{ end }}">
   {{ range $index, $source := sort (resources.Match (printf "media/albums/%s/*" $album)) "Name" }}
     {{ $full := $source.Fit "2000x2000 jpg q88" }}
     {{ $thumb := $source.Fit "900x900 webp q85" }}
@@ -17,4 +29,5 @@
       {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
     </figure>
   {{ end }}
+</div>
 </div>

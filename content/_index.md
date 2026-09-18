@@ -96,7 +96,7 @@ sections:
   id: gallery
   content:
     title: Gallery
-    text: '{{< gallery album="group-life" >}}'
+    text: '{{< gallery album="group-life" mode="carousel" >}}'
   design:
     columns: '1'
 - block: contact

@@ -96,7 +96,7 @@ sections:
   id: gallery
   content:
     title: 相册
-    text: '{{< gallery album="group-life" >}}'
+    text: '{{< gallery album="group-life" mode="carousel" >}}'
   design:
     columns: '1'
 - block: contact

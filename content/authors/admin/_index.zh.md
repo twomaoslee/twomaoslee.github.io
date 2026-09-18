@@ -29,6 +29,7 @@ organizations:
 bio: 我的研究涵盖光与物质超强耦合、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子能量调控。
 
 # Interests to show in About widget
+interest_icons: [atom, arrows-left-right, diagram-project, battery-full]
 interests:
   - 光与物质超强耦合
   - 非厄米物理与开放量子系统

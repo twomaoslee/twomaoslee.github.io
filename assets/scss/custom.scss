@@ -180,20 +180,61 @@
   line-height: 1.25;
 }
 
-.group-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  align-items: start;
+.gallery-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
 
-  figure { margin: 0; min-width: 0; }
+.gallery-controls {
+  display: flex;
+  gap: 8px;
+  button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    &:disabled { opacity: 0.3; cursor: default; }
+  }
+}
+
+.group-photo-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 40px) / 3);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-bottom: 12px;
+
+  figure { margin: 0; min-width: 0; scroll-snap-align: start; }
+  a { display: block; aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  figcaption { margin-top: 8px; font-size: 0.9rem; }
+}
+
+@media (max-width: 767.98px) {
+  .group-photo-strip { grid-auto-columns: 85%; gap: 16px; }
+}
+
+.group-photo-grid {
+  column-count: 2;
+  column-gap: 16px;
+
+  figure { margin: 0 0 16px; min-width: 0; break-inside: avoid; }
   a { display: block; }
   img { display: block; width: 100%; height: auto; border-radius: 4px; }
   figcaption { margin-top: 8px; font-size: 0.9rem; }
 }
 
 @media (max-width: 575.98px) {
-  .group-photo-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .group-photo-grid { column-count: 1; }
 }
 
 #team .portrait-title h3 {
