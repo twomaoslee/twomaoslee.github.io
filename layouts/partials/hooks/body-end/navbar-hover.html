@@ -1,0 +1,2 @@
+{{ $js := resources.Get "js/navbar-hover.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
