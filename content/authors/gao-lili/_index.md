@@ -2,18 +2,14 @@
 title: Lili Gao
 first_name: Lili
 last_name: Gao
-role: MSc Student
+role: MSc (entered 2023); BYD Semiconductor
 user_groups:
-  - Graduate Students
-order: 20
+  - Alumni
+order: 30
 organizations:
-  - name: Central South University
-    url: https://www.csu.edu.cn
-bio: MSc student working on quantum entanglement and quantum optics.
-interests:
-  - Quantum entanglement
-  - Quantum optics
+  - name: BYD Semiconductor
+bio: MSc graduate from the 2023 entry cohort, now working at BYD Semiconductor. Her research focused on quantum entanglement and quantum optics.
 highlight_name: false
 ---
 
-Lili Gao is an MSc student working on quantum entanglement and quantum optics.
+Lili Gao is an MSc graduate of the group from the 2023 entry cohort and now works at BYD Semiconductor. Her research in the group focused on quantum entanglement and quantum optics.

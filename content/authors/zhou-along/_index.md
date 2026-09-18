@@ -2,18 +2,18 @@
 title: Along Zhou
 first_name: Along
 last_name: Zhou
-role: PhD Student
+role: PhD Student (entered 2021)
 user_groups:
   - Graduate Students
 order: 10
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn
-bio: PhD student working on quantum batteries and non-Hermitian physics.
+bio: PhD student who entered in 2021, working on quantum batteries and non-Hermitian physics.
 interests:
   - Quantum batteries
   - Non-Hermitian physics
 highlight_name: false
 ---
 
-Along Zhou is a PhD student working on quantum batteries and non-Hermitian physics.
+Along Zhou is a PhD student who entered in 2021, working on quantum batteries and non-Hermitian physics.

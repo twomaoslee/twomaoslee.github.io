@@ -2,7 +2,7 @@
 title: Xuan Zou
 first_name: Xuan
 last_name: Zou
-role: MSc Student, enrolled in 2026
+role: MSc Student (entered 2026)
 user_groups:
   - Graduate Students
 order: 60

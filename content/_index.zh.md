@@ -14,7 +14,7 @@ sections:
     title: 最新文章
     subtitle: ''
     text: ''
-    count: 5
+    count: 3
     filters:
       folders:
       - post
@@ -66,50 +66,38 @@ sections:
     show_interests: true
     show_role: true
     show_social: true
-- block: portfolio
+- block: collection
   id: projects
   content:
-    title: 研究项目
+    title: 研究方向
+    count: 4
+    sort_by: Weight
+    order: asc
     filters:
       folders:
       - project
-    default_button_index: 0
-    buttons:
-    - name: 全部
-      tag: "*"
-    - name: 深度学习
-      tag: Deep Learning
-    - name: 其他
-      tag: Demo
   design:
     columns: '1'
-    view: showcase
-    flip_alt_rows: false
+    view: card
 - block: collection
-  id: talks
+  id: courses
   content:
-    title: 近期与即将进行的报告
+    title: 课程教学
+    subtitle: 基础物理与量子科学课程
+    count: 2
     filters:
       folders:
-      - event
+      - course
+    order: asc
   design:
     columns: '2'
     view: compact
-- block: skills
-  content:
-    title: 技能
-    text: ''
-    username: admin
-  design:
-    columns: '1'
 - block: contact
   id: contact
   content:
     title: 联系方式
     subtitle:
-    text: '欢迎联系
-
-'
+    text: '欢迎就学术问题、学生指导或科研合作通过邮件联系。'
     email: zimin.li@csu.edu.cn
     address:
       street: 中南大学
@@ -118,14 +106,14 @@ sections:
       postcode: '410000'
       country: 中国
       country_code: CN
-    directions: 物理楼 437
+    directions: 中南大学潇湘校区物理学院437室
     coordinates:
       latitude: '28.1471'
       longitude: '112.9459'
     contact_links:
-    autolink: false
+    autolink: true
     form:
-      provider: netlify
+      provider: ''
       formspree:
         id:
       netlify:

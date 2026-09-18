@@ -17,6 +17,5 @@ abstract: 'The hidden symmetry of the asymmetric quantum Rabi model (AQRM) has r
   operators for AQRM-related models. Applying this ansatz we obtain the symmetry operator
   for three models: the anisotropic AQRM, the asymmetric Rabi--Stark model (ARSM),
   and the anisotropic ARSM.'
-tags:
-- /unread
+tags: []
 ---

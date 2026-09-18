@@ -1,23 +1,16 @@
 ---
 # Display name
-title: 李梓民
-
-# Name pronunciation (optional)
-name_pronunciation: Li Zi-Min
+title: Zi-Min Li
 
 # Full name (for SEO)
 first_name: Zimin
 last_name: Li
 
-# Status emoji
-status:
-  icon: ☕️
-
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Associate Professor in Physics
+role: Associate Professor and Master's Supervisor
 
 # Team groups
 user_groups:
@@ -30,16 +23,14 @@ organizations:
     url: https://www.csu.edu.cn
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include quantum optics, open quantum systems, non-Hermitian physics, and quantum computation.
+bio: My research spans ultrastrong light-matter coupling, non-Hermitian physics and open quantum systems, quantum chaos and entanglement dynamics, and quantum batteries and quantum energy control.
 
 # Interests to show in About widget
 interests:
-  - Quantum Optics
-  - Ultrastrong Coupling
-  - Cavity QED
-  - Open quantum systems
-  - Non-Hermitian Physics
-  - Quantum Computing
+  - Ultrastrong Light-Matter Coupling
+  - Non-Hermitian Physics and Open Quantum Systems
+  - Quantum Chaos and Entanglement Dynamics
+  - Quantum Batteries and Quantum Energy Control
 
 # Education to show in About widget
 education:
@@ -53,46 +44,6 @@ education:
     - course: BSc in Physics
       institution: Chongqing University, China
       year: 2014
-
-# Skills
-# For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
-skills:
-  - name: Technical
-    items:
-      - name: Mathematica
-        description: ''
-        percent: 100
-        icon: chart-line
-        icon_pack: fas
-      - name: Python
-        description: ''
-        percent: 80
-        icon: python
-        icon_pack: fab
-      - name: LaTeX
-        description: ''
-        percent: 80
-        icon: database
-        icon_pack: fas
-  - name: Hobbies
-    color: '#eeac02'
-    color_border: '#f0bf23'
-    items:
-      - name: Football
-        description: ''
-        percent: 60
-        icon: person-hiking
-        icon_pack: fas
-      - name: Badminton
-        description: ''
-        percent: 100
-        icon: cat
-        icon_pack: fas
-      - name: Cycling
-        description: ''
-        percent: 80
-        icon: camera-retro
-        icon_pack: fas
 
 # Social/Academic Networking
 # For available icons, see: https://docs.hugoblox.com/getting-started/page-builder/#icons
@@ -119,4 +70,4 @@ social:
 highlight_name: true
 ---
 
-Zimin Li is an Associate Professor of Physics at Central South University in Changsha, China. His research interests include quantum optics, open quantum systems, non-Hermitian physics, and quantum computation.
+Zi-Min Li is an Associate Professor and Master's Supervisor in the School of Physics at Central South University. He received his Ph.D. in Theoretical Physics from the Australian National University in 2021. His research in quantum optics centers on light-matter interaction, spanning ultrastrong coupling and quantum symmetry, non-Hermitian physics and open quantum systems, quantum chaos and entanglement dynamics, and quantum batteries and quantum energy control. He combines analytical methods and numerical calculations to develop clear physical understanding of quantum spectra and dynamics. He leads projects supported by the National Natural Science Foundation of China Young Scientists Fund, the Natural Science Foundation of Hunan Province, and the Natural Science Foundation of Changsha. He received the A. J. Guttmann Prize for best presentation in 2021.

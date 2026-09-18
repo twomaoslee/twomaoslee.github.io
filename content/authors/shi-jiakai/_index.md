@@ -2,15 +2,15 @@
 title: Jiakai Shi
 first_name: Jiakai
 last_name: Shi
-role: Alumni; PhD Student at the University of Science and Technology of China
+role: Undergraduate (entered 2019); PhD Student at the University of Science and Technology of China
 user_groups:
   - Alumni
 order: 20
 organizations:
   - name: University of Science and Technology of China
     url: https://www.ustc.edu.cn
-bio: Alumni; currently a PhD student at the University of Science and Technology of China.
+bio: Undergraduate alumnus from the 2019 entry cohort, currently a PhD student at the University of Science and Technology of China.
 highlight_name: false
 ---
 
-Jiakai Shi is an alumnus of the group and is currently pursuing a PhD at the University of Science and Technology of China.
+Jiakai Shi is an alumnus of the group's 2019 Undergraduate entry cohort and is currently pursuing a PhD at the University of Science and Technology of China.

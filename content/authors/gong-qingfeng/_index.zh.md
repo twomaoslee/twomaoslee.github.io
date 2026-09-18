@@ -2,15 +2,15 @@
 title: 龚清锋
 first_name: 清锋
 last_name: 龚
-role: 本科生
+role: 24级本科生
 user_groups:
   - 本科生
 order: 50
 organizations:
   - name: 中南大学
     url: https://www.csu.edu.cn
-bio: 课题组本科生。
+bio: 课题组24级本科生。
 highlight_name: false
 ---
 
-龚清锋是课题组本科生。
+龚清锋是课题组24级本科生。

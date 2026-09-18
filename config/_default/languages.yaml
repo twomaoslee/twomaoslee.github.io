@@ -13,6 +13,16 @@ zh:
   weight: 2
   params:
     description: 李梓民，中南大学物理学院副教授，研究方向包括量子光学、开放量子系统、非厄米物理和量子计算。
+    marketing:
+      seo:
+        description: 李梓民，中南大学物理学院副教授、硕士生导师，研究量子光学、开放量子系统、非厄米物理和量子计算。
+    locale:
+      date_format: '2006年1月2日'
+      time_format: '15:04'
+      address_format: zh
+    footer:
+      copyright:
+        notice: '© {year} 李梓民 · {license}'
   menu:
     main:
     - name: 首页
@@ -27,12 +37,12 @@ zh:
     - name: 团队
       url: "#team"
       weight: 40
-    - name: 报告
-      url: "#talks"
-      weight: 60
     - name: 论文
       url: "#featured"
       weight: 30
     - name: 联系
       url: "#contact"
       weight: 70
+    - name: 课程
+      url: "#courses"
+      weight: 60

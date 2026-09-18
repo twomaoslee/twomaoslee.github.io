@@ -3,21 +3,17 @@
 title: 李梓民
 
 # Name pronunciation (optional)
-name_pronunciation: Li Zi-Min
+name_pronunciation: Zi-Min Li
 
 # Full name (for SEO)
 first_name: 梓民
 last_name: 李
 
-# Status emoji
-status:
-  icon: ☕️
-
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: 中南大学物理学院副教授
+role: 中南大学物理学院副教授、硕士生导师
 
 # Team groups
 user_groups:
@@ -30,16 +26,14 @@ organizations:
     url: https://www.csu.edu.cn
 
 # Short bio (displayed in user profile at end of posts)
-bio: 我的研究兴趣包括量子光学、开放量子系统、非厄米物理和量子计算。
+bio: 我的研究涵盖光与物质超强耦合、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子能量调控。
 
 # Interests to show in About widget
 interests:
-  - 量子光学
-  - 超强耦合
-  - 腔量子电动力学
-  - 开放量子系统
-  - 非厄米物理
-  - 量子计算
+  - 光与物质超强耦合
+  - 非厄米物理与开放量子系统
+  - 量子混沌与纠缠动力学
+  - 量子电池与量子能量调控
 
 # Education to show in About widget
 education:
@@ -53,45 +47,6 @@ education:
     - course: 物理学学士
       institution: 重庆大学，中国
       year: 2014
-
-# Skills
-skills:
-  - name: 专业技能
-    items:
-      - name: Mathematica
-        description: ''
-        percent: 100
-        icon: chart-line
-        icon_pack: fas
-      - name: Python
-        description: ''
-        percent: 80
-        icon: python
-        icon_pack: fab
-      - name: LaTeX
-        description: ''
-        percent: 80
-        icon: database
-        icon_pack: fas
-  - name: 兴趣爱好
-    color: '#eeac02'
-    color_border: '#f0bf23'
-    items:
-      - name: 足球
-        description: ''
-        percent: 60
-        icon: person-hiking
-        icon_pack: fas
-      - name: 羽毛球
-        description: ''
-        percent: 100
-        icon: cat
-        icon_pack: fas
-      - name: 骑行
-        description: ''
-        percent: 80
-        icon: camera-retro
-        icon_pack: fas
 
 # Social/Academic Networking
 social:
@@ -109,4 +64,4 @@ social:
 highlight_name: true
 ---
 
-李梓民是中南大学物理学院副教授，工作地点为湖南长沙。我的研究兴趣包括量子光学、开放量子系统、非厄米物理和量子计算。
+李梓民是中南大学物理学院副教授、硕士生导师，2021 年于澳大利亚国立大学获得理论物理博士学位。主要从事量子光学研究，以光–物质相互作用为主线，研究超强耦合与量子对称性、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子能量调控，注重解析方法、数值计算与清晰物理图像的结合。目前主持国家自然科学基金青年项目、湖南省自然科学基金项目和长沙市自然科学基金项目，并于 2021 年获 A. J. Guttmann 最佳报告奖。

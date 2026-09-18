@@ -2,15 +2,15 @@
 title: Zixuan Chen
 first_name: Zixuan
 last_name: Chen
-role: Undergraduate Student
+role: Undergraduate Student (entered 2023)
 user_groups:
   - Undergraduate Students
 order: 30
 organizations:
   - name: Central South University
     url: https://www.csu.edu.cn
-bio: Undergraduate student in the quantum optics group.
+bio: Undergraduate student who entered in 2023, in the quantum optics group.
 highlight_name: false
 ---
 
-Zixuan Chen is an undergraduate student in the quantum optics group.
+Zixuan Chen is an undergraduate student who entered in 2023, in the quantum optics group.
