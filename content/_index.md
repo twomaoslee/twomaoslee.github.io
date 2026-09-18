@@ -69,7 +69,7 @@ sections:
 - block: collection
   id: projects
   content:
-    title: Research Directions
+    title: Research Interests
     count: 4
     sort_by: Weight
     order: asc

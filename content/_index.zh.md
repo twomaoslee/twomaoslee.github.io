@@ -69,7 +69,7 @@ sections:
 - block: collection
   id: projects
   content:
-    title: 研究方向
+    title: 研究兴趣
     count: 4
     sort_by: Weight
     order: asc

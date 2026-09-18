@@ -31,7 +31,7 @@ zh:
     - name: 文章
       url: "#posts"
       weight: 20
-    - name: 项目
+    - name: 研究兴趣
       url: "#projects"
       weight: 50
     - name: 团队
