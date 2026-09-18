@@ -11,6 +11,7 @@ organizations:
     url: https://www.csu.edu.cn
 bio: 课题组24级本科生。
 highlight_name: false
+avatar_anchor: Top
 ---
 
 郭正浩是课题组24级本科生。

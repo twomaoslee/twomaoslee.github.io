@@ -11,6 +11,7 @@ organizations:
     url: https://www.csu.edu.cn
 bio: 课题组23级本科生。
 highlight_name: false
+avatar_anchor: Top
 ---
 
 陈子璇是课题组23级本科生。
