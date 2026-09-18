@@ -5,6 +5,8 @@ weight: 20
 show_date: false
 ---
 
+[Course: Quantum Optics](https://zimin.li/quantum-optics/)
+
 Quantum Optics studies light and its interaction with matter at the quantum level. The course builds from field quantization and photon states toward modern topics in quantum technologies.
 
 Core topics include:

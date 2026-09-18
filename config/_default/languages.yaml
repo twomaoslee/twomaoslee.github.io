@@ -44,5 +44,18 @@ zh:
       url: "#contact"
       weight: 70
     - name: 课程
+      identifier: courses
       url: "#courses"
       weight: 60
+    - name: 课程概览
+      parent: courses
+      url: "/#courses"
+      weight: 10
+    - name: 大学物理
+      parent: courses
+      url: "/course/university-physics/"
+      weight: 20
+    - name: 量子光学
+      parent: courses
+      url: "https://zimin.li/quantum-optics/"
+      weight: 30
