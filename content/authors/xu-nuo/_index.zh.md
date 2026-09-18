@@ -11,6 +11,7 @@ organizations:
     url: ''
 bio: 22级本科生，已毕业，目前在中国科学院半导体研究所攻读博士学位。
 highlight_name: false
+avatar_anchor: Top
 ---
 
 许诺为课题组22级本科生，已毕业，目前在中国科学院半导体研究所攻读博士学位。
