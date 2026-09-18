@@ -17,6 +17,36 @@
   }
 }
 
+@media (max-width: 991.98px) {
+  #navbar-main #navbar-content {
+    left: 8px;
+    top: 100%;
+    width: max-content;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
+    border: 1px solid rgba(128, 128, 128, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  #navbar-main #navbar-content .nav-item {
+    padding: 2px 8px !important;
+  }
+
+  #navbar-main #navbar-content .nav-link {
+    padding: 10px 12px !important;
+    white-space: nowrap;
+  }
+
+  #navbar-main #navbar-content .courses-menu > .dropdown-menu {
+    position: static;
+    min-width: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
 #projects .row > .col-12:not(.section-heading) {
   display: grid;
   gap: 1.5rem;
