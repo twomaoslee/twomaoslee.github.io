@@ -1,5 +1,7 @@
 ---
 title: 量子光学
+external_link: https://zimin.li/quantum-optics/
+external_link_target: _self
 summary: 介绍光的量子理论、非经典光场、光-物质相互作用、腔量子电动力学和开放量子系统的专业课程。
 weight: 20
 show_date: false

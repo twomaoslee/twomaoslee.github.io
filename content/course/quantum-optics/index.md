@@ -1,5 +1,7 @@
 ---
 title: Quantum Optics
+external_link: https://zimin.li/quantum-optics/
+external_link_target: _self
 summary: An advanced course on the quantum theory of light, nonclassical states, light-matter interaction, cavity QED, and open quantum systems.
 weight: 20
 show_date: false

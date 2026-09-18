@@ -149,6 +149,7 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
+  transition: transform 240ms ease;
 }
 
 #featured .article-banner {
@@ -157,6 +158,26 @@
   object-fit: contain;
   padding: 0.75rem;
   width: 100% !important;
+}
+
+#featured .img-hover-zoom:hover .article-banner {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #featured a:hover > .img-hover-zoom {
+    transform: scale(1.04);
+  }
+}
+
+#featured a:focus-visible > .img-hover-zoom {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #featured .img-hover-zoom {
+    transition: none;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -178,10 +199,38 @@
   padding-right: 0.55rem;
 }
 
-#team .avatar {
+#team .people-avatar-frame {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  margin: 0 auto;
   height: auto;
   max-width: 100%;
   width: 180px;
+  transition: transform 240ms ease;
+}
+
+#team .people-avatar-frame .avatar {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #team a:hover .people-avatar-frame {
+    transform: scale(1.06);
+  }
+}
+
+#team a:focus-visible .people-avatar-frame {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #team .people-avatar-frame {
+    transition: none;
+  }
 }
 
 #team .portrait-title h2 {
@@ -220,7 +269,7 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
-  padding-bottom: 12px;
+  padding: 8px 8px 12px;
 
   figure { margin: 0; min-width: 0; scroll-snap-align: start; }
   a { display: block; aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; }
@@ -240,6 +289,33 @@
   a { display: block; }
   img { display: block; width: 100%; height: auto; border-radius: 4px; }
   figcaption { margin-top: 8px; font-size: 0.9rem; }
+}
+
+.group-photo-strip figure > a,
+.group-photo-grid figure > a {
+  position: relative;
+  transition: transform 240ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group-photo-strip figure > a:hover,
+  .group-photo-grid figure > a:hover {
+    transform: scale(1.03);
+    z-index: 1;
+  }
+}
+
+.group-photo-strip figure > a:focus-visible,
+.group-photo-grid figure > a:focus-visible {
+  transform: scale(1.03);
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group-photo-strip figure > a,
+  .group-photo-grid figure > a {
+    transition: none;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -262,7 +338,7 @@
     max-width: 25%;
   }
 
-  #team .avatar {
+  #team .people-avatar-frame {
     width: 160px;
   }
 }
@@ -273,7 +349,7 @@
     max-width: 50%;
   }
 
-  #team .avatar {
+  #team .people-avatar-frame {
     width: 140px;
   }
 }
