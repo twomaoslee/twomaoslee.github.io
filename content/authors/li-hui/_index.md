@@ -11,6 +11,7 @@ organizations:
     url: https://www.anu.edu.au
 bio: MSc alumnus from the 2021 entry cohort, currently a PhD student at the Australian National University.
 highlight_name: false
+avatar_anchor: Top
 ---
 
 Hui Li is an alumnus of the group's 2021 MSc entry cohort and is currently pursuing a PhD at the Australian National University.

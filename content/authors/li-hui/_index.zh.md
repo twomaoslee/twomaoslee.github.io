@@ -11,6 +11,7 @@ organizations:
     url: https://www.anu.edu.au
 bio: 21级硕士生，已毕业，目前在澳洲国立大学攻读博士学位。
 highlight_name: false
+avatar_anchor: Top
 ---
 
 李晖为课题组21级硕士生，已毕业，目前在澳洲国立大学攻读博士学位。

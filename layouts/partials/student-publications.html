@@ -1,0 +1,30 @@
+{{ $zh := eq site.Language.Lang "zh" }}
+{{ $names := .names | append .page.Title | append (path.Base .page.File.Dir) }}
+{{ $papers := where (where site.RegularPages "Type" "publication") "Params.authors" "intersect" $names }}
+{{ $published := slice }}
+{{ $preprints := slice }}
+{{ range $papers.ByDate.Reverse }}
+  {{ if in .Params.publication_types "manuscript" }}
+    {{ $preprints = $preprints | append . }}
+  {{ else }}
+    {{ $published = $published | append . }}
+  {{ end }}
+{{ end }}
+
+<section id="student-publications" class="article-widget content-widget-hr">
+  <h2>{{ if $zh }}参与发表的论文{{ else }}Publications{{ end }}</h2>
+  {{ if $published }}
+    {{ range $published }}
+      {{ partial "views/citation.html" (dict "item" .) }}
+    {{ end }}
+  {{ else }}
+    <p class="text-muted">{{ if $zh }}暂无已收录的正式发表论文。{{ else }}No published papers listed yet.{{ end }}</p>
+  {{ end }}
+
+  {{ if $preprints }}
+    <h3>{{ if $zh }}预印本{{ else }}Preprints{{ end }}</h3>
+    {{ range $preprints }}
+      {{ partial "views/citation.html" (dict "item" .) }}
+    {{ end }}
+  {{ end }}
+</section>
