@@ -92,6 +92,13 @@ sections:
   design:
     columns: '2'
     view: compact
+- block: markdown
+  id: gallery
+  content:
+    title: 相册
+    text: '{{< gallery album="group-life" >}}'
+  design:
+    columns: '1'
 - block: contact
   id: contact
   content:

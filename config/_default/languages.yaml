@@ -43,6 +43,9 @@ zh:
     - name: 联系
       url: "#contact"
       weight: 70
+    - name: 相册
+      url: "#gallery"
+      weight: 65
     - name: 课程
       identifier: courses
       url: "/#courses"

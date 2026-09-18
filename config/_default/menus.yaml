@@ -22,6 +22,9 @@ main:
 - name: Contact
   url: "#contact"
   weight: 70
+- name: Gallery
+  url: "#gallery"
+  weight: 65
 - name: Courses
   identifier: courses
   url: "/#courses"

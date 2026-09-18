@@ -180,6 +180,22 @@
   line-height: 1.25;
 }
 
+.group-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+
+  figure { margin: 0; min-width: 0; }
+  a { display: block; }
+  img { display: block; width: 100%; height: auto; border-radius: 4px; }
+  figcaption { margin-top: 8px; font-size: 0.9rem; }
+}
+
+@media (max-width: 575.98px) {
+  .group-photo-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+}
+
 #team .portrait-title h3 {
   font-size: 0.92rem;
   line-height: 1.35;

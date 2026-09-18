@@ -1,0 +1,20 @@
+{{ .Page.Store.Set "has_gallery" true }}
+{{ $album := .Get "album" | default "gallery" }}
+<div class="group-photo-grid">
+  {{ range $index, $source := sort (resources.Match (printf "media/albums/%s/*" $album)) "Name" }}
+    {{ $full := $source.Fit "2000x2000 jpg q88" }}
+    {{ $thumb := $source.Fit "900x900 webp q85" }}
+    {{ $caption := "" }}
+    {{ range where ($.Page.Params.gallery_item | default slice) "album" $album }}
+      {{ if eq .image (path.Base $source.Name) }}{{ $caption = .caption }}{{ end }}
+    {{ end }}
+    {{ $alt := printf "Group photo %d" (add $index 1) }}
+    {{ if eq site.Language.Lang "zh" }}{{ $alt = printf "课题组合影 %d" (add $index 1) }}{{ end }}
+    <figure>
+      <a href="{{ $full.RelPermalink }}" data-fancybox="gallery-{{ $album }}" {{ with $caption }}data-caption="{{ . }}"{{ end }}>
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ $caption | default $alt }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" loading="lazy">
+      </a>
+      {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+  {{ end }}
+</div>
