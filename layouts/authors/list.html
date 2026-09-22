@@ -32,18 +32,25 @@
     {{ if $student_names }}
       {{ $query = where $query "Type" "ne" "publication" }}
     {{ end }}
-    {{ $count := len $query }}
-    {{ if $count }}
+    {{ $zh := eq site.Language.Lang "zh" }}
+    {{ $groups := slice
+      (dict "title" (cond $zh "参与发表的论文" "Publications") "pages" (where $query "Type" "publication"))
+      (dict "title" (cond $zh "文章" "Posts") "pages" (where $query "Type" "post"))
+      (dict "title" (cond $zh "其他内容" "Other Content") "pages" (where (where $query "Type" "ne" "publication") "Type" "ne" "post"))
+    }}
+    {{ range $groups }}
+    {{ if .pages }}
     <div class="article-widget content-widget-hr">
-      <h3>{{ i18n "user_profile_latest" | default "Latest" }}</h3>
+      <h3>{{ .title }}</h3>
       <ul>
-        {{ range $query }}
+        {{ range .pages.ByDate.Reverse }}
         <li>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
         {{ end }}
       </ul>
     </div>
+    {{ end }}
     {{ end }}
   </div>
 </section>

@@ -1,0 +1,21 @@
+{{- $name := replaceRE `[\s-]+` "" (lower .) -}}
+{{- $profile := false -}}
+{{- with site.GetPage "/authors" -}}
+  {{- range .Pages -}}
+    {{- if and .File .Params.user_groups -}}
+      {{- $candidate := . -}}
+      {{- $slug := path.Base .File.Dir -}}
+      {{- $names := index site.Data.student_publication_names $slug | default slice -}}
+      {{- $names = $names | append .Title | append $slug -}}
+      {{- range .Translations -}}
+        {{- $names = $names | append .Title -}}
+      {{- end -}}
+      {{- range $names -}}
+        {{- if eq $name (replaceRE `[\s-]+` "" (lower .)) -}}
+          {{- $profile = $candidate -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $profile -}}
