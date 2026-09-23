@@ -1,0 +1,35 @@
+{{ $item := .item }}
+{{ $has_attachments := partial "functions/has_attachments" $item }}
+{{ $publication_link := $item.RelPermalink }}
+{{ $publication_target := "" }}
+{{ with $item.Params.doi }}
+  {{ $publication_link = printf "https://doi.org/%s" . }}
+  {{ $publication_target = "target=\"_blank\" rel=\"noopener\"" }}
+{{ end }}
+
+<article class="pub-list-item view-publication-rows">
+  <div class="publication-row publication-row-authors article-metadata">
+    {{ partial "page_metadata_authors" $item }}
+  </div>
+
+  <h3 class="publication-row publication-row-title">
+    <a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a>
+  </h3>
+
+  <div class="publication-row publication-row-journal">
+    <a class="publication-journal-link" href="{{ $publication_link }}" {{ $publication_target | safeHTMLAttr }}>
+      {{- if $item.Params.publication_short -}}
+        {{- $item.Params.publication_short | markdownify -}}
+      {{- else if $item.Params.publication -}}
+        {{- $item.Params.publication | markdownify -}}
+      {{- end -}}
+      <span class="publication-year">{{ $item.Date.Format "2006" }}</span>
+    </a>
+
+    {{ if $has_attachments }}
+      <span class="publication-row-links">
+        {{ partial "page_links" (dict "page" $item "is_list" 1) }}
+      </span>
+    {{ end }}
+  </div>
+</article>
