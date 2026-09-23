@@ -26,15 +26,15 @@ organizations:
     url: https://www.csu.edu.cn
 
 # Short bio (displayed in user profile at end of posts)
-bio: 我的研究涵盖光与物质超强耦合、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子能量调控。
+bio: 我的研究涵盖光与物质超强耦合、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子热力学。
 
 # Interests to show in About widget
 interest_icons: [atom, arrows-left-right, diagram-project, battery-full]
 interests:
-  - 光与物质超强耦合
+  - 量子光学：光与物质超强耦合
   - 非厄米物理与开放量子系统
   - 量子混沌与纠缠动力学
-  - 量子电池与量子能量调控
+  - 量子电池与量子热力学
 
 # Education to show in About widget
 education:
@@ -65,4 +65,4 @@ social:
 highlight_name: true
 ---
 
-李梓民是中南大学物理学院副教授、硕士生导师，2021 年于澳大利亚国立大学获得理论物理博士学位。主要从事量子光学研究，以光–物质相互作用为主线，研究超强耦合与量子对称性、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子能量调控，注重解析方法、数值计算与清晰物理图像的结合。
+李梓民是中南大学物理学院副教授、硕士生导师，2021 年于澳大利亚国立大学获得理论物理博士学位。主要从事量子光学研究，以光–物质相互作用为主线，研究超强耦合与量子对称性、非厄米物理与开放量子系统、量子混沌与纠缠动力学，以及量子电池与量子热力学，注重解析方法、数值计算与清晰物理图像的结合。

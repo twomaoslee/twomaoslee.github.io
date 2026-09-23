@@ -14,7 +14,7 @@ sections:
     title: 最新动态
     subtitle: ''
     text: ''
-    count: 3
+    count: 4
     filters:
       folders:
       - post
@@ -26,7 +26,8 @@ sections:
       exclude_past: false
       publication_type: ''
     offset: 0
-    order: desc
+    sort_by: Weight
+    order: asc
   design:
     view: compact
     columns: '2'
