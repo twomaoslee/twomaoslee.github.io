@@ -11,7 +11,7 @@ sections:
 - block: collection
   id: posts
   content:
-    title: 最新文章
+    title: 最新动态
     subtitle: ''
     text: ''
     count: 3
