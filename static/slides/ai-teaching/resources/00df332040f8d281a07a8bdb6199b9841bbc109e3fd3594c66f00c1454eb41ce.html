@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大学物理B1 · 机械波 · 第三至第五节</title>
+<style>/* html-ppt :: shared webfonts */
+
+
+
+
+
+
+
+
+</style>
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/04e7c427d1d9401ff080bf72c5c9c0161c1a4759b5efdb2a64bed4e09830e688.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/3bc36127d7e491b0a723fe5788682824c9b9e8849cf2a5ceb72dc3ebb951e3e8.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/1caf2319addcbe468552f75d00c7c9ebabe85c08dcd82aa0ed2be1e2c8e542c0.css">
+</head>
+<body class="tpl-wave-lecture">
+<div class="deck">
+
+  <section class="slide native-page text-only dense" data-title="介质元的弹性势能">
+    <div class="topline">
+      <span class="chapter">大学物理B1 · 机械波</span>
+      <span>（三）波的能量 · PDF 第 43 页</span>
+    </div>
+    <h2 class="h2 native-title">介质元的弹性势能</h2>
+    <div class="native-content">
+      <div class="native-text">
+        
+<div class="pdf-line formula-ish display-math">\[\Delta E_P=\frac{1}{2}k(\Delta y)^2=\frac{1}{2}\frac{ES}{\Delta x}(\Delta y)^2=\frac{1}{2}ES\Delta x\left(\frac{\partial y}{\partial x}\right)^2\]</div>
+<div class="pdf-line formula-ish">依杨氏模量\(E\)的定义和胡克定律，有</div>
+<div class="pdf-line formula-ish display-math">\[F=ES\frac{\Delta y}{\Delta x}=k\Delta y\]</div>
+<div class="pdf-line formula-ish">又\(\Delta V=S\Delta x\)，\(u=\sqrt{\frac{E}{\rho}}\)，\(\frac{\partial y}{\partial x}=\frac{A\omega}{u}\sin\left[\omega\left(t-\frac{x}{u}\right)+\varphi\right]\)</div>
+<div class="pdf-line formula-ish display-math">\[\therefore\ \Delta E_P=\frac{1}{2}\rho A^2\omega^2\sin^2\left[\omega\left(t-\frac{x}{u}\right)+\varphi\right]\Delta V\]</div>
+
+      </div>
+      
+    </div>
+    <div class="notes">源自《大学物理-6机械波.pdf》第 43 页。正文逐行来自 PDF 文本层。</div>
+    <div class="deck-footer"><span>第三节至第五节 · 原文页级 HTML 重排</span><span class="slide-number" data-current="3" data-total="6"></span></div>
+  </section>
+</div>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']]
+  },
+  chtml: {
+    fontURL: 'assets/mathjax/output/chtml/fonts/woff-v2'
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script>window.MathJax.svg={fontCache:'local'};window.MathJax.options.enableMenu=false;</script><script src="https://zimin.li/slides/ai-teaching/resources/a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6.js"></script>
+<script src="https://zimin.li/slides/ai-teaching/resources/c8b59309ee02b2e7e7e5181831f1099816a2127475d27cdc3a67695e3262f2d6.js"></script>
+<script>
+(() => {
+  const report = () => {
+    const slides = Array.from(document.querySelectorAll('.deck > .slide'));
+    parent.postMessage({type:'wave-example-state',current:slides.findIndex(s=>s.classList.contains('is-active'))+1,total:slides.length}, '*');
+  };
+  window.addEventListener('message', event => {
+    if (event.source !== parent || event.data?.type !== 'wave-example-key') return;
+    const key = event.data.key;
+    if (!['ArrowLeft','ArrowRight','Home'].includes(key)) return;
+    document.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true}));
+  });
+  document.addEventListener('keydown', () => queueMicrotask(report));
+  document.addEventListener('DOMContentLoaded', () => {
+    new MutationObserver(report).observe(document.querySelector('.deck'),{subtree:true,attributes:true,attributeFilter:['class']});
+    report();
+  }, {once:true});
+})();
+</script>
+
+</body></html>

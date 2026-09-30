@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: https://zimin.li; style-src 'unsafe-inline' data: https://zimin.li; font-src data: https://zimin.li; script-src 'unsafe-inline' data: https://zimin.li; connect-src 'none';; media-src https://zimin.li">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Steve Purves">
+<meta name="author" content="Rowan Cockett">
+<meta name="dcterms.date" content="2024-02-23">
+<meta name="keywords" content="La Palma, Earthquakes">
+
+<title>La Palma Earthquakes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/f9581c264851cf85f24e9a997f9b5ca7c9cd871317d8530f5637466661a2bed5.css">
+
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/efc55b8c171bc9288c0818ca5f080298632cf35a9bbd4ebde2bc44c7777ba755.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/a1e5163f35e3eaafb0c05782feaea7d5930af2ec71db4ca1f63217920ac8423c.css">
+
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/6d3f62d4d17969f9c70e9438cf671004725019e868123f2ebc295a006f8d5d2d.css">
+<style>body:not(.glightbox-mobile) div.gslide div.gslide-description,
+body:not(.glightbox-mobile) div.gslide-description .gslide-title,
+body:not(.glightbox-mobile) div.gslide-description .gslide-desc {
+  color: var(--quarto-body-color);
+  background-color: var(--quarto-body-bg);
+}
+
+.goverlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+div.gslide-description .gslide-title {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+div.gslide-description .gslide-desc {
+  padding-bottom: 0.5em;
+  font-family: inherit;
+}
+</style>
+
+
+
+
+
+
+  
+  
+
+
+
+<meta name="citation_title" content="La Palma Earthquakes">
+<meta name="citation_abstract" content="In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). ...
+">
+<meta name="citation_keywords" content="La Palma,Earthquakes">
+<meta name="citation_author" content="Steve Purves">
+<meta name="citation_author" content="Rowan Cockett">
+<meta name="citation_publication_date" content="2024-02-23">
+<meta name="citation_cover_date" content="2024-02-23">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-02-23">
+<meta name="citation_language" content="en">
+<meta name="citation_journal_title" content="Earth and Space Science">
+<meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
+<style>html{scroll-behavior:smooth!important}body{overflow-y:auto!important}#quarto-content{min-height:0}.quarto-appendix{display:block!important}</style></head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">La Palma Earthquakes</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Steve Purves <a href="mailto:steve@curvenote.com" class="quarto-title-author-email" target="_blank" rel="noopener noreferrer"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0760-5497" class="quarto-title-author-orcid" target="_blank" rel="noopener noreferrer"> <img src="https://zimin.li/slides/ai-teaching/resources/cb273c1ff10d304ce1b6108a172bfd1660561e7fd8133b083cd66ee0f4a0a944.png" loading="lazy"></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Curvenote
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Rowan Cockett <a href="https://orcid.org/0000-0002-7859-8394" class="quarto-title-author-orcid" target="_blank" rel="noopener noreferrer"> <img src="https://zimin.li/slides/ai-teaching/resources/cb273c1ff10d304ce1b6108a172bfd1660561e7fd8133b083cd66ee0f4a0a944.png" loading="lazy"></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Curvenote
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">February 23, 2024</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="https://quarto-ext.github.io/manuscript-template-jupyter/index.docx" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="https://quarto-ext.github.io/manuscript-template-jupyter/index.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-pdf"></i>PDF (agu)</a></p></div><div class="quarto-title-meta-contents"><p><a href="https://quarto-ext.github.io/manuscript-template-jupyter/index-meca.zip" data-meca-link="true" target="_blank" rel="noopener noreferrer"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). …</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>La Palma, Earthquakes</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://quarto-ext.github.io/manuscript-template-jupyter/index-preview.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="https://quarto-ext.github.io/manuscript-template-jupyter/notebooks/data-screening-preview.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-journal-code"></i>Data Screening</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<div id="cell-fig-timeline" class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div id="fig-timeline" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An event plot of the years of the last 8 eruptions on La Palma.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://quarto-ext.github.io/manuscript-template-jupyter/index_files/figure-html/fig-timeline-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" target="_blank" rel="noopener noreferrer"><img src="https://zimin.li/slides/ai-teaching/resources/22512da06ed7f9501e83fbcbda0a9ccc8b8ffe3b456a26322e7be6ca7758c06d.webp" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." loading="lazy"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Timeline of recent earthquakes on La Palma
+</figcaption>
+</figure>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="https://quarto-ext.github.io/manuscript-template-jupyter/index-preview.html#cell-fig-timeline" target="_blank" rel="noopener noreferrer">Source: Article Notebook</a></div>
+<p>Based on data up to and including 1971, eruptions on La Palma happen every 79.8 years on average.</p>
+<p>Studies of the magma systems feeding the volcano, such as <span class="citation" data-cites="marrero2019">Marrero et al. (<a href="#ref-marrero2019" role="doc-biblioref">2019</a>)</span>, have proposed that there are two main magma reservoirs feeding the Cumbre Vieja volcano; one in the mantle (30-40km depth) which charges and in turn feeds a shallower crustal reservoir (10-20km depth).</p>
+<p>Eight eruptions have been recorded since the late 1400s (<a href="#fig-timeline" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<p>Data and methods are discussed in <a href="#sec-data-methods" class="quarto-xref">Section&nbsp;2</a>.</p>
+<p>Let <span class="math inline">\(x\)</span> denote the number of eruptions in a year. Then, <span class="math inline">\(x\)</span> can be modeled by a Poisson distribution</p>
+<p><span id="eq-poisson"><span class="math display">\[
+p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
+\tag{1}\]</span></span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is the rate of eruptions per year. Using <a href="#eq-poisson" class="quarto-xref">Equation&nbsp;1</a>, the probability of an eruption in the next <span class="math inline">\(t\)</span> years can be calculated.</p>
+<div id="tbl-history" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Recent historic eruptions on La Palma
+</figcaption>
+<div aria-describedby="tbl-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Current</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>Teneguía</td>
+<td>1971</td>
+</tr>
+<tr class="odd">
+<td>Nambroque</td>
+<td>1949</td>
+</tr>
+<tr class="even">
+<td>El Charco</td>
+<td>1712</td>
+</tr>
+<tr class="odd">
+<td>Volcán San Antonio</td>
+<td>1677</td>
+</tr>
+<tr class="even">
+<td>Volcán San Martin</td>
+<td>1646</td>
+</tr>
+<tr class="odd">
+<td>Tajuya near El Paso</td>
+<td>1585</td>
+</tr>
+<tr class="even">
+<td>Montaña Quemada</td>
+<td>1492</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-history" class="quarto-xref">Table&nbsp;1</a> summarises the eruptions recorded since the colonization of the islands by Europeans in the late 1400s.</p>
+<div id="fig-map" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://quarto-ext.github.io/manuscript-template-jupyter/images/la-palma-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" target="_blank" rel="noopener noreferrer"><img src="https://zimin.li/slides/ai-teaching/resources/bebf4d9bc645a2b46ce69bb764c3d41370e4d81a7351c31089c530dc811b291f.webp" class="img-fluid figure-img" loading="lazy"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Map of La Palma
+</figcaption>
+</figure>
+</div>
+<p>La Palma is one of the west most islands in the Volcanic Archipelago of the Canary Islands (<a href="#fig-map" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-spatial-plot" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude  against longitude.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="https://quarto-ext.github.io/manuscript-template-jupyter/index_files/figure-html/notebooks-data-screening-fig-spatial-plot-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" target="_blank" rel="noopener noreferrer"><img src="https://zimin.li/slides/ai-teaching/resources/eca0555b8a91b5bc3e96ef6ce1955328832580ffeb772d29581da2db4dfa4ac5.webp" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude  against longitude." loading="lazy"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Locations of earthquakes on La Palma since 2017.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://quarto-ext.github.io/manuscript-template-jupyter/notebooks/data-screening-preview.html#cell-fig-spatial-plot" target="_blank" rel="noopener noreferrer">Source: Data Screening</a></div>
+<p><a href="#fig-spatial-plot" class="quarto-xref">Figure&nbsp;3</a> shows the location of recent Earthquakes on La Palma.</p>
+</section>
+<section id="sec-data-methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">2</span> Data &amp; Methods</h2>
+</section>
+<section id="conclusion" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3</span> Conclusion</h2>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-marrero2019" class="csl-entry" role="listitem">
+Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares, Antonio Rodríguez-Losada, and R. Ortiz. 2019. <span>“Strategies for the Development of Volcanic Hazard Maps in Monogenetic Volcanic Fields: The Example of <span>La</span> <span>Palma</span> (<span>Canary</span> <span>Islands</span>).”</span> <em>Journal of Applied Volcanology</em> 8 (July). <a href="https://doi.org/10.1186/s13617-019-0085-5" target="_blank" rel="noopener noreferrer">https://doi.org/10.1186/s13617-019-0085-5</a>.
+</div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1: Timeline of recent earthquakes on La Palma</span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;2: Map of La Palma</span>
+<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;3: Locations of earthquakes on La Palma since 2017.</span>
+</div>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{purves2024,
+  author = {Purves, Steve and Cockett, Rowan},
+  title = {La {Palma} {Earthquakes}},
+  date = {2024-02-23},
+  langid = {en},
+  abstract = {In September 2021, a significant jump in seismic activity
+    on the island of La Palma (Canary Islands, Spain) signaled the start
+    of a volcanic crisis that still continues at the time of writing.
+    Earthquake data is continually collected and published by the
+    Instituto Geográphico Nacional (IGN). ...}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-purves2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Purves, Steve, and Rowan Cockett. 2024. <span>“La Palma
+Earthquakes.”</span> Earth and Space Science. February 23, 2024.
+</div></div></section></div></main>
+<!-- /main column -->
+
+</div> <!-- /content -->
+
+
+
+
+
+<script>document.addEventListener('keydown',e=>{if(e.target.closest?.('input,textarea,select,[contenteditable]'))return;if(['ArrowLeft','ArrowRight','Escape'].includes(e.key)){e.preventDefault();parent.postMessage({type:'quarto-scenario-key',key:e.key},'*');}});document.addEventListener('click',e=>{const b=e.target.closest?.('[data-bs-toggle="collapse"]');if(b){const t=document.querySelector(b.getAttribute('data-bs-target')||b.getAttribute('href'));if(t){e.preventDefault();t.classList.toggle('show');b.setAttribute('aria-expanded',t.classList.contains('show'));}}});</script><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'local'},options:{enableMenu:false}};</script><script src="https://zimin.li/slides/ai-teaching/resources/a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6.js"></script></body></html>

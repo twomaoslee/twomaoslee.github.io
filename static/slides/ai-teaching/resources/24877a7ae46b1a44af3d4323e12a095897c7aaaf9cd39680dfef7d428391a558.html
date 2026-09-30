@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>量子态与Bloch球</title>
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/6319c2e1b7a0f238d6bf97170584193ad8d412d3b3ffd670bc39f57f217eb3bc.css"><link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/d27a7b285faa249485031b7d301fc9820d38b58448ecded5a69ca9f9b3d9ad83.css">
+
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/316faa1dfa06963405bfd351187026b8424c7070bafdbf4b1f2f21f4d5b2702d.css"></head><body data-kind="state">
+<main id="slide" aria-label="量子态与Bloch球的16比9交互图">
+<header><h1>量子态与Bloch球</h1><div class="tools"><button id="reset">重置</button><button id="fullscreen">全屏</button></div></header>
+<svg id="sphere" viewBox="0 0 660 500" role="img" aria-label="标出极角、方位角和状态方向的Bloch球"></svg>
+<section class="state-panel"><h2>当前状态</h2><div id="state-formula"></div>
+<h2 class="prob-title">测量概率</h2>
+<div class="prob-row"><div class="prob-label"><span data-math="P_0"></span><output id="p0-value"></output></div><div class="track"><div id="p0-bar" class="bar"></div></div></div>
+<div class="prob-row"><div class="prob-label"><span data-math="P_1"></span><output id="p1-value"></output></div><div class="track"><div id="p1-bar" class="bar secondary"></div></div></div>
+<div class="presets" aria-label="典型状态与相位档位"><button data-state="0" data-math="|0\rangle"></button><button data-state="1" data-math="|1\rangle"></button><button data-state="plus" data-math="|+\rangle"></button><button data-state="minus" data-math="|-\rangle"></button><span class="phase-presets"><span data-math="\varphi="></span><button data-phase="90" data-math="\pi/2" aria-label="方位角设为二分之π"></button><button data-phase="180" data-math="\pi" aria-label="方位角设为π"></button><button data-phase="270" data-math="3\pi/2" aria-label="方位角设为二分之三π"></button></span></div></section>
+<div class="controls angle-controls">
+<label>极角 <span data-math="\theta"></span><input id="polar" type="range" min="0" max="180" step="1" value="60" aria-label="极角，度"><output id="polar-value"></output></label>
+<label>方位角 <span data-math="\varphi"></span><input id="azimuth" type="range" min="0" max="360" step="1" value="90" aria-label="方位角，度"><output id="azimuth-value"></output></label>
+</div>
+</main><script src="https://zimin.li/slides/ai-teaching/resources/10a91b479cd927446ceb60409fb0d72b5d0d05eaf446c9e52fafd64058c84540.js"></script>
+<script>// Print the live figure itself at its teaching defaults; no alternate image.
+// Browser print events reach child documents even when opened via file://.
+window.installFigurePrint = ({getState, setState, defaults, fit}) => {
+  let saved = null;
+  const enter = () => {
+    if (saved === null) saved = getState();
+    document.documentElement.classList.add('figure-printing');
+    setState(defaults);
+    fit();
+  };
+  const leave = () => {
+    document.documentElement.classList.remove('figure-printing');
+    if (saved !== null) { const state = saved; saved = null; setState(state); }
+    fit();
+  };
+  addEventListener('beforeprint', enter);
+  addEventListener('afterprint', leave);
+  const media = matchMedia('print');
+  media.addEventListener('change', event => event.matches ? enter() : leave());
+  if (media.matches) enter();
+};
+</script>
+<script src="https://zimin.li/slides/ai-teaching/resources/5385a8390a599c7aef4a5d2655f4d06c8c3cb10a4fca5aab90f11433dbd07795.js"></script>
+<script src="https://zimin.li/slides/ai-teaching/resources/0bb92a8575d671487e06f220a0e1fc3a96ff2b284ae07292b2af62603fa8a0d5.js"></script>
+</body></html>

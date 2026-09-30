@@ -37,3 +37,7 @@ main:
   parent: courses
   url: "https://zimin.li/quantum-optics/"
   weight: 30
+
+- name: Talks
+  url: "/event/"
+  weight: 62

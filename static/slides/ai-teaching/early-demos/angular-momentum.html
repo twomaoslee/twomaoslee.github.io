@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="font-size: 16px;"><head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://zimin.li; style-src 'unsafe-inline' https://zimin.li; img-src data: blob: https://zimin.li; font-src data: https://zimin.li; connect-src 'none'; media-src https://zimin.li">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角动量守恒演示</title>
+    <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/364e68c40f188bb365f9e752cc2085ecae570e07c5085159ed3a96f2db053aaa.css">
+    
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+    </script>
+    <script>
+// SVG output carries its glyphs inside the document, without external fonts.
+window.MathJax = window.MathJax || {};
+window.MathJax.svg = {fontCache: 'local'};
+window.MathJax.options = Object.assign({}, window.MathJax.options, {
+  enableMenu: false,
+  renderActions: {addMenu: []}
+});
+</script><script src="https://zimin.li/slides/ai-teaching/resources/a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6.js"></script>
+
+    <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/0d0be100ab02abfa5d74c5e978339a29c9a28a896a18a48a83b5ef71f4a1d941.css">
+</head>
+<body>
+    <div id="app-container" class="shadow-2xl border border-slate-700">
+        
+        <!-- 顶栏：使用 rem 确保高度和间距随屏幕放大 -->
+        <header class="h-[12%] min-h-[4.375rem] flex items-center justify-between pl-6 pr-2 md:pl-8 md:pr-4 bg-slate-800 border-b border-slate-700 shrink-0 z-20">
+            <div class="flex-1 shrink-0 overflow-hidden pr-2">
+                <h1 class="text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 truncate">
+                    刚体定轴转动：角动量守恒定律
+                </h1>
+                <p class="text-[0.625rem] md:text-sm text-slate-400 mt-1 truncate opacity-80">若绕定轴转动的刚体所受合外力矩为零，则其角动量保持不变。</p>
+            </div>
+            
+            <div class="shrink-0 flex flex-col items-end">
+                <div id="header-cond-conserved" class="text-emerald-400 font-serif italic text-lg md:text-2xl border border-emerald-500/40 px-4 py-2 rounded-lg bg-emerald-900/40 shadow-[0_0_1.25rem_rgba(16,185,129,0.3)] transition-all whitespace-nowrap">
+                    $\Sigma \vec{M}_{ext} = 0 \Rightarrow L = J \cdot \omega = \text{常量}$
+                </div>
+                <div id="header-cond-broken" class="hidden text-red-400 font-serif italic text-lg md:text-2xl border border-red-500/40 px-4 py-2 rounded-lg bg-red-900/40 shadow-[0_0_1.25rem_rgba(239,68,68,0.3)] transition-all whitespace-nowrap">
+                    $\Sigma \vec{M}_{ext} \neq 0 \Rightarrow L \text{ 不守恒}$
+                </div>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <div class="h-[88%] flex min-h-0">
+            
+            <!-- 左侧：图形仿真 -->
+            <div class="flex-1 relative border-r border-slate-700 p-5 flex justify-center items-center min-h-0">
+                <div class="w-full h-full relative rounded-2xl overflow-hidden shadow-[0_0_2.5rem_rgba(0,0,0,0.6)] border border-slate-600 bg-radial-canvas">
+                    <canvas id="sim-canvas" class="block"></canvas>
+                    
+                    <!-- HUD 区域：面板宽度换算为 rem，确保完美均分 -->
+                    <div class="absolute inset-y-0 left-4 md:left-8 flex flex-col z-10 pointer-events-none w-[8.5rem] md:w-[10rem] py-8 md:py-10">
+                        
+                        <div class="shrink-0 flex justify-start">
+                            <div id="status-indicator" class="w-max px-3 py-1.5 rounded-full text-[0.625rem] md:text-xs font-bold bg-slate-800/80 backdrop-blur text-slate-300 border border-slate-600 shadow-lg transition-colors whitespace-nowrap">
+                                当前状态：理想无摩擦 (锁定)
+                            </div>
+                        </div>
+
+                        <div class="flex-1 min-h-[0.5rem]"></div>
+                            
+                        <div class="hud-panel rounded-lg px-3 py-2 flex flex-col shadow-lg shrink-0">
+                            <div class="flex justify-between items-center">
+                                <div class="text-purple-400 font-bold text-[0.625rem] md:text-xs drop-shadow-md whitespace-nowrap leading-none">转动惯量 $J$</div>
+                                <span id="j-val" class="font-mono text-white text-base md:text-lg drop-shadow-md leading-none origin-right transition-all duration-150">0.0</span>
+                            </div>
+                            <div class="text-[0.5rem] md:text-[0.625rem] text-slate-400 opacity-80 mt-1.5 leading-none">(改变质量或半径)</div>
+                            <div class="bar-container border border-slate-600/50 mt-1.5">
+                                <div id="j-bar" class="bar-fill bar-j" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 flex items-center justify-center min-h-[0.5rem]">
+                            <div class="text-slate-400 font-bold text-xl leading-none drop-shadow-md">×</div>
+                        </div>
+
+                        <div class="hud-panel rounded-lg px-3 py-2 flex flex-col shadow-lg shrink-0">
+                            <div class="flex justify-between items-center">
+                                <div class="text-cyan-400 font-bold text-[0.625rem] md:text-xs drop-shadow-md whitespace-nowrap leading-none">角速度 $\omega$</div>
+                                <span id="omega-val" class="font-mono text-white text-base md:text-lg drop-shadow-md leading-none origin-right transition-all duration-150">0.0</span>
+                            </div>
+                            <div class="text-[0.5rem] md:text-[0.625rem] text-slate-400 opacity-80 mt-1.5 leading-none">(反比变化)</div>
+                            <div class="bar-container border border-slate-600/50 mt-1.5">
+                                <div id="w-bar" class="bar-fill bar-w" style="width: 20%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 flex items-center justify-center min-h-[0.5rem]">
+                            <div class="text-slate-400 font-bold text-xl leading-none drop-shadow-md">=</div>
+                        </div>
+
+                        <div class="hud-panel rounded-lg px-3 py-2 flex flex-col shadow-lg border-blue-500/40 bg-blue-900/10 shrink-0">
+                            <div class="flex justify-between items-center">
+                                <div class="text-blue-400 font-bold text-[0.625rem] md:text-xs drop-shadow-md whitespace-nowrap leading-none">角动量 $L$</div>
+                                <span id="l-val" class="font-mono text-white text-base md:text-lg drop-shadow-md leading-none origin-right transition-all duration-150">0.0</span>
+                            </div>
+                            <div id="l-desc" class="text-[0.5rem] md:text-[0.5625rem] text-slate-400 font-bold tracking-widest mt-1.5 leading-none transition-colors duration-150">(绝对守恒)</div>
+                            <div class="bar-container border border-slate-600/50 mt-1.5">
+                                <div id="l-bar" class="bar-fill bar-l" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧控制台：间距和宽度全部使用弹性 rem -->
+            <div class="w-[25%] min-w-[16rem] max-w-[22rem] bg-slate-800/50 p-4 md:p-6 flex flex-col gap-4 overflow-hidden relative z-20 shadow-[-0.625rem_0_1.25rem_rgba(0,0,0,0.3)]">
+                
+                <div class="bg-emerald-900/20 border border-emerald-500/30 p-3 rounded-lg text-[0.625rem] md:text-xs text-emerald-100 shrink-0 shadow-inner leading-relaxed">
+                    <strong>演示步骤：</strong><br>
+                    1. 长按 <span class="text-blue-400 font-bold">正向推力</span> 赋予系统初速。<br>
+                    2. 松开按钮，验证 <span class="text-emerald-400 font-bold">角动量守恒</span>。<br>
+                    3. 拖动 <span class="text-yellow-300 font-bold">半径 r </span>，观察反比效应。
+                </div>
+
+                <div class="space-y-3 shrink-0 border-b border-slate-700 pb-4">
+                    <h3 class="text-slate-400 text-[0.625rem] font-bold uppercase tracking-widest">1. 施加外力矩 (打破守恒)</h3>
+                    <div class="flex gap-2">
+                        <button id="btn-spin" class="flex-1 py-3 text-[0.75rem] md:text-sm bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold shadow-[0_0_0.9375rem_rgba(37,99,235,0.4)] active:scale-95 transition-all">
+                            施加正向推力
+                        </button>
+                        <button id="btn-stop" class="flex-1 py-3 text-[0.75rem] md:text-sm bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-bold active:scale-95 transition-all">
+                            刹车停止
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-6 shrink-0">
+                    <h3 class="text-slate-400 text-[0.625rem] font-bold uppercase tracking-widest">2. 调整内部质量分布</h3>
+                    
+                    <div class="space-y-2">
+                        <div class="grid grid-cols-[1fr_auto] items-center gap-2">
+                            <label class="text-[0.75rem] md:text-sm font-bold text-slate-300">距轴心 r (m)</label>
+                            <span id="radius-val" class="inline-block w-16 text-center text-emerald-400 font-mono text-[0.75rem] md:text-sm bg-slate-900 py-1 rounded border border-slate-700 shadow-inner">1.00</span>
+                        </div>
+                        <input type="range" id="radius-slider" min="0.2" max="2.0" step="0.02" value="1.0">
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="grid grid-cols-[1fr_auto] items-center gap-2">
+                            <label class="text-[0.75rem] md:text-sm font-bold text-slate-300">总质量 m (kg)</label>
+                            <span id="mass-val" class="inline-block w-16 text-center text-emerald-400 font-mono text-[0.75rem] md:text-sm bg-slate-900 py-1 rounded border border-slate-700 shadow-inner">20</span>
+                        </div>
+                        <input type="range" id="mass-slider" min="5" max="50" step="1" value="20">
+                    </div>
+                </div>
+
+                <div class="flex-1 min-h-0"></div>
+
+                <div class="shrink-0">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 text-center shadow-inner relative overflow-hidden">
+                        <div class="absolute inset-0 bg-cyan-900/10"></div>
+                        <div class="text-[0.625rem] text-slate-400 mb-1 relative z-10 font-bold uppercase tracking-widest">瞬时角速度 ω (rad/s)</div>
+                        <div id="omega-disp" class="text-3xl md:text-5xl font-mono font-bold text-cyan-400 drop-shadow-[0_0_0.9375rem_rgba(34,211,238,0.5)] relative z-10 transition-all duration-150">0.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://zimin.li/slides/ai-teaching/resources/17efedbefa22acec402b4a621f4ec9a04eacd6572e23c0dc3cdddb2b35826cd3.js"></script>
+<script>
+document.addEventListener('keydown', function(event) {
+  if (event.target.closest('input, textarea, select, button, [contenteditable]')) return;
+  if (!['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(event.key)) return;
+  event.preventDefault();
+  parent.postMessage({type: 'early-html-navigation', key: event.key}, '*');
+});
+</script>
+</body></html>

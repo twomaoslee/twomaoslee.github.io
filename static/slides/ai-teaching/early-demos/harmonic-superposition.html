@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://zimin.li; style-src 'unsafe-inline' https://zimin.li; img-src data: blob: https://zimin.li; font-src data: https://zimin.li; connect-src 'none'; media-src https://zimin.li">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同方向同频率简谐振动合成（深色）</title>
+
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [["\\(", "\\)"], ["\\[", "\\]"]] },
+            svg: { fontCache: "global" }
+        };
+    </script>
+    <script>
+// SVG output carries its glyphs inside the document, without external fonts.
+window.MathJax = window.MathJax || {};
+window.MathJax.svg = {fontCache: 'local'};
+window.MathJax.options = Object.assign({}, window.MathJax.options, {
+  enableMenu: false,
+  renderActions: {addMenu: []}
+});
+</script><script src="https://zimin.li/slides/ai-teaching/resources/a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6.js"></script>
+
+    <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/675fe1bfb3853e5c1e19ca78672b5f4449564a66528b67b4e01cffa6efa5c80a.css">
+</head>
+<body>
+<div class="slide-container">
+    <header>
+        <h1>同方向同频率简谐振动合成</h1>
+        <div class="formula-strip">
+            <div class="formula-pill">\(\,x_1=A_1\cos(\omega t+\varphi_1)\,\)</div>
+            <div class="formula-pill">\(\,x_2=A_2\cos(\omega t+\varphi_2)\,\)</div>
+            <div class="formula-pill">\(\,x=x_1+x_2=A\cos(\omega t+\varphi)\,\)</div>
+        </div>
+    </header>
+
+    <div class="main-grid">
+        <section class="panel left-panel">
+            <div class="panel-title">旋转矢量合成与投影</div>
+            <div class="left-canvas-wrap">
+                <canvas id="vector-canvas" class="curve-canvas"></canvas>
+            </div>
+        </section>
+
+        <section class="middle-stack">
+            <div class="curve-card">
+                <div class="panel-title">振动合成图 \(\,x_1(t),x_2(t),x(t)\,\)</div>
+                <div class="curve-pad">
+                    <canvas id="sum-canvas" class="curve-canvas"></canvas>
+                </div>
+                <div class="curve-caption">横轴时间尺度固定。蓝线为 \(\,x\,\)，绿线为 \(\,x_1\,\)，橙线为 \(\,x_2\,\)。</div>
+            </div>
+        </section>
+
+        <aside class="panel right-panel">
+            <div>
+                <p class="group-title">播放控制</p>
+                <div class="button-row">
+                    <button id="btn-play" class="btn-secondary">播放</button>
+                    <button id="btn-reset" class="btn-secondary">重置</button>
+                </div>
+            </div>
+
+            <div>
+                <p class="group-title">系统参数</p>
+                <div class="param-grid">
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">\(\,A_1\,\)</span>
+                            <span id="val-a1" class="slider-val">1.00</span>
+                        </div>
+                        <input type="range" id="slider-a1" min="0.2" max="1.2" step="0.05" value="1.00">
+                    </div>
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">\(\,A_2\,\)</span>
+                            <span id="val-a2" class="slider-val">0.50</span>
+                        </div>
+                        <input type="range" id="slider-a2" min="0.2" max="1.2" step="0.05" value="0.50">
+                    </div>
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">\(\,\varphi_1\,\)</span>
+                            <span id="val-phi1" class="slider-val">0</span>
+                        </div>
+                        <input type="range" id="slider-phi1" min="0" max="6.28318530718" step="0.01" value="0">
+                    </div>
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">\(\,\varphi_2\,\)</span>
+                            <span id="val-phi2" class="slider-val">0</span>
+                        </div>
+                        <input type="range" id="slider-phi2" min="0" max="6.28318530718" step="0.01" value="0">
+                    </div>
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">\(\,\omega\,\)</span>
+                            <span id="val-w" class="slider-val">1.80</span>
+                        </div>
+                        <input type="range" id="slider-w" min="0.5" max="3.0" step="0.05" value="1.80">
+                    </div>
+                    <div class="slider-row">
+                        <div class="slider-header">
+                            <span class="slider-label">动画倍速</span>
+                            <span id="val-speed" class="slider-val">1.0x</span>
+                        </div>
+                        <input type="range" id="slider-speed" min="0.1" max="2.0" step="0.1" value="1.0">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p class="group-title">参数快捷设置</p>
+                <div class="quick-block">
+                    <div class="phase-quick">
+                        <button class="btn-dphi" data-val="0">\(\,\Delta\varphi=0\,\)</button>
+                        <button class="btn-dphi" data-val="1.57079632679">\(\,\Delta\varphi=\pi/2\,\)</button>
+                        <button class="btn-dphi" data-val="3.14159265359">\(\,\Delta\varphi=\pi\,\)</button>
+                    </div>
+                </div>
+                <div class="quick-block">
+                    <div class="phase-quick">
+                        <button class="btn-ratio" data-ratio="0.5">\(\,A_1/A_2=0.5\,\)</button>
+                        <button class="btn-ratio" data-ratio="1">\(\,A_1/A_2=1\,\)</button>
+                        <button class="btn-ratio" data-ratio="2">\(\,A_1/A_2=2\,\)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <p class="group-title">瞬时状态</p>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-label">\(\,x_1\,\)</div>
+                        <div id="read-x1" class="status-value x1">0.00</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,x_2\,\)</div>
+                        <div id="read-x2" class="status-value x2">0.00</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,x\,\)</div>
+                        <div id="read-xsum" class="status-value xsum">0.00</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,\Delta\varphi\,\)</div>
+                        <div id="read-dphi" class="status-value">0.00 rad</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,A\,\)</div>
+                        <div id="read-amp" class="status-value amp">0.00</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,\varphi\,\)</div>
+                        <div id="read-phi" class="status-value amp">0.00 rad</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,T\,\)</div>
+                        <div id="read-period" class="status-value">3.49 s</div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-label">\(\,t\,\)</div>
+                        <div id="read-t" class="status-value">0.00 s</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <svg class="sync-overlay" id="sync-overlay" aria-hidden="true">
+        <line id="sync-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(114,214,255,0.75)" stroke-width="1.5" stroke-dasharray="6 6" stroke-linecap="round"></line>
+    </svg>
+</div>
+
+<script src="https://zimin.li/slides/ai-teaching/resources/74f41eb07c9c6581b911f553e193eddc8d9fdca023b1c2060580900f951db4ba.js"></script>
+<script>
+document.addEventListener('keydown', function(event) {
+  if (event.target.closest('input, textarea, select, button, [contenteditable]')) return;
+  if (!['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(event.key)) return;
+  event.preventDefault();
+  parent.postMessage({type: 'early-html-navigation', key: event.key}, '*');
+});
+</script>
+
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://zimin.li; style-src 'unsafe-inline' https://zimin.li; img-src data: blob: https://zimin.li; font-src data: https://zimin.li; connect-src 'none'; media-src https://zimin.li">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学物理 - 驻波的形成与特征</title>
+    
+    <!-- 引入 MathJax 3 (使用 SVG 渲染模式，最稳定，无字体跨域问题) -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' },
+            startup: { typeset: false } // 禁用自动排版，由 JavaScript 动态控制
+        };
+    </script>
+    <script>
+// SVG output carries its glyphs inside the document, without external fonts.
+window.MathJax = window.MathJax || {};
+window.MathJax.svg = {fontCache: 'local'};
+window.MathJax.options = Object.assign({}, window.MathJax.options, {
+  enableMenu: false,
+  renderActions: {addMenu: []}
+});
+</script><script src="https://zimin.li/slides/ai-teaching/resources/a4354ff94fd868aea0cc6eaaa79a57fda0588646fc46ee3700a349ee0a11cbe6.js"></script>
+
+    <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/db4dc452f3d74640470e4cf2c41c0d776040cacacd6323849fcf28760978f03c.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>驻波的形成与特征</h2>
+        <p>两列振幅、频率相同的相干波在同一直线上反向传播时叠加形成</p>
+    </header>
+
+    <div class="legend">
+        <div class="legend-item"><div class="line" style="background: var(--primary); height: 4px;"></div>合成波 (y₁ + y₂)</div>
+        <div class="legend-item"><div class="line dashed" style="border-color: var(--wave-right);"></div>右行波 (入射)</div>
+        <div class="legend-item"><div class="line dashed" style="border-color: var(--wave-left);"></div>左行波 (反射)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--node);"></div>当前波节 (动态零点)</div>
+        <div class="legend-item"><div class="dot" style="background: var(--primary); border: 2px solid white; box-shadow: 0 0 0 2px var(--primary);"></div>当前波腹 (动态极值)</div>
+    </div>
+
+    <div id="statusBar" class="status-bar success">
+        ✅ 驻波已形成 (满足条件：同频、同幅、反向传播)
+    </div>
+
+    <canvas id="waveCanvas"></canvas>
+
+    <div class="controls">
+        <div class="param-group">
+            <h4 style="color: var(--wave-right)">👉 右行波 (入射波)</h4>
+            <label>频率 (f₁) <span id="valF1">0.5 Hz</span></label>
+            <input type="range" id="inputF1" min="0.2" max="1.0" step="0.05" value="0.5">
+            <label>振幅 (A₁) <span id="valA1">100%</span></label>
+            <input type="range" id="inputA1" min="20" max="100" step="5" value="100">
+        </div>
+
+        <div class="param-group">
+            <h4 style="color: var(--wave-left)">👈 左行波 (反射波)</h4>
+            <label>频率 (f₂) <span id="valF2">0.5 Hz</span></label>
+            <input type="range" id="inputF2" min="0.2" max="1.0" step="0.05" value="0.5">
+            <label>振幅 (A₂) <span id="valA2">100%</span></label>
+            <input type="range" id="inputA2" min="20" max="100" step="5" value="100">
+        </div>
+
+        <div class="toggles">
+            <div class="toggle-grid">
+                <button class="toggle-btn active sum" id="btnSum">合成波 开</button>
+                <button class="toggle-btn active env" id="btnEnv">包络线 开</button>
+                <button class="toggle-btn active right" id="btnRight">右行波 开</button>
+                <button class="toggle-btn active left" id="btnLeft">左行波 开</button>
+                <button class="toggle-btn sync" id="btnSync">🔗 强制同步</button>
+                <button class="toggle-btn energy" id="btnEnergy">⚡ 能量转换 关</button>
+            </div>
+            <div class="playback">
+                <button class="btn-play" id="btnPause">暂停</button>
+                <button class="btn-play secondary" id="btnSlow">🐌 慢动作</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="formula-card" id="formulaCard">
+        <!-- 公式将由 MathJax 动态渲染 -->
+    </div>
+</div>
+
+<script src="https://zimin.li/slides/ai-teaching/resources/3b4fc9124661a742e304ac5b6e5f784b101bb9a991f1f9343b5f9289e88d9c7a.js"></script>
+<script>
+document.addEventListener('keydown', function(event) {
+  if (event.target.closest('input, textarea, select, button, [contenteditable]')) return;
+  if (!['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(event.key)) return;
+  event.preventDefault();
+  parent.postMessage({type: 'early-html-navigation', key: event.key}, '*');
+});
+</script>
+
+</body></html>

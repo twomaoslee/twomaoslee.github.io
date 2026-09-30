@@ -1,0 +1,732 @@
+{
+  "themes": [
+    {
+      "word": "个性化学习",
+      "count": 7,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "situ",
+        "synu",
+        "sspu",
+        "seu",
+        "xit",
+        "thu"
+      ]
+    },
+    {
+      "word": "学情分析",
+      "count": 6,
+      "level": "theme",
+      "source_ids": [
+        "synu",
+        "sspu",
+        "seu",
+        "xit",
+        "thu",
+        "synu-workshop"
+      ]
+    },
+    {
+      "word": "智能助教学伴",
+      "count": 6,
+      "level": "theme",
+      "source_ids": [
+        "synu",
+        "sspu",
+        "seu",
+        "xit",
+        "thu",
+        "synu-workshop"
+      ]
+    },
+    {
+      "word": "知识图谱",
+      "count": 6,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "sspu",
+        "seu",
+        "xit",
+        "thu",
+        "synu-workshop"
+      ]
+    },
+    {
+      "word": "虚拟仿真",
+      "count": 6,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "synu",
+        "sspu",
+        "njtc",
+        "xit",
+        "thu"
+      ]
+    },
+    {
+      "word": "智能备课",
+      "count": 5,
+      "level": "theme",
+      "source_ids": [
+        "just",
+        "synu",
+        "sspu",
+        "seu",
+        "xit"
+      ]
+    },
+    {
+      "word": "教学智能体",
+      "count": 4,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "just",
+        "thu",
+        "synu-workshop"
+      ]
+    },
+    {
+      "word": "评价与反馈",
+      "count": 4,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "synu",
+        "sspu",
+        "thu"
+      ]
+    },
+    {
+      "word": "课件制作",
+      "count": 4,
+      "level": "theme",
+      "source_ids": [
+        "situ",
+        "just",
+        "seu",
+        "xit"
+      ]
+    },
+    {
+      "word": "数字教材",
+      "count": 3,
+      "level": "theme",
+      "source_ids": [
+        "moe",
+        "synu",
+        "sspu"
+      ]
+    },
+    {
+      "word": "课堂互动",
+      "count": 3,
+      "level": "theme",
+      "source_ids": [
+        "njtc",
+        "xit",
+        "thu"
+      ]
+    },
+    {
+      "word": "代码辅助",
+      "count": 2,
+      "level": "theme",
+      "source_ids": [
+        "sspu",
+        "xit"
+      ]
+    },
+    {
+      "word": "可视化呈现",
+      "count": 2,
+      "level": "theme",
+      "source_ids": [
+        "situ",
+        "sspu"
+      ]
+    },
+    {
+      "word": "图像视频生成",
+      "count": 2,
+      "level": "theme",
+      "source_ids": [
+        "just",
+        "xit"
+      ]
+    },
+    {
+      "word": "数字人",
+      "count": 2,
+      "level": "theme",
+      "source_ids": [
+        "thu",
+        "synu-workshop"
+      ]
+    },
+    {
+      "word": "数据分析",
+      "count": 2,
+      "level": "theme",
+      "source_ids": [
+        "njtc",
+        "xit"
+      ]
+    },
+    {
+      "word": "作业批改",
+      "count": 1,
+      "level": "theme",
+      "source_ids": [
+        "synu"
+      ]
+    },
+    {
+      "word": "出题与作业设计",
+      "count": 1,
+      "level": "theme",
+      "source_ids": [
+        "xit"
+      ]
+    }
+  ],
+  "detail_terms": [
+    {
+      "word": "学习路径",
+      "count": 4,
+      "source_ids": [
+        "moe",
+        "sspu",
+        "xit",
+        "thu"
+      ],
+      "aliases": [
+        "学习路径"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "资源推荐",
+      "count": 3,
+      "source_ids": [
+        "synu",
+        "sspu",
+        "xit"
+      ],
+      "aliases": [
+        "推荐学习资源",
+        "推荐相应的教学资源",
+        "推荐个性化学习路径",
+        "推送定制资源"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "教学设计",
+      "count": 2,
+      "source_ids": [
+        "synu",
+        "xit"
+      ],
+      "aliases": [
+        "教学设计",
+        "教案设计"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "课程大纲",
+      "count": 3,
+      "source_ids": [
+        "situ",
+        "seu",
+        "xit"
+      ],
+      "aliases": [
+        "课程大纲",
+        "教学大纲"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "难点解析",
+      "count": 1,
+      "source_ids": [
+        "synu"
+      ],
+      "aliases": [
+        "难点解析"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "学情画像",
+      "count": 2,
+      "source_ids": [
+        "sspu",
+        "xit"
+      ],
+      "aliases": [
+        "学情画像",
+        "学生全景画像"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "数字孪生",
+      "count": 2,
+      "source_ids": [
+        "moe",
+        "sspu"
+      ],
+      "aliases": [
+        "数字孪生"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "实验模拟",
+      "count": 4,
+      "source_ids": [
+        "moe",
+        "synu",
+        "sspu",
+        "njtc"
+      ],
+      "aliases": [
+        "模拟实验",
+        "虚拟仿真实验"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "课程知识库",
+      "count": 2,
+      "source_ids": [
+        "xit",
+        "thu"
+      ],
+      "aliases": [
+        "知识库"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "教学语料",
+      "count": 2,
+      "source_ids": [
+        "moe",
+        "xit"
+      ],
+      "aliases": [
+        "教育语料库",
+        "语料"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "自适应学习",
+      "count": 1,
+      "source_ids": [
+        "seu"
+      ],
+      "aliases": [
+        "自适应学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "问题链",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "问题链"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "思维支架",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "思维支架"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "即时反馈",
+      "count": 4,
+      "source_ids": [
+        "moe",
+        "synu",
+        "xit",
+        "thu"
+      ],
+      "aliases": [
+        "实时",
+        "反馈"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "教案生成",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "生成适配教学目标的教案",
+        "生成或优化教案"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "素材整合",
+      "count": 2,
+      "source_ids": [
+        "njtc",
+        "xit"
+      ],
+      "aliases": [
+        "素材的搜集与整合",
+        "整合多学科知识素材"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "代码调试",
+      "count": 2,
+      "source_ids": [
+        "sspu",
+        "xit"
+      ],
+      "aliases": [
+        "代码缺陷",
+        "调试和优化"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "模型建构",
+      "count": 1,
+      "source_ids": [
+        "sspu"
+      ],
+      "aliases": [
+        "辅助建模",
+        "构建风险评估模型"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "实验数据",
+      "count": 1,
+      "source_ids": [
+        "njtc"
+      ],
+      "aliases": [
+        "数据处理与结果分析"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "微课视频",
+      "count": 1,
+      "source_ids": [
+        "synu"
+      ],
+      "aliases": [
+        "微课视频"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "虚拟工厂",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "虚拟工厂"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "概念图",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "概念图"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "混合式教学",
+      "count": 2,
+      "source_ids": [
+        "situ",
+        "sspu"
+      ],
+      "aliases": [
+        "混合式教学"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "项目式学习",
+      "count": 2,
+      "source_ids": [
+        "synu",
+        "xit"
+      ],
+      "aliases": [
+        "项目式学习",
+        "项目式"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "探究学习",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "探究学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "对话学习",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "对话式学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "游戏化学习",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "游戏化学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "跨学科学习",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "跨学科学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "个性化练习",
+      "count": 2,
+      "source_ids": [
+        "sspu",
+        "xit"
+      ],
+      "aliases": [
+        "定制差异化任务",
+        "分层"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "思维训练",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "思维训练"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "自主提问",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "自主提问"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "答疑卡",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "答疑卡"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "学习空间",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "学习空间"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "知识检测",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "知识检测员"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "课程导航",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "学科探索导航",
+        "智能导航"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "学习进度",
+      "count": 2,
+      "source_ids": [
+        "synu",
+        "thu"
+      ],
+      "aliases": [
+        "学习进度"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "实时问答",
+      "count": 1,
+      "source_ids": [
+        "thu"
+      ],
+      "aliases": [
+        "实时智能交互",
+        "智能问答"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "问题驱动",
+      "count": 1,
+      "source_ids": [
+        "synu"
+      ],
+      "aliases": [
+        "问题驱动"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "智能陪伴",
+      "count": 2,
+      "source_ids": [
+        "moe",
+        "thu"
+      ],
+      "aliases": [
+        "智能陪伴",
+        "伴随式学习"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "学习分析",
+      "count": 2,
+      "source_ids": [
+        "synu",
+        "xit"
+      ],
+      "aliases": [
+        "学习分析平台",
+        "学习行为"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "教学视频",
+      "count": 2,
+      "source_ids": [
+        "sspu",
+        "thu"
+      ],
+      "aliases": [
+        "教学视频"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "精准教学",
+      "count": 4,
+      "source_ids": [
+        "moe",
+        "sspu",
+        "seu",
+        "xit"
+      ],
+      "aliases": [
+        "精准教学"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "学习资源",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "学习资源"
+      ],
+      "level": "detail"
+    },
+    {
+      "word": "数字作品集",
+      "count": 1,
+      "source_ids": [
+        "xit"
+      ],
+      "aliases": [
+        "数字作品集"
+      ],
+      "level": "detail"
+    }
+  ],
+  "layout_note": "主主题按原计数决定字号；新增细分关键词统一使用小字号层级，按其提及篇数微调。细分词与主主题存在包含关系，不作为互斥类别。"
+}

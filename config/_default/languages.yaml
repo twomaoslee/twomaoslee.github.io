@@ -58,3 +58,7 @@ zh:
       parent: courses
       url: "https://zimin.li/quantum-optics/"
       weight: 30
+
+    - name: 学术报告
+      url: "/event/"
+      weight: 62

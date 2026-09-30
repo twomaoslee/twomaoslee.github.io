@@ -1,0 +1,542 @@
+/* University Physics B1 · Mechanical Waves · Sections 3-5 */
+body.tpl-wave-lecture {
+  --bg: #f7f8f6;
+  --bg-soft: #eef3f0;
+  --surface: #ffffff;
+  --surface-2: #f2f6f4;
+  --ink: #1d2526;
+  --muted: #536164;
+  --faint: #849195;
+  --line: rgba(29, 37, 38, 0.12);
+  --line-strong: rgba(29, 37, 38, 0.24);
+  --teal: #16746b;
+  --blue: #376aa8;
+  --coral: #c65b4b;
+  --amber: #b67927;
+  --violet: #6f5ea8;
+  --accent: var(--teal);
+  --accent-2: var(--coral);
+  --accent-3: var(--blue);
+  --text-1: var(--ink);
+  --text-2: var(--muted);
+  --text-3: var(--faint);
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --shadow: 0 12px 28px rgba(21, 32, 35, 0.08);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 8px;
+  --letter-tight: 0;
+  --letter-normal: 0;
+  font-family: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 0;
+}
+
+.tpl-wave-lecture *,
+.tpl-wave-lecture *::before,
+.tpl-wave-lecture *::after {
+  letter-spacing: 0;
+}
+
+.tpl-wave-lecture .slide {
+  background:
+    linear-gradient(90deg, rgba(22, 116, 107, 0.055) 0 1px, transparent 1px 100%),
+    linear-gradient(0deg, rgba(55, 106, 168, 0.045) 0 1px, transparent 1px 100%),
+    var(--bg);
+  background-size: 48px 48px;
+  padding: 52px 72px 58px;
+  justify-content: flex-start;
+}
+
+.tpl-wave-lecture .slide::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--teal), var(--blue), var(--coral), var(--amber));
+}
+
+.tpl-wave-lecture .slide.section {
+  background:
+    linear-gradient(120deg, rgba(22, 116, 107, 0.12), transparent 34%),
+    linear-gradient(300deg, rgba(198, 91, 75, 0.10), transparent 36%),
+    var(--bg);
+}
+
+.tpl-wave-lecture .topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--faint);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.tpl-wave-lecture .chapter {
+  font-family: var(--font-mono);
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.tpl-wave-lecture .h1 {
+  font-size: 70px;
+  line-height: 1.08;
+  font-weight: 820;
+  margin: 0;
+  max-width: 980px;
+}
+
+.tpl-wave-lecture .h2 {
+  font-size: 44px;
+  line-height: 1.14;
+  margin: 0;
+  font-weight: 780;
+}
+
+.tpl-wave-lecture .h3 {
+  font-size: 26px;
+  line-height: 1.24;
+}
+
+.tpl-wave-lecture .kicker {
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tpl-wave-lecture .lede {
+  font-size: 22px;
+  line-height: 1.65;
+  max-width: 960px;
+}
+
+.tpl-wave-lecture .layout-two {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.75fr);
+  gap: 34px;
+  align-items: stretch;
+  min-height: 514px;
+}
+
+.tpl-wave-lecture .layout-wide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 30px;
+  align-items: start;
+}
+
+.tpl-wave-lecture .card,
+.tpl-wave-lecture .formula-card,
+.tpl-wave-lecture .diagram,
+.tpl-wave-lecture .panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.tpl-wave-lecture .card {
+  padding: 22px 24px;
+}
+
+.tpl-wave-lecture .panel {
+  padding: 28px;
+}
+
+.tpl-wave-lecture .formula-card {
+  padding: 20px 22px;
+  display: grid;
+  gap: 10px;
+}
+
+.tpl-wave-lecture .formula-card strong,
+.tpl-wave-lecture .card strong {
+  color: var(--teal);
+}
+
+.tpl-wave-lecture .formula {
+  font-size: 19px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.tpl-wave-lecture .formula.large {
+  font-size: 24px;
+}
+
+.tpl-wave-lecture .formula.compact {
+  font-size: 17px;
+}
+
+.tpl-wave-lecture mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 2px 0;
+}
+
+.tpl-wave-lecture .grid-tight {
+  display: grid;
+  gap: 16px;
+}
+
+.tpl-wave-lecture .grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tpl-wave-lecture .grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tpl-wave-lecture .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tpl-wave-lecture .tag {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 6px 10px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.tpl-wave-lecture .tag.teal { color: var(--teal); border-color: rgba(22, 116, 107, 0.35); }
+.tpl-wave-lecture .tag.blue { color: var(--blue); border-color: rgba(55, 106, 168, 0.35); }
+.tpl-wave-lecture .tag.coral { color: var(--coral); border-color: rgba(198, 91, 75, 0.35); }
+.tpl-wave-lecture .tag.amber { color: var(--amber); border-color: rgba(182, 121, 39, 0.35); }
+
+.tpl-wave-lecture .step-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tpl-wave-lecture .step-list li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: start;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.tpl-wave-lecture .num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--teal);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.tpl-wave-lecture .num.blue { background: var(--blue); }
+.tpl-wave-lecture .num.coral { background: var(--coral); }
+.tpl-wave-lecture .num.amber { background: var(--amber); }
+
+.tpl-wave-lecture .diagram {
+  min-height: 360px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tpl-wave-lecture .diagram svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.tpl-wave-lecture .caption {
+  color: var(--faint);
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.tpl-wave-lecture table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.tpl-wave-lecture th,
+.tpl-wave-lecture td {
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.tpl-wave-lecture th {
+  color: var(--teal);
+  background: var(--surface-2);
+  font-size: 14px;
+}
+
+.tpl-wave-lecture tr:last-child td {
+  border-bottom: 0;
+}
+
+.tpl-wave-lecture .scale {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.tpl-wave-lecture .scale-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 60px;
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tpl-wave-lecture .bar {
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--blue), var(--coral));
+  transform-origin: left;
+}
+
+.tpl-wave-lecture .two-source {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+}
+
+.tpl-wave-lecture .deck-footer {
+  left: 72px;
+  right: 72px;
+  bottom: 22px;
+  color: var(--faint);
+  font-size: 12px;
+}
+
+.tpl-wave-lecture .source-note {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.tpl-wave-lecture .checkline {
+  border-left: 4px solid var(--coral);
+  padding: 12px 0 12px 18px;
+  color: var(--muted);
+  background: linear-gradient(90deg, rgba(198, 91, 75, 0.08), transparent);
+}
+
+.tpl-wave-lecture .mini-equation {
+  font-family: var(--font-mono);
+  color: var(--blue);
+  font-size: 15px;
+}
+
+.tpl-wave-lecture .notes {
+  display: none;
+}
+
+.tpl-wave-lecture .native-page {
+  padding: 42px 60px 56px;
+}
+
+.tpl-wave-lecture .native-title {
+  font-size: 36px;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+
+.tpl-wave-lecture .native-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  min-height: calc(100vh - 210px);
+}
+
+.tpl-wave-lecture .native-page.with-visual .native-content {
+  grid-template-columns: minmax(0, 1fr) 390px;
+}
+
+.tpl-wave-lecture .native-text {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 22px 26px;
+  height: calc(100vh - 232px);
+  max-height: calc(100vh - 232px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.tpl-wave-lecture .native-page.text-only .native-text {
+  height: calc(100vh - 232px);
+  max-height: calc(100vh - 232px);
+}
+
+.tpl-wave-lecture .pdf-line {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.42;
+  white-space: pre-wrap;
+}
+
+.tpl-wave-lecture .pdf-line.formula-ish {
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", "Noto Sans Math", serif;
+  color: #213f77;
+  font-size: 21px;
+  line-height: 1.34;
+}
+
+.tpl-wave-lecture .pdf-line mjx-container {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
+  line-height: 1.12;
+}
+
+.tpl-wave-lecture .pdf-line.display-math {
+  margin: 4px 0 8px;
+  font-size: 23px;
+  line-height: 1.28;
+  white-space: normal;
+}
+
+.tpl-wave-lecture .pdf-line.display-math mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: left !important;
+}
+
+.tpl-wave-lecture .pdf-line.enumerated {
+  color: var(--muted);
+  padding-left: 12px;
+  border-left: 3px solid rgba(22, 116, 107, 0.35);
+}
+
+.tpl-wave-lecture .pdf-line.short-label {
+  color: var(--teal);
+  font-weight: 750;
+}
+
+.tpl-wave-lecture .muted-line {
+  color: var(--faint);
+}
+
+.tpl-wave-lecture .native-page.dense .native-text {
+  gap: 3px;
+}
+
+.tpl-wave-lecture .native-page.dense .pdf-line {
+  font-size: 17px;
+  line-height: 1.32;
+}
+
+.tpl-wave-lecture .native-page.dense .pdf-line.formula-ish {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.tpl-wave-lecture .native-page.dense .pdf-line.display-math {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.tpl-wave-lecture .native-page.very-dense .native-text {
+  gap: 2px;
+  padding: 18px 22px;
+}
+
+.tpl-wave-lecture .native-page.very-dense .pdf-line {
+  font-size: 14.5px;
+  line-height: 1.22;
+}
+
+.tpl-wave-lecture .native-page.very-dense .pdf-line.formula-ish {
+  font-size: 15.5px;
+  line-height: 1.18;
+}
+
+.tpl-wave-lecture .native-page.very-dense .pdf-line.display-math {
+  font-size: 17px;
+  line-height: 1.16;
+}
+
+.tpl-wave-lecture .native-page.toc-density .native-text {
+  max-width: 760px;
+  min-height: 380px;
+  height: auto;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.tpl-wave-lecture .native-page.toc-density .pdf-line {
+  font-size: 25px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.tpl-wave-lecture .native-page.toc-density .pdf-line.short-label {
+  color: var(--ink);
+}
+
+.tpl-wave-lecture .native-visual {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-height: calc(100vh - 232px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.tpl-wave-lecture .native-visual svg text {
+  font-family: "Inter", "Noto Sans SC", sans-serif;
+  fill: var(--muted);
+  font-size: 17px;
+  font-weight: 650;
+}
+
+@media (max-width: 900px) {
+  .tpl-wave-lecture .slide {
+    padding: 34px 28px 48px;
+  }
+  .tpl-wave-lecture .h1 { font-size: 44px; }
+  .tpl-wave-lecture .h2 { font-size: 34px; }
+  .tpl-wave-lecture .layout-two,
+  .tpl-wave-lecture .layout-wide,
+  .tpl-wave-lecture .grid-3,
+  .tpl-wave-lecture .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

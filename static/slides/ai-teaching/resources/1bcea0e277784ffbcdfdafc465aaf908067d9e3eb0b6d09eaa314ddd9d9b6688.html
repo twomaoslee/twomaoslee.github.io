@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="https://zimin.li/slides/ai-teaching/resources/5fcd6ca21e7b4c41a212928afe4a6dc14b385b376e4182c8299c58c316dd3d7a.webp" rel="icon" type="image/png">
+
+
+
+
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/5969f497d9158d7682f8219c6f13fa67269cdf5bf50a3931d95327151dee5678.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/df467bde8e7c42d3256e5356167b5ad285406ad1b63fd5038c563de2ca65d685.css">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/f9fcf059ca0df1c2061ef50191a925e1f0f81163da6dd2777a1f8a43996c73ae.css">
+
+<style>kbd.kbd.mac {
+  /* When rendering keyboard icons on macOS, we revert the font family to the 
+     system font to ensure the icons render with the same X-height as upper case letters. */
+  font-family: inherit;
+}
+</style><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.11.5">
+
+  <title>Quarto – Quarto Presentations</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <style>/* http://meyerweb.com/eric/tools/css/reset/
+   v4.0 | 20180602
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}</style>
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/968e83084b001358a232b502881131e909accbc44ba21af589c0592703034b30.css">
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/d0558efe6c3286434127b6f2715f9080e396df26b790fdda9c3399ea97df9d07.css">
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/6d8d35c0a862ba51f47f43a327f82ad11af92499e5c1628b978e414ed0a3a58e.css">
+  <style>
+
+.border {
+  border: 1px solid #dee2e6;
+}
+
+.border-thick {
+  border-width: 3px;
+}
+</style>
+  <!-- Privacy-friendly analytics by Plausible -->
+  
+  
+  <style>.reveal
+  div.sourceCode
+  pre
+  code.has-line-highlights
+  > span:not(.highlight-line) {
+  opacity: 0.4;
+}
+
+.reveal pre.numberSource {
+  padding-left: 0;
+}
+
+.reveal pre.numberSource code > span {
+  left: -2.1em;
+}
+
+pre.numberSource code > span > a:first-child::before {
+  left: -0.7em;
+}
+
+.reveal pre > code:not(:first-child).fragment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.reveal div.sourceCode pre code {
+  min-height: 100%;
+}
+</style>
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/d1f53c1ca2da4e38337da57d0a04aa6ec37c8a5037ce8eb32b533aae58142ddf.css">
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/81800cd7eab73b38c3859db2b13481449021d8d8a792f5db396a5332dd6f8b2b.css">
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/cb73753959569fefa7b9ba7e0a6fa96b9b4b2f49726a7839ec04072686c57e97.css">
+  <style>div.palette, div.boardhandle {
+  position: absolute;
+/*
+  height: 260px;
+  margin: -130px 0 0 0px;
+*/  
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  border-radius: 10px;
+  border-top:    4px solid #222; 
+  border-right:  4px solid #222; 
+  border-bottom: 4px solid #222;
+  background: black;
+  transition: transform 0.3s;
+}
+
+div.palette  {
+  left: -10px;
+  padding-left:10px;
+}
+
+div.boardhandle {
+  right: -10px;
+  padding-right:10px;
+}
+
+div.palette > ul,
+div.boardhandle > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.palette > ul > li,
+div.boardhandle > ul > li {
+  margin: 10px;
+}
+
+@media print {
+	div.palette, div.boardhandle { 
+		display: none!important; 
+	}
+}
+</style>
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/12127a5a661b39e9cbfda214020886447d175d2cdc371d3180b994fd86447e94.css">
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/e3135179be3b154ab46584c310bd256870c234caafe824e88d09dec1797b7b59.css">
+  
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/471cc4e247e0460e64c0476d5f8ff5c338b48ce1a24ac134bda48ebe77d959b3.css">
+  <style>@layer htmltools {
+  .html-fill-container {
+    display: flex;
+    flex-direction: column;
+    /* Prevent the container from expanding vertically or horizontally beyond its
+    parent's constraints. */
+    min-height: 0;
+    min-width: 0;
+  }
+  .html-fill-container > .html-fill-item {
+    /* Fill items can grow and shrink freely within
+    available vertical space in fillable container */
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+  }
+  .html-fill-container > :not(.html-fill-item) {
+    /* Prevent shrinking or growing of non-fill items */
+    flex: 0 0 auto;
+  }
+}
+</style>
+  
+  
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/94983404c1eb0eedbc66bfd4949fdaa5d0aa8bdcfd2583b00e92338f5f3cb9af.css">
+  
+  <style>/* Work around CSS properties introduced on img by bootstrap */
+img.leaflet-tile {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+}
+.leaflet .info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.leaflet .legend {
+  line-height: 18px;
+  color: #555;
+}
+.leaflet .legend svg text {
+  fill: #555;
+}
+.leaflet .legend svg line {
+  stroke: #555;
+}
+.leaflet .legend i {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  opacity: 0.7;
+  display: inline-block;
+  vertical-align: top;
+  /*For IE 7*/
+  zoom: 1;
+  *display: inline;
+}
+</style>
+  
+  
+  <link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/75f904423dca262f855ef86c20a07420744d03830e6678fdc5d32d2542fe460d.css">
+  
+  
+<meta property="og:title" content="Quarto Presentations – Quarto">
+<meta property="og:description" content="Create beautiful interactive slide decks with Reveal.js">
+<meta property="og:image" content="https://quarto.org/docs/presentations/revealjs/demo/quarto-dark-bg.jpeg">
+<meta property="og:site_name" content="Quarto">
+<meta name="twitter:title" content="Quarto Presentations – Quarto">
+<meta name="twitter:description" content="Create beautiful interactive slide decks with Reveal.js">
+<meta name="twitter:image" content="https://quarto.org/docs/presentations/revealjs/demo/quarto-dark-bg.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://zimin.li/slides/ai-teaching/resources/1df4906b469706ce9ba48c8a506b2d694bcc5c94a0fa658bbf89c65a60fc9b33.css"></head>
+<body class="quarto-light"><div class="reveal"><div class="slides"><section id="interactive-slides-1" class="slide level2 smaller official-demo-slide present" data-transition="slide">
+<h2>Interactive Slides</h2>
+<p>Turn presentations into applications with Observable and Shiny. Use component layout to position inputs and outputs.</p>
+<div class="layout-sidebar layout-sidebar-left">
+<div class="cell panel-sidebar">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="383" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 382;"><span id="cb6-383"><a aria-label="383"></a>viewof talentWeight <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="fl">0.7</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"talent weight"</span> })</span>
+<span id="cb6-384"><a aria-label="384"></a>viewof looksWeight <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="fl">0.7</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"looks weight"</span> })</span>
+<span id="cb6-385"><a aria-label="385"></a>viewof minimum <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"min fame"</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell panel-fill">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="390" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 389;"><span id="cb7-390"><a aria-label="390"></a><span class="im">import</span> { plotActors } <span class="im">from</span> <span class="st">'./actors.js'</span><span class="op">;</span></span>
+<span id="cb7-391"><a aria-label="391"></a><span class="fu">plotActors</span>(actors<span class="op">,</span> talentWeight<span class="op">,</span> looksWeight<span class="op">,</span> minimum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="official-demo-footer">
+<p>Learn more: <a href="https://quarto.org/docs/interactive/ojs/" target="_blank" rel="noopener">Observable</a>, <a href="https://quarto.org/docs/interactive/shiny/" target="_blank" rel="noopener">Shiny</a>, <a href="https://quarto.org/docs/interactive/layout.html" target="_blank" rel="noopener">Component Layout</a></p>
+</div>
+</section></div></div><script src="https://zimin.li/slides/ai-teaching/resources/d032932308736bcd379340aa307e5e78e560c24a0c41aa9eabbe0381eeabc915.js"></script><script>function fit(){document.querySelector('.reveal').style.transform='scale('+Math.min(innerWidth/1050,innerHeight/700)+')'}addEventListener('resize',fit);fit();document.addEventListener('keydown',e=>{if(e.target.closest?.('input,textarea,select'))return;if(['ArrowLeft','ArrowRight','Escape'].includes(e.key)){e.preventDefault();parent.postMessage({type:'quarto-scenario-key',key:e.key},'*');}});</script></body></html>

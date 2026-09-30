@@ -1,0 +1,416 @@
+
+        :root {
+            --bg-body: #030406;
+            --bg-card: #12151b;
+            --bg-panel: #1c2129;
+            --border-light: rgba(255, 255, 255, 0.1);
+            --border-mid: rgba(122, 140, 162, 0.26);
+            --text-main: #f3f7fb;
+            --text-muted: #9aa9bb;
+            --text-soft: #6e7c8c;
+            --axis: #4d5966;
+            --grid: rgba(255, 255, 255, 0.06);
+            --guide: rgba(255, 255, 255, 0.18);
+            --cyan: #72d6ff;
+            --blue: #1c98ff;
+            --green: #36d77f;
+            --orange: #ffad21;
+            --danger: #ff685b;
+            --ring: rgba(114, 214, 255, 0.22);
+            --shadow-app: 0 1.5rem 3.4rem rgba(0, 0, 0, 0.48);
+            --shadow-card: 0 0.4rem 1.3rem rgba(0, 0, 0, 0.28);
+            --radius-lg: 1.5rem;
+            --radius-md: 1rem;
+            --radius-sm: 0.68rem;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:
+                radial-gradient(circle at 14% 12%, rgba(22, 54, 90, 0.34), transparent 24%),
+                radial-gradient(circle at 82% 18%, rgba(19, 65, 104, 0.28), transparent 28%),
+                radial-gradient(circle at 72% 78%, rgba(12, 58, 94, 0.18), transparent 24%),
+                linear-gradient(135deg, #020304 0%, #050810 45%, #030407 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            color: var(--text-main);
+        }
+
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            max-width: 177.78vh;
+            max-height: 56.25vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(11, 15, 21, 0.98), rgba(4, 7, 11, 1));
+            background-size: auto, 1.45rem 1.45rem, 1.45rem 1.45rem, auto;
+            box-shadow: var(--shadow-app);
+            border: 0.0625rem solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slide-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 14% 18%, rgba(64, 174, 255, 0.1), transparent 22%),
+                radial-gradient(circle at 78% 28%, rgba(48, 212, 123, 0.06), transparent 20%);
+        }
+
+        header {
+            height: 10%;
+            min-height: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1.65rem;
+            border-bottom: 0.0625rem solid var(--border-light);
+            background: rgba(12, 15, 22, 0.82);
+            backdrop-filter: blur(1.1rem);
+            -webkit-backdrop-filter: blur(1.1rem);
+            z-index: 2;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.72rem;
+            font-weight: 720;
+            letter-spacing: 0.02rem;
+            background: linear-gradient(90deg, #bde8ff, #5cc0ff 45%, #1e8fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+
+        .formula-strip {
+            display: flex;
+            gap: 0.42rem;
+            align-items: center;
+            padding: 0.3rem 0.52rem;
+            border-radius: 999px;
+            background: rgba(24, 34, 46, 0.68);
+            border: 0.0625rem solid rgba(78, 110, 141, 0.42);
+            box-shadow: 0 0 1.1rem rgba(25, 145, 255, 0.1);
+            white-space: nowrap;
+        }
+
+        .formula-pill {
+            padding: 0.26rem 0.74rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--cyan);
+            font-size: 0.9rem;
+            font-weight: 650;
+        }
+
+        .main-grid {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 3.2fr 4.35fr 2.45fr;
+            gap: 0.9rem;
+            padding: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sync-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 4;
+            overflow: visible;
+        }
+
+        .panel, .curve-card {
+            min-width: 0;
+            min-height: 0;
+            position: relative;
+            border-radius: var(--radius-md);
+            border: 0.0625rem solid var(--border-light);
+            background: linear-gradient(180deg, rgba(25, 30, 38, 0.92), rgba(13, 17, 23, 0.96));
+            box-shadow: var(--shadow-card), inset 0 0 1.4rem rgba(0, 0, 0, 0.22);
+            overflow: hidden;
+        }
+
+        .panel::before, .curve-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.042), transparent 18%);
+        }
+
+        .panel-title {
+            position: absolute;
+            top: 0.82rem;
+            left: 0.96rem;
+            z-index: 2;
+            font-size: 1.16rem;
+            font-weight: 720;
+            color: #d8e8f8;
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left-canvas-wrap {
+            flex: 1;
+            min-height: 0;
+            padding: 1.85rem 0.42rem 0.24rem;
+        }
+
+        .footer-chip, .status-card {
+            border-radius: 0.82rem;
+            border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: inset 0 0.05rem 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .k {
+            display: block;
+            font-size: 0.62rem;
+            color: var(--text-soft);
+            margin-bottom: 0.08rem;
+        }
+
+        .v {
+            font-size: 0.86rem;
+            font-weight: 720;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            color: var(--text-main);
+        }
+
+        .middle-stack {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .middle-stack .curve-card {
+            flex: 1;
+        }
+
+        .curve-pad {
+            width: 100%;
+            height: 100%;
+            padding-top: 1.9rem;
+        }
+
+        .curve-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .curve-caption {
+            position: absolute;
+            right: 1rem;
+            bottom: 0.78rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            z-index: 2;
+            text-align: right;
+        }
+
+        .right-panel {
+            padding: 0.82rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.68rem;
+        }
+
+        .group-title {
+            margin: 0 0 0.34rem 0;
+            padding-bottom: 0.26rem;
+            font-size: 0.8rem;
+            font-weight: 720;
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 0.0625rem solid var(--border-mid);
+        }
+
+        .right-panel > div:first-child .group-title {
+            font-size: 0.9rem;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 0.52rem;
+        }
+
+        button {
+            flex: 1;
+            padding: 0.54rem 0.34rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font: inherit;
+            font-size: 1rem;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        button:hover { transform: translateY(-0.04rem); }
+        button:active { transform: scale(0.97); }
+
+        .btn-primary {
+            color: #fff;
+            font-weight: 720;
+            background: linear-gradient(180deg, #1a97ff, #0c7ef1);
+            box-shadow: 0 0.42rem 0.98rem rgba(25, 145, 255, 0.24);
+        }
+
+        .btn-secondary {
+            color: var(--text-main);
+            font-weight: 650;
+            background: linear-gradient(180deg, #242b35, #1d242d);
+            border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+        }
+
+        .slider-row { margin-bottom: 0.36rem; }
+
+        .param-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 0.68rem;
+        }
+
+        .param-grid .slider-row {
+            margin-bottom: 0;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.18rem;
+        }
+
+        .slider-label {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-weight: 560;
+        }
+
+        .slider-val {
+            min-width: 3rem;
+            text-align: center;
+            padding: 0.1rem 0.42rem;
+            border-radius: 0.42rem;
+            background: rgba(25, 145, 255, 0.1);
+            color: var(--cyan);
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.88rem;
+            border: 0.0625rem solid rgba(25, 145, 255, 0.22);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 0;
+            height: 0.28rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #323c48, #202833);
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #ffffff, #dce8f8);
+            border: 0.12rem solid #1493ff;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #ffffff, #dce8f8);
+            border: 0.12rem solid #1493ff;
+        }
+
+        .phase-quick {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.32rem;
+        }
+
+        .quick-block + .quick-block {
+            margin-top: 0.32rem;
+        }
+
+        .phase-quick button {
+            padding: 0.38rem 0.12rem;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+            font-size: 0.82rem;
+            font-weight: 650;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.34rem;
+        }
+
+        .status-card {
+            padding: 0.34rem 0.46rem;
+            min-height: 2.56rem;
+        }
+
+        .status-label {
+            margin-bottom: 0.08rem;
+            font-size: 0.64rem;
+            color: var(--text-soft);
+            letter-spacing: 0.06rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .status-value {
+            font-size: 1.02rem;
+            font-weight: 760;
+            color: var(--text-main);
+            font-family: ui-monospace, SFMono-Regular, monospace;
+        }
+
+        .x1 { color: var(--green); }
+        .x2 { color: var(--orange); }
+        .xsum { color: var(--blue); }
+        .amp { color: var(--cyan); }
+
+        .mjx-container { margin: 0; }
+        .formula-pill .mjx-container,
+        .slider-label .mjx-container,
+        .status-label .mjx-container,
+        .k .mjx-container,
+        .phase-quick .mjx-container {
+            font-size: 0.94em;
+        }
+    
