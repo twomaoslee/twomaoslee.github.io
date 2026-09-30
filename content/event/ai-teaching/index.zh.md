@@ -24,8 +24,14 @@ image:
 
 报告保留了可操作的网页案例、课件选段和制作过程中的对话。贯穿其中的原则是：教学目标、内容取舍与质量把控由教师主导，将每次备课和讲课的经验积累为可复用的skill，并在实践中持续迭代。
 
-[在线浏览 Slides](https://zimin.li/slides/ai-teaching/)
+<figure class="talk-scene">
+  <img src="/talk/ai-teaching/talk-scene.png" alt="AI辅助教学报告现场：讲者展示课件，与现场教师交流" loading="lazy">
+  <figcaption>报告现场 · 2026年9月30日</figcaption>
+</figure>
 
-<a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="AI辅助教学报告-离线版.html">下载离线版（HTML，约45 MB）</a>
+<div class="talk-resource-actions">
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/"><span>在线浏览</span><small>交互式 Slides</small></a>
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="AI辅助教学报告-离线版.html"><span>下载离线版</span><small>HTML · 约45 MB</small></a>
+</div>
 
 在线版支持横向翻页、向下展开案例及框内交互；电脑浏览效果更佳。离线版下载后可直接在新版浏览器中打开，B站视频和外部网站链接仍需联网。

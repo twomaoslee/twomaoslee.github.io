@@ -24,8 +24,14 @@ The presentation is in **Chinese**. It includes interactive web examples, excerp
 
 The central principle is teacher-led use of AI: the teacher determines learning objectives, selects content, checks quality, and turns experience into reusable skills that improve with each iteration.
 
-[View the interactive slides](https://zimin.li/slides/ai-teaching/)
+<figure class="talk-scene">
+  <img src="/talk/ai-teaching/talk-scene.png" alt="The AI-assisted teaching talk in progress, with the speaker presenting slides to the audience" loading="lazy">
+  <figcaption>At the talk · September 30, 2026</figcaption>
+</figure>
 
-<a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="ai-teaching-offline.html">Download the offline edition (HTML, about 45 MB)</a>
+<div class="talk-resource-actions">
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/"><span>View online</span><small>Interactive slides</small></a>
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="ai-teaching-offline.html"><span>Download offline</span><small>HTML · about 45 MB</small></a>
+</div>
 
 Use horizontal navigation for the main talk and vertical navigation to explore examples. A desktop browser is recommended. The downloaded edition opens directly in a modern browser; Bilibili videos and external links still require an internet connection.
