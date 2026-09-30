@@ -9,6 +9,7 @@ all_day: true
 authors:
 - admin
 event: 大学物理教学经验分享
+location: 中南大学潇湘校区物理学院101报告厅
 url_slides: https://zimin.li/slides/ai-teaching/
 tags:
 - AI辅助教学

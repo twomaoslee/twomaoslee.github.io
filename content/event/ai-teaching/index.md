@@ -9,6 +9,7 @@ all_day: true
 authors:
 - admin
 event: University Physics Teaching Experience Sharing
+location: Lecture Hall 101, School of Physics, Xiaoxiang Campus, Central South University
 url_slides: https://zimin.li/slides/ai-teaching/
 tags:
 - AI-Assisted Teaching
