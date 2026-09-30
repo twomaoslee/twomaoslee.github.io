@@ -35,4 +35,4 @@ The central principle is teacher-led use of AI: the teacher determines learning 
   <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="ai-teaching-offline.html"><span>Download offline</span><small>HTML · about 45 MB</small></a>
 </div>
 
-Use horizontal navigation for the main talk and vertical navigation to explore examples. A desktop browser is recommended. The downloaded edition opens directly in a modern browser; Bilibili videos and external links still require an internet connection.
+Browse the online edition from left to right, with examples included in sequence. A desktop browser is recommended. The downloaded edition opens directly in a modern browser; Bilibili videos and external links still require an internet connection.

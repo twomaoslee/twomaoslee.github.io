@@ -35,4 +35,4 @@ image:
   <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="AI辅助教学报告-离线版.html"><span>下载离线版</span><small>HTML · 约45 MB</small></a>
 </div>
 
-在线版支持横向翻页、向下展开案例及框内交互；电脑浏览效果更佳。离线版下载后可直接在新版浏览器中打开，B站视频和外部网站链接仍需联网。
+在线版所有页面均可左右连续翻阅，案例依次展开，并保留框内交互；电脑浏览效果更佳。离线版下载后可直接在新版浏览器中打开，B站视频和外部网站链接仍需联网。

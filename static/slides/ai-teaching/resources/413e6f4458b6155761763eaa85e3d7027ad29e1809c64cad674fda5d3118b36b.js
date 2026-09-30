@@ -1,0 +1,1 @@
+(function(){function ready(){if(/^#\/(demo-|quarto-demo-)/.test(location.hash)&&!document.getElementById(location.hash.slice(2))){const page=document.querySelector('[data-demo-index]');if(page){const i=Reveal.getIndices(page);Reveal.slide(i.h,0);}}}if(window.Reveal?.isReady())ready();else window.Reveal?.on('ready',ready);})();
