@@ -15,7 +15,7 @@ tags:
 - 课程教学
 - 量子光学
 image:
-  caption: AI辅助教学的工具与实践
+  caption: 报告首页：从对话问答到智能体协作
   focal_point: Center
 ---
 

@@ -15,7 +15,7 @@ tags:
 - Teaching
 - Quantum Optics
 image:
-  caption: Tools and practices in AI-assisted teaching
+  caption: Opening slide of the presentation
   focal_point: Center
 ---
 
