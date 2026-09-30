@@ -50,10 +50,16 @@
     {{ else }}
       {{ $image = .Fill (printf "808x455 %s" $anchor) }}
     {{ end }}
-    {{ if ne $image.MediaType.SubType "gif" }}{{ $image = $image.Process "webp" }}{{ end }}
+    {{ $display_width := $image.Width }}
+      {{ $display_height := $image.Height }}
+      {{ if $item.Params.image.preserve_original }}
+        {{ $image = . }}
+      {{ else }}
+        {{ if ne $image.MediaType.SubType "gif" }}{{ $image = $image.Process "webp" }}{{ end }}
+      {{ end }}
     <a href="{{ $link }}" {{ $target | safeHTMLAttr }}>
       <div class="img-hover-zoom">
-        <img src="{{ $image.RelPermalink }}" height="{{ $image.Height }}" width="{{ $image.Width }}"
+        <img src="{{ $image.RelPermalink }}" height="{{ $display_height }}" width="{{ $display_width }}"
             class="article-banner" alt="{{ $item.Title }}" loading="lazy">
       </div>
     </a>

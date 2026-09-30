@@ -17,6 +17,7 @@ tags:
 image:
   caption: 报告首页：从对话问答到智能体协作
   focal_point: Center
+  preserve_original: true
 ---
 
 这份分享回顾了我从手工制作课件，到使用网页AI讨论教学问题，再到与Codex协作制作讲义、课件和课程网站的探索。

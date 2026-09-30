@@ -17,6 +17,7 @@ tags:
 image:
   caption: Opening slide of the presentation
   focal_point: Center
+  preserve_original: true
 ---
 
 The presentation is in **Chinese**. It includes interactive web examples, excerpts from teaching slides, and conversations from the authoring process.
