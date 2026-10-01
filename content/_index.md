@@ -93,6 +93,21 @@ sections:
   design:
     columns: '2'
     view: compact
+- block: collection
+  id: talks
+  content:
+    title: Talks
+    count: 4
+    filters:
+      folders:
+      - event
+      exclude_future: false
+      exclude_past: false
+    sort_by: Date
+    order: desc
+  design:
+    columns: '2'
+    view: compact
 - block: markdown
   id: gallery
   content:

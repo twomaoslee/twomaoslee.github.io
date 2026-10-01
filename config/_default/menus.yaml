@@ -39,5 +39,5 @@ main:
   weight: 30
 
 - name: Talks
-  url: "/event/"
+  url: "#talks"
   weight: 62

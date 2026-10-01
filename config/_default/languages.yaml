@@ -60,5 +60,5 @@ zh:
       weight: 30
 
     - name: 学术报告
-      url: "/event/"
+      url: "#talks"
       weight: 62
