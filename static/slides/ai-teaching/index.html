@@ -26156,43 +26156,30 @@ window.addEventListener('message', function(event) {
 <script type="application/json" id="early-html-source-precession" data-online-src="https://zimin.li/slides/ai-teaching/early-demos/precession.html">null</script>
 <script type="application/json" id="early-html-source-harmonic-superposition" data-online-src="https://zimin.li/slides/ai-teaching/early-demos/harmonic-superposition.html">null</script>
 <script type="application/json" id="early-html-source-standing-wave" data-online-src="https://zimin.li/slides/ai-teaching/early-demos/standing-wave.html">null</script>
-<script>
-(() => {
-  function install() {
-    const deck = window.Reveal;
-    const frames = [...document.querySelectorAll('iframe.early-html-frame')];
-    function update() {
-      const current = deck.getCurrentSlide();
-      frames.forEach(frame => {
-        const active = frame.closest('section') === current && !deck.isOverview();
-        if (active && !frame.hasAttribute('src')) {
-          const source = document.getElementById('early-html-source-' + frame.dataset.earlyHtml);
-          frame.src = source.dataset.onlineSrc;
-        } else if (!active && frame.hasAttribute('src')) {
-          frame.removeAttribute('src');
-        }
-      });
+<script>(()=>{
+    function install(){
+      const deck=window.Reveal,frames=[...document.querySelectorAll('iframe.early-html-frame')];
+      function notify(frame){frame.contentWindow?.postMessage({type:'early-demo-activity',active:frame.closest('section')===deck.getCurrentSlide()&&!deck.isOverview()},'*');}
+      function update(){
+        const h=deck.getIndices().h;
+        frames.forEach(frame=>{
+          const page=frame.closest('section'),index=deck.getIndices(page).h;
+          if(!deck.isOverview()&&index>=h&&index<=h+1&&!frame.hasAttribute('src')){
+            frame.loading='eager';frame.addEventListener('load',()=>notify(frame),{once:true});
+            frame.src=document.getElementById('early-html-source-'+frame.dataset.earlyHtml).dataset.onlineSrc;
+          }
+          if(frame.hasAttribute('src'))notify(frame);
+        });
+      }
+      ['slidechanged','overviewshown','overviewhidden'].forEach(name=>deck.on(name,update));
+      window.addEventListener('message',event=>{
+        const frame=frames.find(f=>f.contentWindow===event.source);if(!frame)return;
+        if(event.data?.type==='early-demo-ready'){notify(frame);return;}
+        if(event.data?.type!=='early-html-navigation'||frame.closest('section')!==deck.getCurrentSlide())return;
+        if(['ArrowDown','PageDown'].includes(event.data.key))deck.next();else if(['ArrowUp','PageUp'].includes(event.data.key))deck.prev();else return;
+        frame.blur();window.focus();
+      });update();
     }
-    deck.on('slidechanged', update);
-    deck.on('overviewshown', update);
-    deck.on('overviewhidden', update);
-    window.addEventListener('message', event => {
-      if (event.data?.type !== 'early-html-navigation') return;
-      const frame = frames.find(f => f.contentWindow === event.source);
-      if (!frame || frame.closest('section') !== deck.getCurrentSlide()) return;
-      if (event.data.key === 'ArrowDown' || event.data.key === 'PageDown') deck.next();
-      else if (event.data.key === 'ArrowUp' || event.data.key === 'PageUp') deck.prev();
-      else return;
-      frame.blur(); window.focus();
-    });
-    update();
-  }
-  function ready() {
-    if (window.Reveal?.isReady()) install();
-    else window.Reveal?.on('ready', install);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, {once:true});
-  else ready();
-})();
-</script>
+    if(window.Reveal?.isReady())install();else window.Reveal?.on('ready',install);
+  })();</script>
 </body></html>

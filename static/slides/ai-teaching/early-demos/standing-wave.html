@@ -6,7 +6,19 @@
     <title>大学物理 - 驻波的形成与特征</title>
     
     <!-- 引入 MathJax 3 (使用 SVG 渲染模式，最稳定，无字体跨域问题) -->
-    <script>
+    <script>(() => {
+  const nativeRequest=window.requestAnimationFrame.bind(window);
+  const nativeCancel=window.cancelAnimationFrame.bind(window);
+  const pending=new Map();let serial=0,scheduled=0,active=window===parent,last=0,time=performance.now();
+  function schedule(){if(active&&!document.hidden&&pending.size&&!scheduled)scheduled=nativeRequest(tick);}
+  function tick(now){scheduled=0;if(!active||document.hidden)return;time+=last?Math.min(now-last,50):16;last=now;const batch=[...pending];pending.clear();for(const [,fn]of batch)fn(time);schedule();}
+  window.requestAnimationFrame=fn=>{const id=++serial;pending.set(id,fn);schedule();return id;};
+  window.cancelAnimationFrame=id=>pending.delete(id);
+  function refresh(){if(!active||document.hidden){if(scheduled)nativeCancel(scheduled);scheduled=0;last=0;}else schedule();}
+  window.addEventListener('message',event=>{if(event.source!==parent||event.origin!=='https://zimin.li'||event.data?.type!=='early-demo-activity')return;const resumed=!active&&event.data.active;active=!!event.data.active;document.documentElement.dataset.demoActive=String(active);if(resumed)window.dispatchEvent(new Event('resize'));refresh();});
+  document.addEventListener('visibilitychange',refresh);
+  window.addEventListener('DOMContentLoaded',()=>{if(window!==parent)parent.postMessage({type:'early-demo-ready'},'*');});
+})();</script><script>
         window.MathJax = {
             tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
             svg: { fontCache: 'global' },
