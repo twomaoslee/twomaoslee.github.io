@@ -399,3 +399,34 @@
   font-size: .7rem;
   font-weight: normal;
 }
+
+// Homepage talks: balance the slide cover with the text instead of a 150px thumbnail.
+#talks .view-compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.4rem;
+}
+#talks .view-compact .media-body { min-width: 0; }
+#talks .view-compact > .ml-3 { margin-left: 0 !important; }
+#talks .view-compact .article-title {
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+#talks .view-compact .article-style {
+  margin-top: .5rem;
+  font-size: .85rem;
+  line-height: 1.65;
+}
+#talks .view-compact img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  border: 1px solid rgba(128, 128, 128, .18);
+  border-radius: 4px;
+}
+@media (max-width: 767.98px) {
+  #talks .view-compact { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  #talks .view-compact > .ml-3 { order: -1; }
+}
