@@ -51,6 +51,10 @@ jobs:
         run: |
           echo "Hugo Cache Dir: $(hugo config | grep cachedir)"
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Set Chinese homepage entry (preserve existing content URLs)
+        run: |
+          python3 -m unittest discover -s scripts -p 'test_chinese_home.py'
+          python3 scripts/chinese_home.py public "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
