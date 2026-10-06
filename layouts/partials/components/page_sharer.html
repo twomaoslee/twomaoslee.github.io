@@ -1,0 +1,18 @@
+{{ if ne .Params.share false }}
+{{ $label := cond (eq .Lang "zh") "复制链接" "Copy Link" }}
+{{ $copied := cond (eq .Lang "zh") "已复制" "Copied" }}
+{{ $failed := cond (eq .Lang "zh") "复制失败，请重试" "Could not copy" }}
+{{ $css := resources.Get "css/copy-link.css" | minify | fingerprint }}
+{{ $js := resources.Get "js/copy-link.js" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<div class="share-box">
+  <button type="button" class="btn btn-outline-primary btn-sm copy-page-link"
+          data-copy-url="{{ .Permalink }}" data-copy-label="{{ $label }}"
+          data-copy-success="{{ $copied }}" data-copy-failure="{{ $failed }}"
+          title="{{ $label }}" hidden>
+    <i class="fas fa-link" aria-hidden="true"></i>
+    <span aria-live="polite" aria-atomic="true">{{ $label }}</span>
+  </button>
+</div>
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}
