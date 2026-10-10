@@ -31,7 +31,7 @@ image:
 </figure>
 
 <div class="talk-resource-actions">
-  <a class="btn btn-outline-primary" href="/slides/ai-teaching/"><span>在线浏览</span><small>交互式 Slides</small></a>
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/" target="_blank" rel="noopener noreferrer"><span>在线浏览</span><small>交互式 Slides</small></a>
   <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="AI辅助教学报告-离线版.html"><span>下载离线版</span><small>HTML · 约45 MB</small></a>
 </div>
 

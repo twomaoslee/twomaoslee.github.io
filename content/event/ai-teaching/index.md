@@ -31,7 +31,7 @@ The central principle is teacher-led use of AI: the teacher determines learning 
 </figure>
 
 <div class="talk-resource-actions">
-  <a class="btn btn-outline-primary" href="/slides/ai-teaching/"><span>View online</span><small>Interactive slides</small></a>
+  <a class="btn btn-outline-primary" href="/slides/ai-teaching/" target="_blank" rel="noopener noreferrer"><span>View online</span><small>Interactive slides</small></a>
   <a class="btn btn-outline-primary" href="/slides/ai-teaching/downloads/ai-teaching-offline.html" download="ai-teaching-offline.html"><span>Download offline</span><small>HTML · about 45 MB</small></a>
 </div>
 
