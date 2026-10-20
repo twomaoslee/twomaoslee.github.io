@@ -1,6 +1,7 @@
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.AgendaModel=factory();})(typeof globalThis==='object'?globalThis:this,function(){
 'use strict';
 const timed=r=>r.kind!=='poster'&&r.kind!=='break'&&r.date&&r.start&&r.end&&!r.timeUncertain&&r.start<r.end;
+function departments(tracks){const groups=new Map();for(const t of tracks.slice().sort((a,b)=>a.trackCode.localeCompare(b.trackCode))){const code=t.trackCode[0];if(!groups.has(code))groups.set(code,{code,name:t.trackName.replace(/（[A-D]会场）$/,''),tracks:[]});groups.get(code).tracks.push(t);}return Array.from(groups.values());}
 function dateLabel(date){if(!date)return '';return Number(date.slice(5,7))+'月'+Number(date.slice(8,10))+'日 周'+'日一二三四五六'[new Date(date+'T12:00:00+08:00').getUTCDay()];}
 function matches(r,track){return !track||r.trackCode===track||(r.kind==='poster'&&(r.sharedWith||[]).some(t=>t.startsWith(track+' · ')));}
 function personalOrder(a,b){return (a.date||'9999').localeCompare(b.date||'9999')||(a.start||'99:99').localeCompare(b.start||'99:99')||a.trackCode.localeCompare(b.trackCode)||a.id.localeCompare(b.id);}
@@ -8,6 +9,5 @@ function select(reports,filters,favorites,mine){const q=String(filters.query||''
 function counts(reports){return {oral:reports.filter(r=>['oral','invited'].includes(r.kind)).length,poster:reports.filter(r=>r.kind==='poster').length,activity:reports.filter(r=>r.kind==='activity').length};}
 function conflicts(reports){const list=reports.filter(timed).slice().sort(personalOrder),ids=new Set();for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){if(list[i].date!==list[j].date||list[j].start>=list[i].end)break;if(list[i].start<list[j].end){ids.add(list[i].id);ids.add(list[j].id);}}return ids;}
 function group(rows,mine){const groups=[];for(const r of rows){const key=mine?(r.kind==='poster'?'poster':r.date):[r.track,r.date,r.period].join('|');let g=groups[groups.length-1];if(!g||g.key!==key){g={key,track:r.trackCode+'会场 · '+r.trackName,room:r.room,title:r.kind==='poster'?'张贴报告':dateLabel(r.date)+(mine?'':' · '+(r.period||'会议报告')),sessions:[]};groups.push(g);}const sessionKey=mine?'mine':r.session;let s=g.sessions[g.sessions.length-1];if(!s||s.key!==sessionKey){s={key:sessionKey,chair:mine?'':r.chair,topic:mine?'':r.sessionTitle,rows:[]};g.sessions.push(s);}s.rows.push(r);}return groups;}
-function page(rows,number,size=36){const count=Math.max(1,Math.ceil(rows.length/size)),index=Math.max(1,Math.min(Number(number)||1,count));return {number:index,count,rows:rows.slice((index-1)*size,index*size)};}
-return {dateLabel,matches,select,counts,conflicts,group,page,timed,personalOrder};
+return {departments,dateLabel,matches,select,counts,conflicts,group,timed,personalOrder};
 });
