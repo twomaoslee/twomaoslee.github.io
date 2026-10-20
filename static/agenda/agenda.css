@@ -20,3 +20,16 @@
 @media(hover:hover){.venue-entry:hover{border-color:#76acd0}.venue-open:hover{background:#edf7fc}}
 @media(min-width:700px){.track-entries{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}.venue-open{padding:8px 0 8px 10px;grid-template-columns:25px minmax(0,1fr)}.entry-name{font-size:14px}.venue-star{flex-basis:40px;width:40px}.child-entries{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:350px){.venue-open{padding-left:5px;gap:4px;grid-template-columns:18px minmax(0,1fr)}.entry-name{font-size:13px}.venue-star{flex-basis:32px;width:32px}.entry-code{font-size:17px}}
+.swipe-feedback{position:fixed;left:8px;top:45%;z-index:35;pointer-events:none;background:var(--blue);color:#fff;border-radius:20px;padding:9px 13px;font-size:13px;line-height:1.4;user-select:none}
+.app[data-view="agenda"] .conference-name,.app[data-view="mine"] .conference-name,.app[data-view="department"] .conference-name{display:none}
+.title-line{align-items:center;gap:6px}.title-line h1{flex:1;min-width:0;font-size:19px;line-height:1.35}
+.title-line .back-home{display:flex;align-items:center;justify-content:center;flex:0 0 28px;width:28px;min-height:36px;padding:0;margin:0}
+.title-line .venue-favorite{flex:0 0 36px;width:36px;min-height:36px;padding:0;margin:0;background:transparent;font-size:25px;line-height:1;color:#7898ae}
+.title-line .venue-favorite[aria-pressed=true]{color:var(--blue)}
+.track-info{margin:2px 0}.track-info summary{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:26px;padding:2px 0;list-style:none}
+.track-info summary::-webkit-details-marker{display:none}.track-info .venue{margin:0;font-size:11.5px;line-height:1.4}.info-label{font-size:11px;white-space:nowrap;color:var(--blue);margin-left:auto}
+.track-info div p{margin:3px 0}.filters-bar{padding-top:1px}.kind-search-row{display:flex;align-items:center;gap:5px}.kind-search-row .kind-tabs{flex:1;min-width:0;margin:0}
+.kind-tabs button{min-height:36px;padding:5px 2px;font-size:13px}.search-toggle{flex:0 0 36px;width:36px;min-height:36px;padding:6px;background:transparent;color:#547a95}.search-toggle svg{display:block;margin:auto}
+.search-toggle[aria-expanded=true],.search-toggle.has-query{background:#dff0fa;color:var(--blue)}.date-tabs{margin:4px 0}.date-tabs button{min-height:34px}
+.filter-footer{min-height:25px;align-items:flex-start;line-height:1.5;padding:3px 0;overflow-wrap:anywhere}.filter-footer .text-button{min-height:20px;padding:0 0 0 6px;white-space:nowrap}
+@media(min-width:700px){.title-line h1{font-size:23px}.track-info .venue{font-size:12px}}
