@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="agenda-revision" content="95f1044577">
+<meta name="agenda-revision" content="1cb80daa5c">
 <meta name="theme-color" content="#0070c0">
 <meta name="description" content="中国物理学会2026秋季学术会议日程：按日期、分会场和关键词查找报告，收藏并安排我的日程。">
 <title>会议日程 · 中国物理学会2026秋季学术会议</title>
 <link rel="canonical" href="https://zimin.li/agenda/">
-<link rel="stylesheet" href="./agenda.css?v=95f1044577">
-<script src="./conference-data.js?v=95f1044577" defer></script>
-<script src="./agenda-model.js?v=95f1044577" defer></script>
-<script src="./agenda-navigation.js?v=95f1044577" defer></script>
-<script src="./agenda-updates.js?v=95f1044577" defer></script>
-<script src="./agenda.js?v=95f1044577" defer></script>
+<link rel="stylesheet" href="./agenda.css?v=1cb80daa5c">
+<script src="./conference-data.js?v=1cb80daa5c" defer></script>
+<script src="./agenda-model.js?v=1cb80daa5c" defer></script>
+<script src="./agenda-navigation.js?v=1cb80daa5c" defer></script>
+<script src="./agenda-updates.js?v=1cb80daa5c" defer></script>
+<script src="./agenda.js?v=1cb80daa5c" defer></script>
 </head>
 <body>
 <main class="app" id="app">
@@ -28,13 +28,16 @@
 <section id="department-view" aria-label="子会场入口" hidden><div id="child-entries" class="child-entries"></div></section>
 <section id="program-home-view" aria-label="主会场与专题入口" hidden><h2 class="directory-heading">主会场</h2><div id="main-program-entries" class="program-entries"></div><h2 class="directory-heading">专题活动</h2><div id="topic-program-entries" class="program-entries"></div></section>
 <div id="schedule-view" hidden>
+<section id="program-information" class="program-information" aria-label="活动介绍与组织信息" hidden></section>
 <section class="filters-bar" aria-label="筛选日程">
 <div class="kind-search-row"><div id="kind-tabs" class="kind-tabs" role="group" aria-label="报告类型"></div><button id="search-toggle" class="search-toggle" type="button" aria-label="搜索与筛选" aria-controls="search-panel" aria-expanded="false"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
 <div id="date-tabs" class="date-tabs" role="group" aria-label="日期"></div>
 <div id="search-panel" hidden><div class="filter-controls"><label class="visually-hidden" for="track">分会场</label><select id="track" aria-label="分会场"><option value="">全部分会场</option></select><label class="visually-hidden" for="search">搜索题目、编号、讲者或主持人</label><input id="search" type="search" enterkeyhint="search" placeholder="题目 / 编号 / 讲者 / 主持人" autocomplete="off"></div></div>
 <div class="filter-footer"><span id="result-count" role="status" aria-live="polite"></span><button id="clear" class="text-button" type="button" hidden>清除搜索</button></div>
 </section>
-<p id="conflict-warning" class="warning" hidden></p>
+<section id="mine-tools" class="mine-tools" aria-label="收藏管理" hidden><div id="priority-filters" class="priority-filters" role="group" aria-label="收藏优先级"></div><button id="history-toggle" type="button" class="history-toggle" aria-expanded="false" aria-controls="favorite-history">最近取消</button></section>
+<section id="favorite-history" class="favorite-history" aria-label="最近取消的收藏" hidden></section>
+<section id="conflict-warning" class="conflict-summary" aria-label="参会安排" hidden></section>
 <section id="results" aria-label="报告列表"></section>
 <div id="empty" class="empty" hidden><h2 id="empty-title"></h2><p id="empty-help"></p></div>
 <nav id="pager" class="pager" aria-label="按日翻页" hidden><button id="previous" type="button">上一天</button><span id="page-number"></span><button id="next" type="button">下一天</button></nav>
