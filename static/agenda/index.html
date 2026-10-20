@@ -7,31 +7,29 @@
 <meta name="description" content="中国物理学会2026秋季学术会议日程：按日期、分会场和关键词查找报告，收藏并安排我的日程。">
 <title>会议日程 · 中国物理学会2026秋季学术会议</title>
 <link rel="canonical" href="https://zimin.li/agenda/">
-<link rel="stylesheet" href="./agenda.css?v=e7a757ec23">
-<script src="./conference-data.js?v=e7a757ec23" defer></script>
-<script src="./agenda-model.js?v=e7a757ec23" defer></script>
-<script src="./agenda.js?v=e7a757ec23" defer></script>
+<link rel="stylesheet" href="./agenda.css?v=3a0bfcf09f">
+<script src="./conference-data.js?v=3a0bfcf09f" defer></script>
+<script src="./agenda-model.js?v=3a0bfcf09f" defer></script>
+<script src="./agenda-navigation.js?v=3a0bfcf09f" defer></script>
+<script src="./agenda.js?v=3a0bfcf09f" defer></script>
 </head>
 <body>
 <main class="app" id="app">
 <header class="conference-header">
 <p class="conference-name">中国物理学会2026秋季学术会议</p>
-<button id="back-home" class="back-home" type="button" hidden>← 分会场首页</button>
-<div class="title-line"><h1 id="page-title">选择分会场</h1><span id="saved-total" class="saved-total"></span></div>
-<p id="venue" class="venue" hidden></p>
+<div class="title-line"><button id="back-home" class="back-home" type="button" aria-label="返回上一页" title="返回上一页" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h1 id="page-title">选择分会场</h1><button id="venue-favorite" class="venue-favorite" type="button" hidden></button><span id="saved-total" class="saved-total"></span></div>
 <p id="summary" class="summary">正在加载日程…</p>
-<button id="venue-favorite" class="venue-favorite" type="button" hidden></button>
-<details id="track-info" class="track-info" hidden><summary>分会信息</summary><div id="track-info-body"></div></details>
+<details id="track-info" class="track-info" hidden><summary><span id="venue" class="venue" hidden></span><span class="info-label">分会信息 ⌄</span></summary><div id="track-info-body"></div></details>
 </header>
 <div id="storage-warning" role="alert" class="warning" hidden></div>
 <section id="home-view" aria-label="分会场入口"><section id="saved-venues" hidden><h2 class="directory-heading">收藏的分会场</h2><div id="saved-entries" class="track-entries"></div></section><h2 id="all-venues-heading" class="directory-heading" hidden>全部分会</h2><div id="track-entries" class="track-entries"></div><button id="show-all" class="show-all" type="button">查看全部日程 →</button></section>
 <section id="department-view" aria-label="子会场入口" hidden><div id="child-entries" class="child-entries"></div></section>
 <div id="schedule-view" hidden>
 <section class="filters-bar" aria-label="筛选日程">
-<div id="kind-tabs" class="kind-tabs" role="group" aria-label="报告类型"></div>
+<div class="kind-search-row"><div id="kind-tabs" class="kind-tabs" role="group" aria-label="报告类型"></div><button id="search-toggle" class="search-toggle" type="button" aria-label="搜索与筛选" aria-controls="search-panel" aria-expanded="false"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
 <div id="date-tabs" class="date-tabs" role="group" aria-label="日期"></div>
-<div class="filter-controls"><label class="visually-hidden" for="track">分会场</label><select id="track" aria-label="分会场"><option value="">全部分会场</option></select><label class="visually-hidden" for="search">搜索题目、编号、讲者或主持人</label><input id="search" type="search" enterkeyhint="search" placeholder="题目 / 编号 / 讲者 / 主持人" autocomplete="off"></div>
-<div class="filter-footer"><span id="result-count" role="status" aria-live="polite"></span><button id="clear" class="text-button" type="button">清除筛选</button></div>
+<div id="search-panel" hidden><div class="filter-controls"><label class="visually-hidden" for="track">分会场</label><select id="track" aria-label="分会场"><option value="">全部分会场</option></select><label class="visually-hidden" for="search">搜索题目、编号、讲者或主持人</label><input id="search" type="search" enterkeyhint="search" placeholder="题目 / 编号 / 讲者 / 主持人" autocomplete="off"></div></div>
+<div class="filter-footer"><span id="result-count" role="status" aria-live="polite"></span><button id="clear" class="text-button" type="button" hidden>清除搜索</button></div>
 </section>
 <p id="conflict-warning" class="warning" hidden></p>
 <section id="results" aria-label="报告列表"></section>
@@ -44,5 +42,6 @@
 <nav class="bottom-nav" aria-label="主导航"><div><button id="tab-home" type="button" aria-current="page">分会场</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
 <div id="detail-layer" class="detail-layer" hidden><section id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1"><div class="detail-toolbar"><span>报告详情</span><button id="close-detail" type="button" aria-label="关闭报告详情">关闭 ✕</button></div><div id="detail-body"></div></section></div>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="swipe-feedback" class="swipe-feedback" aria-hidden="true" hidden>‹ 返回</div>
 </body>
 </html>
