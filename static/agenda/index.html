@@ -7,21 +7,24 @@
 <meta name="description" content="中国物理学会2026秋季学术会议日程：按日期、分会场和关键词查找报告，收藏并安排我的日程。">
 <title>会议日程 · 中国物理学会2026秋季学术会议</title>
 <link rel="canonical" href="https://zimin.li/agenda/">
-<link rel="stylesheet" href="./agenda.css?v=50cf82057f">
-<script src="./conference-data.js?v=50cf82057f" defer></script>
-<script src="./agenda-model.js?v=50cf82057f" defer></script>
-<script src="./agenda.js?v=50cf82057f" defer></script>
+<link rel="stylesheet" href="./agenda.css?v=e5008b822e">
+<script src="./conference-data.js?v=e5008b822e" defer></script>
+<script src="./agenda-model.js?v=e5008b822e" defer></script>
+<script src="./agenda.js?v=e5008b822e" defer></script>
 </head>
 <body>
 <main class="app" id="app">
 <header class="conference-header">
 <p class="conference-name">中国物理学会2026秋季学术会议</p>
-<div class="title-line"><h1 id="page-title">大会日程</h1><span id="saved-total" class="saved-total"></span></div>
+<button id="back-home" class="back-home" type="button" hidden>← 分会场首页</button>
+<div class="title-line"><h1 id="page-title">选择分会场</h1><span id="saved-total" class="saved-total"></span></div>
 <p id="venue" class="venue" hidden></p>
 <p id="summary" class="summary">正在加载日程…</p>
 <details id="track-info" class="track-info" hidden><summary>分会信息</summary><div id="track-info-body"></div></details>
 </header>
 <div id="storage-warning" role="alert" class="warning" hidden></div>
+<section id="home-view" aria-label="分会场入口"><div id="track-entries" class="track-entries"></div><button id="show-all" class="show-all" type="button">查看全部日程 →</button></section>
+<div id="schedule-view" hidden>
 <section class="filters-bar" aria-label="筛选日程">
 <div id="kind-tabs" class="kind-tabs" role="group" aria-label="报告类型"></div>
 <div id="date-tabs" class="date-tabs" role="group" aria-label="日期"></div>
@@ -32,10 +35,11 @@
 <section id="results" aria-label="报告列表"></section>
 <div id="empty" class="empty" hidden><h2 id="empty-title"></h2><p id="empty-help"></p></div>
 <nav id="pager" class="pager" aria-label="日程分页" hidden><button id="previous" type="button">上一页</button><span id="page-number"></span><button id="next" type="button">下一页</button></nav>
+</div>
 <footer class="footnote"><p id="source">会议手册全部分会 · L会场最新版Excel</p><p>收藏保存在此浏览器；换设备、换浏览器或清除数据后不会同步。</p><a href="/zh/">李梓民个人主页</a></footer>
 <noscript><p class="warning">请启用浏览器的 JavaScript 功能，以查看会议日程。</p></noscript>
 </main>
-<nav class="bottom-nav" aria-label="主导航"><div><button id="tab-agenda" type="button" aria-current="page">全部日程</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
+<nav class="bottom-nav" aria-label="主导航"><div><button id="tab-home" type="button" aria-current="page">分会场</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
 <div id="detail-layer" class="detail-layer" hidden><section id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1"><div class="detail-toolbar"><span>报告详情</span><button id="close-detail" type="button" aria-label="关闭报告详情">关闭 ✕</button></div><div id="detail-body"></div></section></div>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
