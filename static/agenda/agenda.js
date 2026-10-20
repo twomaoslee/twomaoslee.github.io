@@ -22,7 +22,7 @@ function toggleFavorite(id){if(!byId.has(id)||byId.get(id).kind==='break')return
 $('track').innerHTML='<option value="">全部分会场</option>'+tracks.map(t=>`<option value="${esc(t.trackCode)}">${esc(t.track)}</option>`).join('');
 function venueEntry(v,child){const saved=favoriteVenues.has(v.id);return `<div class="venue-entry${child?' child-entry':''}"><button type="button" class="venue-open" data-open-venue="${esc(v.id)}"><span class="entry-code">${esc(v.code)}</span><span class="entry-copy"><span class="entry-name">${esc(v.name)}</span>${child?`<span class="entry-meta">${esc(room(v.track.room))}</span>`:!v.track&&v.group.tracks.length>1?`<span class="entry-meta">${v.group.tracks.length} 个子会场 ›</span>`:''}</span></button><button type="button" class="venue-star" data-venue-star="${esc(v.id)}" aria-label="${saved?'取消收藏':'收藏'} ${esc(v.label)}" aria-pressed="${saved}">${saved?'★':'☆'}</button></div>`;}
 function toggleVenue(id){if(!venueById.has(id))return;const next=new Set(favoriteVenues),add=!next.has(id);if(add)next.add(id);else next.delete(id);try{localStorage.setItem(VENUE_KEY,JSON.stringify({schema:1,ids:Array.from(next)}));}catch(error){warn('会场收藏未保存：浏览器存储不可用或空间不足，请检查后重试。');return;}favoriteVenues=next;render();toast(add?'已加入首页的收藏分会场':'已取消会场收藏');}
-function button(label,value,current,attribute){return `<button type="button" ${attribute}="${esc(value)}" aria-pressed="${current===value}">${esc(label)}</button>`;}
+function button(label,value,current,attribute,count){const counted=count!==undefined;return `<button type="button" ${attribute}="${esc(value)}" aria-pressed="${current===value}"${counted?` class="has-count" aria-label="${esc(label)}，已收藏 ${count} 项"`:''}>${counted?`<span class="date-label">${esc(label)}</span><span class="date-count">(${count})</span>`:esc(label)}</button>`;}
 function render(){
  const home=view==='home',child=view==='department',directory=home||child;
  $('home-view').hidden=!home;$('department-view').hidden=!child;$('schedule-view').hidden=directory;$('back-home').hidden=home;$('venue-favorite').hidden=true;$('saved-total').hidden=!home;$('app').dataset.view=view;$('search-panel').hidden=!searchOpen;$('search-toggle').setAttribute('aria-expanded',String(searchOpen));
@@ -44,7 +44,8 @@ function render(){
  $('track-info').hidden=mine||!track;if(track)$('track-info-body').innerHTML=[['召集人',track.convener],['工作委员会',track.committee],['联系人',track.contact]].filter(pair=>pair[1]).map(pair=>`<p>${pair[0]}：${esc(pair[1])}</p>`).join('');
  const labels=mine?[['全部收藏','all'],['口头 '+(ownCounts.oral+ownCounts.activity),'oral'],['张贴 '+ownCounts.poster,'poster']]:[['口头日程 '+(totals.oral+totals.activity),'oral'],['张贴报告 '+totals.poster,'poster']];
  $('kind-tabs').innerHTML=labels.map(([label,value])=>button(label,value,s.kind,'data-kind')).join('');
- $('date-tabs').hidden=s.kind==='poster'||!dates.length;$('date-tabs').innerHTML=dates.map(date=>button(M.dateLabel(date),date,s.date,'data-date')).join('');
+ const savedPerDay=new Map();if(mine)for(const r of own)if(r.kind!=='poster'&&r.date&&M.matches(r,s.track))savedPerDay.set(r.date,(savedPerDay.get(r.date)||0)+1);
+ $('date-tabs').hidden=s.kind==='poster'||!dates.length;$('date-tabs').innerHTML=dates.map(date=>button(M.dateLabel(date),date,s.date,'data-date',mine?savedPerDay.get(date)||0:undefined)).join('');
  $('track').value=s.track;if($('search').value!==s.query)$('search').value=s.query;
  $('conflict-warning').hidden=!mine||!conflictIds.size;$('conflict-warning').textContent=conflictIds.size+' 项收藏存在时间重叠，请核对安排。';
  const filtered=M.select(book.reports,s,favoriteIds,mine),dayIndex=dates.indexOf(s.date);
@@ -90,5 +91,5 @@ function fallbackBack(){if(detailId){hideDetail();return;}const g=view==='agenda
 navigation=window.AgendaNavigation.historyNavigation(window,{capture:captureNavigation,restore:restoreNavigation,url:navigationUrl,parse:parseNavigation,fallback:fallbackBack});
 $('track-info').addEventListener('toggle',()=>navigation.replace());
 let scrollSaveTimer;document.addEventListener('scroll',()=>{clearTimeout(scrollSaveTimer);scrollSaveTimer=setTimeout(()=>navigation.replace(),120);},{passive:true,capture:true});
-window.AgendaNavigation.installSwipe(window,{canBack:()=>navigation.canBack()||!!detailId||view!=='home',back:()=>navigation.back(),progress:value=>{$('swipe-feedback').hidden=!value;$('swipe-feedback').style.opacity=String(.4+value*.6);}});
+window.AgendaNavigation.installSwipe(window,{canBack:()=>navigation.canBack()||!!detailId||view!=='home',back:()=>navigation.back(),canForward:()=>navigation.canForward(),forward:()=>navigation.forward(),progress:(value,direction)=>{const feedback=$('swipe-feedback');feedback.hidden=!value;feedback.classList.toggle('forward',direction==='forward');feedback.textContent=direction==='forward'?'前进 ›':'‹ 返回';feedback.style.opacity=String(.4+value*.6);}});
 })();

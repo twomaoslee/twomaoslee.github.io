@@ -36,3 +36,7 @@
 .track-info #track-info-body{background:transparent;padding:0 0 3px;line-height:1.5}
 .track-info #track-info-body p{font-size:12px;line-height:1.5;margin:2px 0;overflow-wrap:anywhere}
 .info-label::after{content:" ⌄"}.track-info[open] .info-label::after{content:" ⌃"}
+
+.swipe-feedback.forward{left:auto;right:8px}
+
+.date-tabs button.has-count{display:flex;align-items:center;justify-content:center;gap:3px;flex-wrap:wrap;white-space:normal}.date-label{white-space:nowrap}.date-count{font-size:10px;font-weight:650;line-height:1.2}
