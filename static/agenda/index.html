@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="agenda-revision" content="357b0d3eaf">
 <meta name="theme-color" content="#0070c0">
 <meta name="description" content="中国物理学会2026秋季学术会议日程：按日期、分会场和关键词查找报告，收藏并安排我的日程。">
 <title>会议日程 · 中国物理学会2026秋季学术会议</title>
 <link rel="canonical" href="https://zimin.li/agenda/">
-<link rel="stylesheet" href="./agenda.css?v=9c487d7007">
-<script src="./conference-data.js?v=9c487d7007" defer></script>
-<script src="./agenda-model.js?v=9c487d7007" defer></script>
-<script src="./agenda-navigation.js?v=9c487d7007" defer></script>
-<script src="./agenda.js?v=9c487d7007" defer></script>
+<link rel="stylesheet" href="./agenda.css?v=357b0d3eaf">
+<script src="./conference-data.js?v=357b0d3eaf" defer></script>
+<script src="./agenda-model.js?v=357b0d3eaf" defer></script>
+<script src="./agenda-navigation.js?v=357b0d3eaf" defer></script>
+<script src="./agenda-updates.js?v=357b0d3eaf" defer></script>
+<script src="./agenda.js?v=357b0d3eaf" defer></script>
 </head>
 <body>
 <main class="app" id="app">
@@ -41,6 +43,7 @@
 </main>
 <nav class="bottom-nav" aria-label="主导航"><div><button id="tab-home" type="button" aria-current="page">分会场</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
 <div id="detail-layer" class="detail-layer" hidden><section id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1"><div class="detail-toolbar"><span>报告详情</span><button id="close-detail" type="button" aria-label="关闭报告详情">关闭 ✕</button></div><div id="detail-body"></div></section></div>
+<aside id="update-notice" class="update-notice" role="status" aria-live="polite" hidden><span>日程已更新</span><button id="load-update" type="button">点击加载</button></aside>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 <div id="swipe-feedback" class="swipe-feedback" aria-hidden="true" hidden>‹ 返回</div>
 </body>

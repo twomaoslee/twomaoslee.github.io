@@ -92,4 +92,11 @@ navigation=window.AgendaNavigation.historyNavigation(window,{capture:captureNavi
 $('track-info').addEventListener('toggle',()=>navigation.replace());
 let scrollSaveTimer;document.addEventListener('scroll',()=>{clearTimeout(scrollSaveTimer);scrollSaveTimer=setTimeout(()=>navigation.replace(),120);},{passive:true,capture:true});
 window.AgendaNavigation.installSwipe(window,{canBack:()=>navigation.canBack()||!!detailId||view!=='home',back:()=>navigation.back(),canForward:()=>navigation.canForward(),forward:()=>navigation.forward(),progress:(value,direction)=>{const feedback=$('swipe-feedback');feedback.hidden=!value;feedback.classList.toggle('forward',direction==='forward');feedback.textContent=direction==='forward'?'前进 ›':'‹ 返回';feedback.style.opacity=String(.4+value*.6);}});
+if(window.AgendaUpdates){const updates=window.AgendaUpdates.watch(window,{
+ current:document.querySelector('meta[name="agenda-revision"]').content,
+ available:revision=>{$('update-notice').hidden=!revision;},
+ loading:value=>{$('load-update').disabled=value;$('load-update').textContent=value?'正在加载…':'点击加载';},
+ failed:toast,
+ reload:revision=>{clearTimeout(searchTimer);navigation.replace();const url=new URL(location.href);url.searchParams.set('agenda_v',revision);history.replaceState(history.state,'',url.href);location.reload();}
+});$('load-update').addEventListener('click',()=>updates.load());}
 })();
