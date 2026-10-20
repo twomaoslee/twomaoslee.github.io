@@ -33,3 +33,6 @@
 .search-toggle[aria-expanded=true],.search-toggle.has-query{background:#dff0fa;color:var(--blue)}.date-tabs{margin:4px 0}.date-tabs button{min-height:34px}
 .filter-footer{min-height:25px;align-items:flex-start;line-height:1.5;padding:3px 0;overflow-wrap:anywhere}.filter-footer .text-button{min-height:20px;padding:0 0 0 6px;white-space:nowrap}
 @media(min-width:700px){.title-line h1{font-size:23px}.track-info .venue{font-size:12px}}
+.track-info #track-info-body{background:transparent;padding:0 0 3px;line-height:1.5}
+.track-info #track-info-body p{font-size:12px;line-height:1.5;margin:2px 0;overflow-wrap:anywhere}
+.info-label::after{content:" ⌄"}.track-info[open] .info-label::after{content:" ⌃"}
