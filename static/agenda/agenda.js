@@ -46,7 +46,7 @@ function toggleVenue(id){if(!venueById.has(id))return;const next=new Set(favorit
 function button(label,value,current,attribute,count){const counted=count!==undefined;return `<button type="button" ${attribute}="${esc(value)}" aria-pressed="${current===value}"${counted?` class="has-count" aria-label="${esc(label)}，已收藏 ${count} 项"`:''}>${counted?`<span class="date-label">${esc(label)}</span><span class="date-count">(${count})</span>`:esc(label)}</button>`;}
 function renderHomeNavigation(){
  const house='<svg class="nav-home-icon" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7M5 9v12h5v-7h4v7h5V9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
- for(const [id,label,homeLabel,returning] of [['tab-program','主会场与专题','专题首页',view==='program'],['tab-home','分会场','分会场首页',view==='agenda'||view==='department']]){const el=$(id),name=returning?'返回'+label+'首页':label;el.classList.toggle('returns-home',returning);el.innerHTML=(returning?house:'')+esc(returning?homeLabel:label);el.setAttribute('aria-label',name);el.title=name;}
+ for(const [id,label,returning] of [['tab-program','主会场与专题',view==='program'],['tab-home','分会场',view==='agenda'||view==='department']]){const el=$(id),name=returning?label+'，回首页':label;el.classList.toggle('returns-home',returning);el.innerHTML='<span class="nav-label">'+esc(label)+'</span>'+(returning?'<span class="nav-home-hint" aria-hidden="true">'+house+'回首页</span>':'');el.setAttribute('aria-label',name);el.title=returning?'返回'+label+'首页':label;}
 }
 function render(){
  const home=view==='home',child=view==='department',programHome=view==='program-home',directory=home||child||programHome;

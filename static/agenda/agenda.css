@@ -149,5 +149,9 @@
 .activity-discussion{margin-top:20px}.activity-discussion p{font-size:13px;line-height:1.8;color:#4c6a80;white-space:pre-line;margin:8px 0}
 @media(min-width:700px){.activity-report-item{padding:15px 17px}.activity-report-item h3{font-size:17px}.activity-report-english{font-size:13px}.activity-report-summary{font-size:14px}}
 
-.bottom-nav button.returns-home{display:flex;align-items:center;justify-content:center;gap:4px}
+.bottom-nav button.returns-home{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
 .nav-home-icon{display:block;flex:0 0 15px;width:15px;height:15px}
+
+.bottom-nav .nav-label{font-size:inherit;line-height:1.35}
+.bottom-nav .nav-home-hint{display:flex;align-items:center;gap:3px;font-size:10px;line-height:1.2;font-weight:400}
+.nav-home-hint .nav-home-icon{flex-basis:12px;width:12px;height:12px}
