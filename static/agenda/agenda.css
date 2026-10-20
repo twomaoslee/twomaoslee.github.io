@@ -73,11 +73,11 @@
 #saved-entries .venue-open{grid-template-columns:38px minmax(0,1fr);gap:10px;min-height:68px;padding:11px 10px}
 #saved-entries .entry-code{font-size:25px}#saved-entries .entry-name{font-size:17px;font-weight:600;line-height:1.5}
 #saved-entries .entry-meta{font-size:12px}#saved-entries .venue-star{flex-basis:48px;width:48px;font-size:27px}
-#topic-program-entries{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:9px}
-#topic-program-entries .program-entry{min-height:130px;padding:14px 15px 13px;border:1px solid #bdd5e5;border-left:4px solid var(--blue);border-radius:3px}
-#topic-program-entries .topic-entry-kicker{font-size:11px;margin-bottom:8px;color:#56829e}
+#topic-program-entries{grid-template-columns:minmax(0,1fr);gap:8px;margin-top:8px}
+#topic-program-entries .program-entry{min-height:0;padding:10px 13px;border:1px solid #bdd5e5;border-left:4px solid var(--blue);border-radius:3px}
+#topic-program-entries .topic-entry-kicker{font-size:11px;margin-bottom:4px;color:#56829e}
 #topic-program-entries .program-entry-title{font-size:17px;line-height:1.55}
-#topic-program-entries .program-entry-meta{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px;padding-top:12px;font-size:12px}
+#topic-program-entries .program-entry-meta{display:flex;flex-wrap:wrap;column-gap:14px;row-gap:2px;margin-top:0;padding-top:7px;font-size:12px}
 .program-information{padding:8px 0 12px;border-bottom:1px solid #bfd8e8;margin-bottom:8px}
 .program-location{font-size:12px;color:#315f80;line-height:1.6;margin:0 0 8px}
 .program-about{margin-top:12px}.program-about p{margin:9px 0;overflow-wrap:anywhere}
@@ -111,7 +111,7 @@
 .history-empty{font-size:12px;color:#6a8394;line-height:1.6;margin-bottom:3px}
 .toast{display:flex;align-items:center;justify-content:center;gap:10px;pointer-events:auto;text-align:left;width:max-content;max-width:calc(100vw - 24px);padding:8px 12px;line-height:1.5}
 .toast span{min-width:0}.toast button{min-height:40px;padding:6px 12px;background:#fff;color:#164e72;flex-shrink:0;font-size:13px;font-weight:650}
-@media(min-width:700px){#saved-entries{grid-template-columns:repeat(2,minmax(0,1fr))}#topic-program-entries{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}#topic-program-entries .program-entry{min-height:158px;padding:17px 18px}.activity-detail{max-width:720px;margin:auto}}
+@media(min-width:700px){#saved-entries{grid-template-columns:repeat(2,minmax(0,1fr))}#topic-program-entries{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#topic-program-entries .program-entry{min-height:0;padding:12px 14px}.activity-detail{max-width:720px;margin:auto}}
 
 /* Keep priority actions beside the star and retain readable backup text. */
 .report-actions{display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:center;flex:0 0 46px;width:46px;gap:2px;padding:0 1px}
