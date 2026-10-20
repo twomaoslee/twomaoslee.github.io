@@ -148,3 +148,6 @@
 .activity-report-summary{font-size:13px;line-height:1.8;color:#354f63;border-top:1px solid #dbe6ed;padding-top:8px;margin:9px 0 0}
 .activity-discussion{margin-top:20px}.activity-discussion p{font-size:13px;line-height:1.8;color:#4c6a80;white-space:pre-line;margin:8px 0}
 @media(min-width:700px){.activity-report-item{padding:15px 17px}.activity-report-item h3{font-size:17px}.activity-report-english{font-size:13px}.activity-report-summary{font-size:14px}}
+
+.bottom-nav button.returns-home{display:flex;align-items:center;justify-content:center;gap:4px}
+.nav-home-icon{display:block;flex:0 0 15px;width:15px;height:15px}
