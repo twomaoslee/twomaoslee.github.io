@@ -28,7 +28,7 @@ function render(){
  $('home-view').hidden=!home;$('department-view').hidden=!child;$('schedule-view').hidden=directory;$('back-home').hidden=home;$('venue-favorite').hidden=true;$('back-home').textContent='← 分会场首页';
  for(const name of ['home','mine']){if(name===(view==='mine'?'mine':'home'))$('tab-'+name).setAttribute('aria-current','page');else $('tab-'+name).removeAttribute('aria-current');}
  $('mine-badge').textContent=favoriteIds.size?'('+favoriteIds.size+')':'';
- if(directory){$('venue').hidden=true;$('track-info').hidden=true;$('results').innerHTML='';$('source').textContent=book.source;$('saved-total').textContent='会场收藏 '+favoriteVenues.size;
+ if(directory){$('venue').hidden=true;$('track-info').hidden=true;$('results').innerHTML='';$('saved-total').textContent='会场收藏 '+favoriteVenues.size;
  if(home){$('page-title').textContent='选择分会场';$('summary').textContent='点选分会查看日程，☆收藏常用分会场。';$('saved-venues').hidden=!favoriteVenues.size;$('all-venues-heading').hidden=!favoriteVenues.size;$('saved-entries').innerHTML=Array.from(venueById.values()).filter(v=>favoriteVenues.has(v.id)).map(v=>venueEntry(v,false)).join('');$('track-entries').innerHTML=departments.map(g=>venueEntry(venueById.get('group:'+g.code),false)).join('');}
  else{const g=departments.find(g=>g.code===departmentCode);$('page-title').textContent=g.code+'分会 · '+g.name;$('summary').textContent='选择子会场；收藏子会场后可从首页直接进入。';$('child-entries').innerHTML=g.tracks.map(t=>venueEntry(venueById.get('track:'+t.trackCode),true)).join('');renderVenueFavorite('group:'+g.code);}
  return;}
@@ -52,7 +52,6 @@ function render(){
  $('results').innerHTML=M.group(filtered,mine).map(g=>renderGroup(g,mine)).join('');
  $('empty').hidden=!!filtered.length;$('empty-title').textContent=mine&&!favoriteIds.size?'还没有收藏日程':'没有匹配的日程';$('empty-help').textContent=mine&&!favoriteIds.size?'在报告旁点击“☆”，即可加入这里。':'试试其他日期、分会场或关键词。';
  $('pager').hidden=s.kind==='poster'||dates.length<2;$('previous').disabled=dayIndex<=0;$('next').disabled=dayIndex>=dates.length-1;$('page-number').textContent=M.dateLabel(s.date);
- $('source').textContent=book.source+' · 点击题目查看完整信息';
 }
 function renderVenueFavorite(id){const v=venueById.get(id),saved=favoriteVenues.has(id);$('venue-favorite').hidden=false;$('venue-favorite').dataset.venueId=id;$('venue-favorite').textContent=(saved?'★ 已收藏 ':'☆ 收藏 ')+v.label;$('venue-favorite').setAttribute('aria-pressed',String(saved));}
 function renderGroup(g,mine){return `<section class="program"><h2 class="period-bar">${esc(g.title)}</h2>${mine?'':`<p class="track-bar">${esc(g.track)}${g.room?`<span class="group-room">${esc(room(g.room))}</span>`:''}</p>`}${g.sessions.map(s=>`${s.topic?`<p class="track-bar">${esc(s.topic)}</p>`:''}${s.chair?`<p class="chair-bar">主持人：${esc(chairText(s.chair))}</p>`:''}${s.rows.map((r,i)=>renderRow(r,i,mine)).join('')}`).join('')}</section>`;}
