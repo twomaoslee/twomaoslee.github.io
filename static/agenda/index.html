@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="agenda-revision" content="4bff2c54a3">
+<meta name="agenda-revision" content="05951528ea">
 <meta name="theme-color" content="#0070c0">
 <meta name="description" content="中国物理学会2026秋季学术会议日程：按日期、分会场和关键词查找报告，收藏并安排我的日程。">
 <title>会议日程 · 中国物理学会2026秋季学术会议</title>
 <link rel="canonical" href="https://zimin.li/agenda/">
-<link rel="stylesheet" href="./agenda.css?v=4bff2c54a3">
-<script src="./conference-data.js?v=4bff2c54a3" defer></script>
-<script src="./agenda-model.js?v=4bff2c54a3" defer></script>
-<script src="./agenda-navigation.js?v=4bff2c54a3" defer></script>
-<script src="./agenda-updates.js?v=4bff2c54a3" defer></script>
-<script src="./agenda.js?v=4bff2c54a3" defer></script>
+<link rel="stylesheet" href="./agenda.css?v=05951528ea">
+<script src="./conference-data.js?v=05951528ea" defer></script>
+<script src="./agenda-model.js?v=05951528ea" defer></script>
+<script src="./agenda-navigation.js?v=05951528ea" defer></script>
+<script src="./agenda-updates.js?v=05951528ea" defer></script>
+<script src="./agenda.js?v=05951528ea" defer></script>
 </head>
 <body>
 <main class="app" id="app">
@@ -24,8 +24,9 @@
 <details id="track-info" class="track-info" open hidden><summary><span id="venue" class="venue" hidden></span><span class="info-label">分会信息</span></summary><div id="track-info-body"></div></details>
 </header>
 <div id="storage-warning" role="alert" class="warning" hidden></div>
-<section id="home-view" aria-label="分会场入口"><section id="saved-venues" hidden><h2 class="directory-heading">收藏的分会场</h2><div id="saved-entries" class="track-entries"></div></section><h2 id="all-venues-heading" class="directory-heading" hidden>全部分会</h2><div id="track-entries" class="track-entries"></div><button id="show-all" class="show-all" type="button">查看全部日程 →</button></section>
+<section id="home-view" aria-label="分会场入口"><section id="saved-venues" hidden><h2 class="directory-heading">收藏的分会场</h2><div id="saved-entries" class="track-entries"></div></section><h2 id="all-venues-heading" class="directory-heading" hidden>全部分会</h2><div id="track-entries" class="track-entries"></div><button id="show-all" class="show-all" type="button">查看全部分会场日程 →</button></section>
 <section id="department-view" aria-label="子会场入口" hidden><div id="child-entries" class="child-entries"></div></section>
+<section id="program-home-view" aria-label="主会场与专题入口" hidden><h2 class="directory-heading">主会场</h2><div id="main-program-entries" class="program-entries"></div><h2 class="directory-heading">专题活动</h2><div id="topic-program-entries" class="program-entries"></div></section>
 <div id="schedule-view" hidden>
 <section class="filters-bar" aria-label="筛选日程">
 <div class="kind-search-row"><div id="kind-tabs" class="kind-tabs" role="group" aria-label="报告类型"></div><button id="search-toggle" class="search-toggle" type="button" aria-label="搜索与筛选" aria-controls="search-panel" aria-expanded="false"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
@@ -41,7 +42,7 @@
 <footer class="footnote"><p>收藏保存在此浏览器；换设备、换浏览器或清除数据后不会同步。</p><p class="credit">Developed by <a href="/zh/">李梓民</a></p></footer>
 <noscript><p class="warning">请启用浏览器的 JavaScript 功能，以查看会议日程。</p></noscript>
 </main>
-<nav class="bottom-nav" aria-label="主导航"><div><button id="tab-home" type="button" aria-current="page">分会场</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
+<nav class="bottom-nav" aria-label="主导航"><div><button id="tab-program" type="button">主会场与专题</button><button id="tab-home" type="button" aria-current="page">分会场</button><button id="tab-mine" type="button">我的日程 <span id="mine-badge"></span></button></div></nav>
 <div id="detail-layer" class="detail-layer" hidden><section id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" tabindex="-1"><div class="detail-toolbar"><span>报告详情</span><button id="close-detail" type="button" aria-label="关闭报告详情">关闭 ✕</button></div><div id="detail-body"></div></section></div>
 <aside id="update-notice" class="update-notice" role="status" aria-live="polite" hidden><span>日程已更新</span><button id="load-update" type="button">点击加载</button></aside>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
