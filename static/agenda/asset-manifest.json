@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "revision": "d2309364e5",
+  "revision": "6b91fc4ca8",
   "assets": {
-    "conference-data.js": "./assets/conference-data.d4893e8810ba2704.js",
+    "conference-data.js": "./assets/conference-data.d23bb7bac030f8fb.js",
     "agenda.js": "./assets/agenda.e2b329cba8ed3497.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
     "agenda-navigation.js": "./assets/agenda-navigation.a1f2977e5c3759e9.js",
