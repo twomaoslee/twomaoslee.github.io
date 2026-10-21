@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>会议日程 · 管理工作台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<section id="login" class="login" hidden><form id="login-form"><div class="brand-mark">会</div><p class="eyebrow">中国物理学会2026秋季学术会议</p><h1>日程管理</h1><p class="muted">登录后编辑报告，核对后发布。</p><label>管理账号<input name="username" autocomplete="username" value="admin" required></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><p id="login-error" role="alert"></p><button class="primary" type="submit">登录工作台 <span>→</span></button></form></section>
+<div id="workspace" hidden>
+<header class="topbar"><div class="brand"><span class="brand-mark small">会</span><div><strong>会议日程管理</strong><small>中国物理学会2026秋季学术会议</small></div></div><div class="header-actions"><span id="version" class="version"></span><a href="https://zimin.li/agenda/" target="_blank" rel="noopener noreferrer">查看网站 ↗</a><button id="logout" class="plain">退出</button></div></header>
+<nav class="navigation" aria-label="工作区"><button id="edit-tab" class="active">报告编辑</button><button id="history-tab">版本记录</button><div class="publish-actions"><span id="draft-count">暂无修改</span><button id="review" class="primary" disabled>确认并发布</button></div></nav>
+<div id="job" role="status" hidden></div><div id="stale" role="alert" hidden>线上日程已更新，旧草稿已暂停。请保留需要的修改内容后清除草稿，重新编辑。</div>
+<main id="editor-view" class="editor-layout">
+<section class="report-list"><div class="search-tools"><label class="search-label"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="编号、报告人、题目" aria-label="搜索报告"></label><select id="track" aria-label="筛选分会场"><option value="">所有会场与专题</option></select><div class="list-caption"><span id="result-count">正在读取日程…</span><button id="refresh" class="plain">刷新</button></div></div><div id="results" aria-label="报告搜索结果"></div></section>
+<section class="inspector"><div id="empty-selection"><div class="empty-symbol">↖</div><h2>选择一场报告</h2><p>搜索编号或报告人，开始修改。</p></div><form id="report-form" hidden><div class="editor-heading"><div><span id="report-number" class="report-number"></span><h2 id="report-heading"></h2><p id="report-context" class="muted"></p></div><span id="saved-mark"></span></div><div id="fields" class="fields"></div><div class="form-foot"><span class="muted">保存为草稿后，确认发布才会更新网站。</span><button id="save" type="submit" class="primary">保存草稿</button></div></form></section>
+</main>
+<main id="history-view" hidden><div class="section-heading"><div><h2>版本记录</h2><p class="muted">回退会重新发布所选版本的日程，不影响网站其他内容。</p></div><button id="refresh-history" class="secondary">刷新记录</button></div><div id="history-list"></div></main>
+<aside id="draft-bar" hidden><button id="show-changes" class="plain">查看待发布修改</button><button id="discard" class="plain danger">清除全部草稿</button></aside>
+<footer>会议日程维护工作台 <span>修改报告时保留原有编号与收藏标识</span></footer>
+</div>
+<dialog id="review-dialog"><div class="dialog-heading"><div><span class="eyebrow">发布前核对</span><h2 id="review-title">确认修改</h2></div><button id="close-review" class="icon-button" aria-label="关闭">×</button></div><p id="review-note" class="muted"></p><div id="warnings"></div><div id="changes"></div><p id="review-error" role="alert"></p><div class="dialog-actions"><button id="cancel-review" class="secondary">继续编辑</button><button id="confirm-publish" class="primary">确认发布</button></div></dialog>
+<dialog id="discard-dialog"><h2>清除全部草稿？</h2><p>已发布的网站不会改变，尚未发布的修改将被清除。</p><div class="dialog-actions"><button id="keep-draft" class="secondary">保留草稿</button><button id="confirm-discard" class="primary">确认清除</button></div></dialog>
+<div id="toast" role="status" hidden></div>
+</body></html>
