@@ -9,6 +9,9 @@ const type=r=>r.typeLabel||({invited:'邀请报告',oral:'口头报告',activity
 const programs=book.programs||[],programById=new Map(programs.map(p=>[p.id,p])),programReports=programs.flatMap(p=>p.reports),allReports=book.reports.concat(programReports);
 const byId=new Map(allReports.map(r=>[r.id,r])),lazy=window.agendaData||null;
 let screenRequest=null,screenFailure=null,detailRequest=null,pendingPosition=null,warmTimer;
+const loadingDelay=600;
+function clearScreenRequest(){if(screenRequest)clearTimeout(screenRequest.timer);screenRequest=null;}
+function clearDetailRequest(){if(detailRequest)clearTimeout(detailRequest.timer);detailRequest=null;}
 const tracks=book.tracks.filter(t=>book.reports.some(r=>r.trackCode===t.trackCode&&r.kind!=='poster')).slice().sort((a,b)=>a.trackCode.localeCompare(b.trackCode));
 const departments=M.departments(tracks),venueById=new Map();
 for(const g of departments){venueById.set('group:'+g.code,{id:'group:'+g.code,code:g.code,name:g.name,label:g.code+(g.tracks.length>1?'分会':'会场'),group:g});if(g.tracks.length>1)for(const t of g.tracks)venueById.set('track:'+t.trackCode,{id:'track:'+t.trackCode,code:t.trackCode,name:t.trackName,label:t.trackCode+'会场',group:g,track:t});}
@@ -67,15 +70,16 @@ function render(){renderContent();applyPosition();}
 function prepareData(){
  if(!lazy)return true;
  const keys=dataKeys(),signature=screenSignature();
- if(lazy.ready(keys)){screenRequest=null;return true;}
+ if(lazy.ready(keys)){clearScreenRequest();return true;}
  const s=states[view],track=view==='program'?programById.get(s.track):tracks.find(t=>t.trackCode===s.track);
  $('page-title').textContent=view==='mine'?'我的日程':view==='program'?(track?track.title:'主会场与专题'):track?track.trackCode+'会场 · '+track.trackName:'分会场日程';
  $('search').value=s.query;$('summary').hidden=true;$('track-info').hidden=true;document.querySelector('.filters-bar').hidden=true;$('favorite-history').hidden=true;$('conflict-warning').hidden=true;$('empty').hidden=true;$('pager').hidden=true;
- const failed=screenFailure&&screenFailure.signature===signature;
- $('results').innerHTML=failed?'<div class="empty" role="alert"><p>日程暂时未能加载，请检查网络后重试。</p><button type="button" class="text-button" data-retry-load>重新加载</button></div>':'<div class="empty" role="status"><p>日程加载中…</p></div>';
+ const failed=screenFailure&&screenFailure.signature===signature,visible=screenRequest&&screenRequest.signature===signature&&screenRequest.visible;
+ $('results').innerHTML=failed?'<div class="empty" role="alert"><p>日程暂时未能加载，请检查网络后重试。</p><button type="button" class="text-button" data-retry-load>重新加载</button></div>':'<div class="empty" role="status" data-loading-screen'+(visible?'':' hidden')+'><p>日程加载中…</p></div>';
  if(failed||screenRequest&&screenRequest.signature===signature)return false;
- const request={signature};screenRequest=request;
- lazy.ensure(keys).then(()=>{if(screenRequest!==request)return;screenRequest=null;screenFailure=null;render();if(detailId)renderDetail(detailId);if(navigation)navigation.replace();}).catch(()=>{if(screenRequest!==request)return;screenRequest=null;screenFailure={signature};render();});
+ clearScreenRequest();const request={signature,visible:false};screenRequest=request;
+ request.timer=setTimeout(()=>{if(screenRequest!==request||signature!==screenSignature())return;request.visible=true;const hint=$('results').querySelector('[data-loading-screen]');if(hint)hint.hidden=false;},loadingDelay);
+ lazy.ensure(keys).then(()=>{if(screenRequest!==request)return;clearScreenRequest();screenFailure=null;render();if(detailId)renderDetail(detailId);if(navigation)navigation.replace();}).catch(()=>{if(screenRequest!==request)return;clearScreenRequest();screenFailure={signature};render();});
  return false;
 }
 function warmFavorites(){
@@ -89,7 +93,7 @@ function renderContent(){
  const active=M.area(view)==='branch'?'home':M.area(view);for(const name of ['program','home','mine']){if(name===active)$('tab-'+name).setAttribute('aria-current','page');else $('tab-'+name).removeAttribute('aria-current');}
  renderHomeNavigation();
  $('mine-badge').textContent=favoriteIds.size?'('+favoriteIds.size+')':'';
- if(directory){screenRequest=null;$('summary').hidden=false;$('venue').hidden=true;$('track-info').hidden=true;$('results').innerHTML='';$('saved-total').textContent='会场收藏 '+favoriteVenues.size;
+ if(directory){clearScreenRequest();$('summary').hidden=false;$('venue').hidden=true;$('track-info').hidden=true;$('results').innerHTML='';$('saved-total').textContent='会场收藏 '+favoriteVenues.size;
  if(home){$('page-title').textContent='选择分会场';$('summary').textContent='点选分会查看日程，☆收藏常用分会场。';$('saved-venues').hidden=!favoriteVenues.size;$('all-venues-heading').hidden=!favoriteVenues.size;$('saved-entries').innerHTML=Array.from(venueById.values()).filter(v=>favoriteVenues.has(v.id)).map(v=>venueEntry(v,false)).join('');$('track-entries').innerHTML=departments.map(g=>venueEntry(venueById.get('group:'+g.code),false)).join('');}
  else if(programHome){$('page-title').textContent='主会场与专题';$('summary').textContent='10月23日 周五 · 中南大学潇湘校区';$('saved-total').hidden=true;$('main-program-entries').innerHTML=programs.filter(p=>p.section==='main').map(programEntry).join('');$('topic-program-entries').innerHTML=programs.filter(p=>p.section==='topic').map(programEntry).join('');}
  else{const g=departments.find(g=>g.code===departmentCode);$('page-title').textContent=g.code+'分会 · '+g.name;$('summary').textContent='选择子会场；收藏子会场后可从首页直接进入。';$('child-entries').innerHTML=g.tracks.map(t=>venueEntry(venueById.get('track:'+t.trackCode),true)).join('');renderVenueFavorite('group:'+g.code);}
@@ -155,13 +159,15 @@ $('results').addEventListener('click',e=>{if(e.target.closest('[data-retry-load]
 function detailRow(label,text){return text?`<div class="detail-row"><span class="detail-label">${esc(label)}</span><span class="detail-value">${esc(text)}</span></div>`:'';}
 function renderDetail(id){const r=byId.get(id);if(!r||r.kind==='break'){hideDetail();toast('这条报告不存在，请从日程列表查找。');return;}detailId=id;
  if(lazy&&!lazy.readyId(id)){
-  $('detail-layer').hidden=false;document.body.classList.add('modal-open');$('detail-body').innerHTML='<h2 id="detail-title" class="detail-title">报告详情</h2><p role="status">日程加载中…</p>';
+  const visible=detailRequest&&detailRequest.id===id&&detailRequest.visible;
+  $('detail-layer').hidden=false;document.body.classList.add('modal-open');$('detail-body').innerHTML='<h2 id="detail-title" class="detail-title">报告详情</h2><p role="status" data-loading-detail'+(visible?'':' hidden')+'>日程加载中…</p>';
   if(detailRequest&&detailRequest.id===id)return;
-  const request={id};detailRequest=request;
-  lazy.ensure(lazy.keysForIds([id])).then(()=>{if(detailRequest!==request||detailId!==id)return;detailRequest=null;renderDetail(id);applyPosition();}).catch(()=>{if(detailRequest!==request||detailId!==id)return;detailRequest=null;$('detail-body').innerHTML='<h2 id="detail-title" class="detail-title">报告详情</h2><p role="alert">日程暂时未能加载，请检查网络后重试。</p><button type="button" class="text-button" data-retry-detail>重新加载</button>';});return;
+  clearDetailRequest();const request={id,visible:false};detailRequest=request;
+  request.timer=setTimeout(()=>{if(detailRequest!==request||detailId!==id)return;request.visible=true;const hint=$('detail-body').querySelector('[data-loading-detail]');if(hint)hint.hidden=false;},loadingDelay);
+  lazy.ensure(lazy.keysForIds([id])).then(()=>{if(detailRequest!==request||detailId!==id)return;clearDetailRequest();renderDetail(id);applyPosition();}).catch(()=>{if(detailRequest!==request||detailId!==id)return;clearDetailRequest();$('detail-body').innerHTML='<h2 id="detail-title" class="detail-title">报告详情</h2><p role="alert">日程暂时未能加载，请检查网络后重试。</p><button type="button" class="text-button" data-retry-detail>重新加载</button>';});return;
  }
- detailRequest=null;const saved=favoriteIds.has(id),poster=r.kind==='poster',program=programById.get(r.programId),time=r.start?r.start+'—'+r.end:r.windowStart?'所属场次 '+r.windowStart+'—'+r.windowEnd+'（单场起止时间未列）':'';$('detail-body').innerHTML=`<p class="detail-code">${esc(r.number||'')}　${esc(type(r))}</p><h2 class="detail-title" id="detail-title">${esc(r.title)}</h2>${!poster&&r.date?`<p class="detail-time">${esc(M.dateLabel(r.date))} · ${esc(r.period)}<br>${esc(time)}</p>`:''}${r.portrait?`<div class="detail-speaker-profile">${portrait(r,'detail-portrait')}<div><strong>${esc(r.speaker)}</strong><span>${esc(r.affiliation)}</span></div></div>`:r.contentItems?'':detailRow('报告人 / 单位',[r.speaker,r.affiliation].filter(Boolean).join('　'))}${detailRow(program?'所属活动':'分会场',M.venueLabel(r))}${detailRow('本段主持人',chairText(r.chair))}${detailRow('主题',r.sessionTitle)}${detailRow('会场位置',r.room||'原表未注明展示地点')}${detailRow('参会范围',r.audience)}${primaryConflicts.has(id)?'<p class="warning">这场首选与其他首选时间重叠，可在我的日程中调整为备选。</p>':''}${reportContent(r)}${r.bio?detailRow('报告人简介',r.bio):''}${r.sourceNote?`<p class="warning">${esc(r.sourceNote)}</p>`:''}<button type="button" class="detail-favorite" data-detail-star="${esc(id)}" aria-pressed="${saved}">${saved?'★ 已收藏 · 点击取消':'☆ 收藏到我的日程'}</button>${saved?priorityButtons(r):''}<p class="source-note">${esc([r.sourceLabel,r.sourceSheet,r.sourceRow?'第'+r.sourceRow+'行':''].filter(Boolean).join(' · '))}</p>`;$('detail-layer').hidden=false;document.body.classList.add('modal-open');}
-function hideDetail(){detailRequest=null;detailId='';$('detail-layer').hidden=true;document.body.classList.remove('modal-open');if(returnFocus&&document.contains(returnFocus))returnFocus.focus({preventScroll:true});returnFocus=null;}
+ clearDetailRequest();const saved=favoriteIds.has(id),poster=r.kind==='poster',program=programById.get(r.programId),time=r.start?r.start+'—'+r.end:r.windowStart?'所属场次 '+r.windowStart+'—'+r.windowEnd+'（单场起止时间未列）':'';$('detail-body').innerHTML=`<p class="detail-code">${esc(r.number||'')}　${esc(type(r))}</p><h2 class="detail-title" id="detail-title">${esc(r.title)}</h2>${!poster&&r.date?`<p class="detail-time">${esc(M.dateLabel(r.date))} · ${esc(r.period)}<br>${esc(time)}</p>`:''}${r.portrait?`<div class="detail-speaker-profile">${portrait(r,'detail-portrait')}<div><strong>${esc(r.speaker)}</strong><span>${esc(r.affiliation)}</span></div></div>`:r.contentItems?'':detailRow('报告人 / 单位',[r.speaker,r.affiliation].filter(Boolean).join('　'))}${detailRow(program?'所属活动':'分会场',M.venueLabel(r))}${detailRow('本段主持人',chairText(r.chair))}${detailRow('主题',r.sessionTitle)}${detailRow('会场位置',r.room||'原表未注明展示地点')}${detailRow('参会范围',r.audience)}${primaryConflicts.has(id)?'<p class="warning">这场首选与其他首选时间重叠，可在我的日程中调整为备选。</p>':''}${reportContent(r)}${r.bio?detailRow('报告人简介',r.bio):''}${r.sourceNote?`<p class="warning">${esc(r.sourceNote)}</p>`:''}<button type="button" class="detail-favorite" data-detail-star="${esc(id)}" aria-pressed="${saved}">${saved?'★ 已收藏 · 点击取消':'☆ 收藏到我的日程'}</button>${saved?priorityButtons(r):''}<p class="source-note">${esc([r.sourceLabel,r.sourceSheet,r.sourceRow?'第'+r.sourceRow+'行':''].filter(Boolean).join(' · '))}</p>`;$('detail-layer').hidden=false;document.body.classList.add('modal-open');}
+function hideDetail(){clearDetailRequest();detailId='';$('detail-layer').hidden=true;document.body.classList.remove('modal-open');if(returnFocus&&document.contains(returnFocus))returnFocus.focus({preventScroll:true});returnFocus=null;}
 function closeDetail(){if(!detailId)return;if(navigation.canBack())navigation.back();else{hideDetail();navigation.replace();}}
 $('close-detail').addEventListener('click',closeDetail);$('detail-layer').addEventListener('click',e=>{if(e.target.closest('[data-retry-detail]')){renderDetail(detailId);return;}if(handlePlanningAction(e))return;if(e.target===$('detail-layer'))closeDetail();const star=e.target.closest('[data-detail-star]');if(star)toggleFavorite(star.dataset.detailStar);});
 document.addEventListener('keydown',e=>{if(!detailId)return;if(e.key==='Escape')closeDetail();if(e.key==='Tab'){const all=Array.from($('detail').querySelectorAll('button,a,input,select,[tabindex="0"]')).filter(el=>!el.disabled);if(!all.length)return;const first=all[0],last=all[all.length-1];if(e.shiftKey&&(document.activeElement===first||document.activeElement===$('detail'))){e.preventDefault();last.focus();}else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===$('detail'))){e.preventDefault();first.focus();}}});

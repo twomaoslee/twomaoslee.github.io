@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "revision": "4609d0fa87",
+  "revision": "7d38738fb6",
   "assets": {
     "conference-catalog.js": "./assets/conference-catalog.8cb310afbb256339.js",
     "agenda-data.js": "./assets/agenda-data.04164f2f458b2ac1.js",
-    "agenda.js": "./assets/agenda.2896443f43a5e265.js",
+    "agenda.js": "./assets/agenda.51878e3edbb74c5e.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
     "agenda-navigation.js": "./assets/agenda-navigation.a1f2977e5c3759e9.js",
     "agenda-updates.js": "./assets/agenda-updates.bcd59d8123aa7422.js",
