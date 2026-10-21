@@ -1,17 +1,21 @@
 {
   "schema": 1,
-  "revision": "5023abd980",
+  "revision": "aef5818aa0",
   "assets": {
     "conference-catalog.js": "./assets/conference-catalog.4abfb6bf14105a24.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
-    "agenda.js": "./assets/agenda.4382a97b138f4887.js",
+    "agenda.js": "./assets/agenda.024e054ae1a3d79c.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
     "agenda-navigation.js": "./assets/agenda-navigation.a1f2977e5c3759e9.js",
     "agenda-updates.js": "./assets/agenda-updates.bcd59d8123aa7422.js",
     "agenda-analytics.js": "./assets/agenda-analytics.50245dec98b35b15.js",
     "agenda-cache.js": "./assets/agenda-cache.591bff23cd8fa184.js",
-    "agenda.css": "./assets/agenda.c03f649c13471d2c.css"
+    "agenda.css": "./assets/agenda.843fabad4a118515.css",
+    "agenda-export.js": "./assets/agenda-export.d3f0d8c5365fe85a.js"
   },
+  "optionalAssets": [
+    "./assets/agenda-export.d3f0d8c5365fe85a.js"
+  ],
   "chunks": [
     "./assets/chunk-track-a1.81c12edba3661ab8.json",
     "./assets/chunk-poster-a1.ad823c0ccc43db41.json",
