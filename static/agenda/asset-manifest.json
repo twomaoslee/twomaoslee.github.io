@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "aef5818aa0",
+  "revision": "d3b31c5ad4",
   "assets": {
     "conference-catalog.js": "./assets/conference-catalog.4abfb6bf14105a24.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
@@ -10,11 +10,11 @@
     "agenda-updates.js": "./assets/agenda-updates.bcd59d8123aa7422.js",
     "agenda-analytics.js": "./assets/agenda-analytics.50245dec98b35b15.js",
     "agenda-cache.js": "./assets/agenda-cache.591bff23cd8fa184.js",
-    "agenda.css": "./assets/agenda.843fabad4a118515.css",
-    "agenda-export.js": "./assets/agenda-export.d3f0d8c5365fe85a.js"
+    "agenda.css": "./assets/agenda.fe80889ffd748b46.css",
+    "agenda-export.js": "./assets/agenda-export.ced3e6b993f27684.js"
   },
   "optionalAssets": [
-    "./assets/agenda-export.d3f0d8c5365fe85a.js"
+    "./assets/agenda-export.ced3e6b993f27684.js"
   ],
   "chunks": [
     "./assets/chunk-track-a1.81c12edba3661ab8.json",
