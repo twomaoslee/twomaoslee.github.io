@@ -84,7 +84,7 @@ function prepareData(){
 }
 function warmFavorites(){
  if(!lazy)return;clearTimeout(warmTimer);
- warmTimer=setTimeout(()=>{const keys=lazy.keysForIds(favoriteIds).concat(...Array.from(favoriteVenues,id=>lazy.keysForVenue(id)));lazy.ensure(keys).catch(()=>{});},150);
+ warmTimer=setTimeout(()=>{const keys=lazy.keysForIds(favoriteIds).concat(...Array.from(favoriteVenues,id=>lazy.keysForVenue(id)));lazy.start(keys).catch(()=>{});},150);
 }
 function renderContent(){
  const home=view==='home',child=view==='department',programHome=view==='program-home',directory=home||child||programHome;
