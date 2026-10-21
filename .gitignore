@@ -12,3 +12,9 @@ go.sum
 # Published slide resources are required static assets, not Hugo build cache.
 !static/slides/ai-teaching/resources/
 !static/slides/ai-teaching/resources/**
+
+# Agenda admin: generated files and local secrets
+tools/agenda/source/build-info.json
+tools/agenda/admin/.env*
+!tools/agenda/admin/public/
+!tools/agenda/admin/public/**
