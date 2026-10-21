@@ -155,4 +155,4 @@
 .bottom-nav .nav-label{font-size:inherit;line-height:1.35}
 .bottom-nav .nav-home-hint{display:flex;align-items:center;gap:3px;font-size:10px;line-height:1.2;font-weight:400}
 .nav-home-hint .nav-home-icon{flex-basis:12px;width:12px;height:12px}
-.visit-counter{border-top:1px solid #d8e5ee;padding-top:8px;margin:4px 0 8px;color:#556e80}.visit-metrics{display:flex;flex-wrap:wrap;gap:3px 18px;font-size:12px;font-variant-numeric:tabular-nums}.visit-metrics>span{white-space:nowrap}.visit-metrics strong{color:#234a66;font-weight:650}.footnote .visit-note a{padding:0;color:#556e80}.visit-note,.visit-definition{font-size:10px;line-height:1.6}.visit-note #visit-status:not(:empty){margin-left:8px}
+.footer-credit-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px}.footer-credit-row .credit{white-space:nowrap}.footer-credit-row .visit-counter{margin-left:auto;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;color:#607f94}
