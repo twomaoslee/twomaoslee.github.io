@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME='cps2026:agenda:assets:v1',CORE=["./assets/conference-catalog.8cb310afbb256339.js","./assets/agenda-data.04164f2f458b2ac1.js","./assets/agenda.51878e3edbb74c5e.js","./assets/agenda-model.c05425ea431e996e.js","./assets/agenda-navigation.a1f2977e5c3759e9.js","./assets/agenda-updates.bcd59d8123aa7422.js","./assets/agenda-analytics.50245dec98b35b15.js","./assets/agenda-cache.591bff23cd8fa184.js","./assets/agenda.c03f649c13471d2c.css"],LIMIT=96;
+const CACHE_NAME='cps2026:agenda:assets:v1',CORE=["./assets/conference-catalog.d8663ebcf88b6142.js","./assets/agenda-data.04164f2f458b2ac1.js","./assets/agenda.51878e3edbb74c5e.js","./assets/agenda-model.c05425ea431e996e.js","./assets/agenda-navigation.a1f2977e5c3759e9.js","./assets/agenda-updates.bcd59d8123aa7422.js","./assets/agenda-analytics.50245dec98b35b15.js","./assets/agenda-cache.591bff23cd8fa184.js","./assets/agenda.c03f649c13471d2c.css"],LIMIT=96;
 const inFlight=new Map();
 function cacheable(request){
  const url=new URL(request.url),base=new URL('assets/',self.registration.scope);
