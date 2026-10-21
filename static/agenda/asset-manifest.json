@@ -1,20 +1,20 @@
 {
   "schema": 1,
-  "revision": "d3b31c5ad4",
+  "revision": "cb20d65052",
   "assets": {
     "conference-catalog.js": "./assets/conference-catalog.4abfb6bf14105a24.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
-    "agenda.js": "./assets/agenda.024e054ae1a3d79c.js",
+    "agenda.js": "./assets/agenda.4c059e41c454f444.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
     "agenda-navigation.js": "./assets/agenda-navigation.a1f2977e5c3759e9.js",
     "agenda-updates.js": "./assets/agenda-updates.bcd59d8123aa7422.js",
     "agenda-analytics.js": "./assets/agenda-analytics.50245dec98b35b15.js",
     "agenda-cache.js": "./assets/agenda-cache.591bff23cd8fa184.js",
     "agenda.css": "./assets/agenda.fe80889ffd748b46.css",
-    "agenda-export.js": "./assets/agenda-export.ced3e6b993f27684.js"
+    "agenda-export.js": "./assets/agenda-export.5d0b32c245ade78c.js"
   },
   "optionalAssets": [
-    "./assets/agenda-export.ced3e6b993f27684.js"
+    "./assets/agenda-export.5d0b32c245ade78c.js"
   ],
   "chunks": [
     "./assets/chunk-track-a1.81c12edba3661ab8.json",

@@ -19,13 +19,18 @@ function wrap(value,width,measure,size,bold){
  }return out;
 }
 function lines(value,width,measure,size,height,bold=false,color=COLORS.text){return wrap(value,width,measure,size,bold).map(text=>({text,size,height,bold,color}));}
-function reportLines(r,poster,track,measure){
+function reportLines(r,poster,track,measure,personal=false,priority=''){
  const width=WIDTH-2*MARGIN-COLUMN-24,list=[];
- if(!poster)list.push(...lines(r.typeLabel||({invited:'邀请报告',oral:'口头报告',activity:'交流活动'}[r.kind]||'报告'),width,measure,22,30,false,COLORS.muted));
- list.push(...lines(r.title,width,measure,30,43,true));
+ const type=r.typeLabel||({invited:'邀请报告',oral:'口头报告',activity:'交流活动'}[r.kind]||'报告');
+ if(!poster||priority)list.push(...lines([priority,poster?'张贴报告':type].filter(Boolean).join(' · '),width,measure,22,30,false,COLORS.muted));
+ list.push(...lines(r.title,width,measure,30,43,true,priority==='备选'?'#5a7081':COLORS.text));
  const person=[r.speaker,r.affiliation].filter(Boolean).join('　');
  if(person)list.push({text:'',height:6},...lines(person,width,measure,25,36,false,COLORS.muted));
- if(!poster&&r.room&&track.room&&r.room!==track.room)list.push(...lines('本报告地点：'+r.room,width,measure,24,34,false,COLORS.muted));
+ if(personal){
+  const venue=r.programId?r.trackName:r.trackCode+'会场 · '+r.trackName;
+  list.push({text:'',height:5},...lines(venue,width,measure,24,34,false,COLORS.blue));
+  list.push(...lines('地点：'+(r.room||'原表未注明展示地点'),width,measure,24,34,false,COLORS.muted));
+ }else if(!poster&&r.room&&track.room&&r.room!==track.room)list.push(...lines('本报告地点：'+r.room,width,measure,24,34,false,COLORS.muted));
  if(r.timeUncertain)list.push(...lines('原表时间待核对',width,measure,24,34,false,'#8b6126'));
  return list;
 }
@@ -35,24 +40,25 @@ function context(r,poster,measure){
  if(!poster&&r.chair)list.push(...lines('主持人：'+r.chair,WIDTH-2*MARGIN-24,measure,24,34,false,COLORS.muted));
  return {type:'section',key:r.session||text,lines:list,height:list.reduce((n,l)=>n+l.height,0)+18};
 }
-function header(track,label,measure){
- const list=[...lines('中国物理学会2026秋季学术会议',WIDTH-2*MARGIN,measure,24,35,false,COLORS.muted),{text:'',height:6},...lines(track.trackCode+'会场 · '+track.trackName,WIDTH-2*MARGIN,measure,40,54,true,COLORS.blue)];
- if(label!=='张贴报告'&&track.room)list.push({text:'',height:6},...lines('地点：'+track.room,WIDTH-2*MARGIN,measure,24,34,false,COLORS.muted));
+function header(track,label,measure,personal=false){
+ const list=[...lines('中国物理学会2026秋季学术会议',WIDTH-2*MARGIN,measure,24,35,false,COLORS.muted),{text:'',height:6},...lines(personal?'我的日程':track.trackCode+'会场 · '+track.trackName,WIDTH-2*MARGIN,measure,40,54,true,COLORS.blue)];
+ if(!personal&&label!=='张贴报告'&&track.room)list.push({text:'',height:6},...lines('地点：'+track.room,WIDTH-2*MARGIN,measure,24,34,false,COLORS.muted));
  return {lines:list,height:22+list.reduce((n,l)=>n+l.height,0)+16+48+10,label};
 }
 // One complete long image for the selected day or all shared posters.
-function plan({track,label,rows,poster=false},measure){
+function plan({track={},label,rows,poster=false,personal=false,priorities={},overlaps=new Set()},measure){
  if(!rows.length)throw Error('所选日期没有可导出的日程');
- const head=header(track,label,measure),page={units:[],height:head.height,ids:[]};let lastKey='',rowIndex=0;
+ const head=header(track,label,measure,personal),page={units:[],height:head.height,ids:[]};let lastKey='',rowIndex=0;
  for(const r of rows){
   if(r.kind==='break'){
    const text=(r.start?r.start+'—'+r.end+'　':'')+r.title,body=lines(text,WIDTH-2*MARGIN-24,measure,24,34,false,COLORS.muted),height=body.reduce((n,l)=>n+l.height,0)+16;
    page.units.push({type:'break',id:r.id,lines:body,height});page.height+=height;continue;
   }
   const section=context(r,poster,measure),key=(r.period||'')+'|'+section.key;
-  if(lastKey!==key){page.units.push(section);page.height+=section.height;lastKey=key;}
-  const body=reportLines(r,poster,track,measure),height=Math.max(poster?60:108,body.reduce((n,l)=>n+l.height,0)+24);
-  page.units.push({type:'report',id:r.id,number:r.number||'',start:poster?'':r.start||'',end:poster?'':r.end||'',poster,lines:body,height,tint:rowIndex%2===0});
+  if(!personal&&lastKey!==key){page.units.push(section);page.height+=section.height;lastKey=key;}
+  const backup=personal&&priorities[r.id]==='backup',priority=personal?(backup?'备选':overlaps.has(r.id)?'首选':''):'';
+  const windowed=personal&&!r.start&&!!r.windowStart,body=reportLines(r,poster,track,measure,personal,priority),height=Math.max(poster?60:windowed?136:108,body.reduce((n,l)=>n+l.height,0)+24);
+  page.units.push({type:'report',id:r.id,number:r.number||'',start:poster?'':r.start||(windowed?r.windowStart:''),end:poster?'':r.end||(windowed?r.windowEnd:''),windowed,backup,poster,lines:body,height,tint:rowIndex%2===0});
   page.ids.push(r.id);page.height+=height;rowIndex++;
  }
  page.height+=FOOTER;
@@ -66,11 +72,12 @@ function draw(ctx,layout,index,stamp){
  ctx.fillStyle=COLORS.blue;ctx.fillRect(MARGIN,y,width,48);ctx.font=font(28,true);ctx.fillStyle='#fff';ctx.fillText(layout.label,MARGIN+12,y+9);
  ctx.textAlign='right';ctx.font=font(24,false);ctx.fillText(layout.reportCount+' 项报告',WIDTH-MARGIN-12,y+12);ctx.textAlign='left';y+=58;
  for(const unit of page.units){
-  ctx.fillStyle=unit.type==='section'?COLORS.section:unit.type==='break'?'#edf2f6':unit.tint?COLORS.pale:'#fff';ctx.fillRect(MARGIN,y,width,unit.height);ctx.strokeStyle=COLORS.line;ctx.lineWidth=1;ctx.strokeRect(MARGIN+.5,y+.5,width-1,unit.height);
+  ctx.fillStyle=unit.type==='section'?COLORS.section:unit.type==='break'?'#edf2f6':unit.backup?'#f0f3f6':unit.tint?COLORS.pale:'#fff';ctx.fillRect(MARGIN,y,width,unit.height);ctx.strokeStyle=COLORS.line;ctx.lineWidth=1;ctx.strokeRect(MARGIN+.5,y+.5,width-1,unit.height);
   if(unit.type==='report'){
    ctx.beginPath();ctx.moveTo(MARGIN+COLUMN,y);ctx.lineTo(MARGIN+COLUMN,y+unit.height);ctx.stroke();
-   const slot=unit.start?100:32;let ty=y+(unit.height-slot)/2;
+   const slot=unit.start?(unit.windowed?128:100):32;let ty=y+(unit.height-slot)/2;
    ctx.textAlign='center';ctx.font=font(22,true);ctx.fillStyle=COLORS.blue;ctx.fillText(unit.number,MARGIN+COLUMN/2,ty);ty+=30;
+   if(unit.windowed){ctx.font=font(20,false);ctx.fillStyle=COLORS.muted;ctx.fillText('场次时段',MARGIN+COLUMN/2,ty);ty+=28;}
    if(unit.start){ctx.font=font(32,true);ctx.fillStyle=COLORS.text;ctx.fillText(unit.start,MARGIN+COLUMN/2,ty);ty+=40;ctx.font=font(24,false);ctx.fillText('—'+unit.end,MARGIN+COLUMN/2,ty);}
    ctx.textAlign='left';drawText(ctx,unit.lines,MARGIN+COLUMN+12,y+12);
   }else if(unit.type==='section')drawText(ctx,unit.lines,MARGIN+12,y+9);
@@ -110,18 +117,19 @@ let activeClose=null;
 function closeActive(){if(activeClose)activeClose();}
 // UI only reads supplied report data. No image upload, export API, analytics,
 // or browser-storage mutation is performed by this module.
-function open({win,track,initialKind,initialDate,prepare}){
+function open({win,track={},personal=false,initialKind,initialDate,prepare}){
  closeActive();const doc=win.document,previous=doc.activeElement,scroll=win.scrollY;
  const oldStyle={position:doc.body.style.position,top:doc.body.style.top,width:doc.body.style.width};
  const layer=doc.createElement('div');layer.className='export-layer';
  const panel=doc.createElement('section');panel.className='export-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-labelledby','export-title');panel.tabIndex=-1;layer.appendChild(panel);
  function node(tag,className,text){const el=doc.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el;}
- const toolbar=node('div','export-toolbar'),heading=node('h2','',track.trackCode+'会场 · 导出图片');heading.id='export-title';const close=node('button','export-close','关闭 ✕');close.type='button';toolbar.append(heading,close);panel.append(toolbar);
- const note=node('p','export-note','按日期导出完整日程，不受搜索关键词影响。'),choices=node('div','export-choices');choices.setAttribute('role','group');choices.setAttribute('aria-label','选择导出内容');
+ const name=personal?'我的日程':track.trackCode+'会场';
+ const toolbar=node('div','export-toolbar'),heading=node('h2','',name+' · 导出图片');heading.id='export-title';const close=node('button','export-close','关闭 ✕');close.type='button';toolbar.append(heading,close);panel.append(toolbar);
+ const note=node('p','export-note',personal?'按日期导出当天全部收藏（含备选），不受搜索和筛选影响。':'按日期导出完整日程，不受搜索关键词影响。'),choices=node('div','export-choices');choices.setAttribute('role','group');choices.setAttribute('aria-label','选择导出内容');
  const generate=node('button','export-generate','生成图片');generate.type='button';generate.disabled=true;
  const status=node('p','export-status','正在准备日程…');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
  const result=node('section','export-result');result.hidden=true;const hint=node('p','export-save-hint','长按图片保存到相册，可放大查看完整长图。');
- const image=node('img','export-image');image.alt='导出的分会场日程图片';image.draggable=false;
+ const image=node('img','export-image');image.alt=personal?'导出的个人日程长图':'导出的分会场日程图片';image.draggable=false;
  const actions=node('div','export-image-actions'),download=node('a','export-download','下载图片'),share=node('button','export-share','分享图片');share.type='button';share.hidden=true;actions.append(download,share);result.append(hint,image,actions);
  panel.append(note,choices,generate,status,result);doc.body.append(layer);doc.body.classList.add('export-open');doc.body.style.position='fixed';doc.body.style.top=-scroll+'px';doc.body.style.width='100%';panel.focus();
  let closed=false,selected='',generation=0,layout=null,rendering=false,renderID=0,currentImage=null;
@@ -136,7 +144,7 @@ function open({win,track,initialKind,initialDate,prepare}){
    await new Promise(resolve=>win.setTimeout(resolve,20));if(closed||requestGeneration!==generation||id!==renderID)return;
    const entry=await renderImage(win,layout,0,stamp(new Date()));if(closed||requestGeneration!==generation||id!==renderID){entry.dispose();return;}
    currentImage=entry;image.onload=()=>{if(!closed&&id===renderID)image.hidden=false;};image.onerror=()=>{if(!closed&&id===renderID)status.textContent='图片暂时无法显示，请重新生成，或在系统浏览器中打开。';};image.src=entry.src;image.hidden=false;
-   const filename=track.trackCode+'会场-'+layout.label.replace(/\s/g,'')+'.png';download.href=entry.src;download.download=filename;download.hidden=/MicroMessenger/i.test(win.navigator.userAgent);
+   const filename=name+'-'+layout.label.replace(/\s/g,'')+'.png';download.href=entry.src;download.download=filename;download.hidden=/MicroMessenger/i.test(win.navigator.userAgent);
    if(entry.blob&&typeof win.File==='function'&&typeof win.navigator.canShare==='function'&&typeof win.navigator.share==='function')try{share.hidden=!win.navigator.canShare({files:[new win.File([entry.blob],filename,{type:'image/png'})]});}catch{}
    status.textContent=layout.reportCount+' 项报告 · 已生成一张完整长图';result.hidden=false;
   }catch(error){if(!closed&&id===renderID){status.textContent=error.message||'图片生成失败，请重试';result.hidden=true;}}
@@ -148,7 +156,7 @@ function open({win,track,initialKind,initialDate,prepare}){
   try{const kind=selected==='poster'?'poster':'oral',date=kind==='poster'?'':selected;const data=await prepare(kind,date);if(closed||id!==generation)return;if(!data.rows.length)throw Error('所选内容没有可导出的报告');
    if(doc.fonts?.ready)await doc.fonts.ready;await new Promise(resolve=>win.setTimeout(resolve,20));if(closed||id!==generation)return;
    const canvas=doc.createElement('canvas'),ctx=canvas.getContext('2d');if(!ctx)throw Error('当前浏览器无法生成图片，请使用系统浏览器打开');
-   layout=plan({track,label:kind==='poster'?'张贴报告':dateLabel(date),rows:data.rows,poster:kind==='poster'},(text,size,bold)=>{ctx.font=font(size,bold);return ctx.measureText(text).width;});canvas.width=1;canvas.height=1;
+   layout=plan({track,personal,label:kind==='poster'?'张贴报告':dateLabel(date),rows:data.rows,poster:kind==='poster',priorities:data.priorities,overlaps:data.overlaps},(text,size,bold)=>{ctx.font=font(size,bold);return ctx.measureText(text).width;});canvas.width=1;canvas.height=1;
    await showImage();
   }catch(error){if(!closed&&id===generation)status.textContent=error.message||'生成失败，请重试';}
   finally{if(!closed&&id===generation)busy(false);}
@@ -156,7 +164,7 @@ function open({win,track,initialKind,initialDate,prepare}){
  share.onclick=async()=>{if(!currentImage?.blob)return;try{await win.navigator.share({files:[new win.File([currentImage.blob],download.download,{type:'image/png'})]});}catch(error){if(error.name!=='AbortError')status.textContent='分享未成功，可以长按图片保存。';}};
  prepare('choices','').then(data=>{if(closed)return;status.textContent='每天一张长图；张贴报告单独一张。';const options=data.dates.map(date=>({value:date,label:dateLabel(date)}));if(data.hasPoster)options.push({value:'poster',label:'张贴报告'});
   for(const option of options){const b=node('button','export-choice',option.label);b.type='button';b.dataset.value=option.value;b.setAttribute('aria-pressed','false');b.onclick=()=>{if(!rendering)choose(option.value);};choices.append(b);}
-  if(!options.length){status.textContent='该分会场暂无可导出的日程';return;}choose(initialKind==='poster'&&data.hasPoster?'poster':data.dates.includes(initialDate)?initialDate:options[0].value);
+  if(!options.length){status.textContent=personal?'暂无可导出的收藏，请先收藏报告':'该分会场暂无可导出的日程';return;}choose(initialKind==='poster'&&data.hasPoster?'poster':data.dates.includes(initialDate)?initialDate:options[0].value);
  }).catch(error=>{if(!closed)status.textContent=error.message||'日程读取失败，请关闭后重试';});
  return {close:closeDialog};
 }
