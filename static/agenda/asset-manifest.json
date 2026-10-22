@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": "d3f86bcc86",
+  "revision": "662454f9bf",
   "assets": {
     "conference-catalog.js": "./assets/conference-catalog.3d2bfb03ec95c872.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
