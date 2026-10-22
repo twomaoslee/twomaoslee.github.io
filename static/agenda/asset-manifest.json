@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "revision": "3afb7a322c",
+  "revision": "a2bc49e5e6",
   "assets": {
-    "conference-catalog.js": "./assets/conference-catalog.710b64e3b2b65fe9.js",
+    "conference-catalog.js": "./assets/conference-catalog.adc3f4d01201af9c.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
     "agenda.js": "./assets/agenda.fdbffc15478a9ba4.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
@@ -48,8 +48,8 @@
     "./assets/chunk-poster-j.b000978535568242.json",
     "./assets/chunk-track-k.d548b9224f05b6ec.json",
     "./assets/chunk-poster-k.54c09d4213cf066d.json",
-    "./assets/chunk-track-m1.6c4810c7f28223f4.json",
-    "./assets/chunk-track-m2.e02222941514abd4.json",
+    "./assets/chunk-track-m1.eac4d368def1710d.json",
+    "./assets/chunk-track-m2.c0ee95be46ffe9d3.json",
     "./assets/chunk-poster-m.2c7c259e52d56ec9.json",
     "./assets/chunk-track-n1.c8a9e06f3a753128.json",
     "./assets/chunk-track-n2.2e876b466e2f6078.json",
@@ -82,5 +82,5 @@
     "./assets/chunk-program-topic-aps.bfbe9acb5796536b.json",
     "./assets/chunk-program-topic-iop.0eb85e9aae801007.json"
   ],
-  "fullData": "./assets/conference-complete.dbd5367652ba874b.json"
+  "fullData": "./assets/conference-complete.4ee076a3c884e504.json"
 }
