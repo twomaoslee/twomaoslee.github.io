@@ -1,6 +1,6 @@
 .home-footer-row {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: center;
   gap: 0.75rem;
 }
