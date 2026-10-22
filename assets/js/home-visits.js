@@ -3,6 +3,14 @@
   if (!box || box.dataset.started || location.origin !== "https://zimin.li") return;
   if (!["/", "/zh/", "/en/"].includes(location.pathname)) return;
   box.dataset.started = "true";
+  const footer = box.closest("footer");
+  const credit = footer && footer.querySelector(":scope > .powered-by:last-child");
+  if (credit && credit !== box) {
+    const row = document.createElement("div");
+    row.className = "home-footer-row";
+    credit.before(row);
+    row.append(credit, box);
+  }
   box.hidden = false;
   const count = box.querySelector("[data-visit-count]");
   const status = box.querySelector("[data-visit-status]");

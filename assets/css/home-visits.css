@@ -1,7 +1,21 @@
+.home-footer-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.home-footer-row > .powered-by {
+  margin: 0;
+  min-width: 0;
+}
+
 .home-visits {
-  margin: 0 0 0.75rem;
+  margin: 0;
   min-height: 1.5em;
   font-variant-numeric: tabular-nums;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .home-visits .fa-eye {
