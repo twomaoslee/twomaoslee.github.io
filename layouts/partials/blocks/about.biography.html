@@ -96,10 +96,10 @@
     </div>
     {{ end }}
 
-    <div class="row">
+    <div class="row biography-details-row">
 
       {{ with $person.interests }}
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div class="section-subheading">{{ i18n "interests" | markdownify }}</div>
         <ul class="ul-interests fa-ul mb-0">
           {{ range $index, $interest := . }}
@@ -117,7 +117,7 @@
       {{ end }}
 
       {{ with $person.education }}
-      <div class="col-md-7">
+      <div class="col-md-6">
         <div class="section-subheading">{{ i18n "education" | markdownify }}</div>
         <ul class="ul-edu fa-ul mb-0">
           {{ range .courses }}

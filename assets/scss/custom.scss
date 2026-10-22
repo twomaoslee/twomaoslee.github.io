@@ -187,6 +187,28 @@
   }
 }
 
+@media (min-width: 768px) {
+  .biography-details-row > .col-md-6 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .biography-details-row .ul-interests,
+  .biography-details-row .ul-edu {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.65rem;
+  }
+
+  .biography-details-row .ul-interests > li,
+  .biography-details-row .ul-edu > li {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
 #team .people-widget {
   row-gap: 1.75rem;
 }
