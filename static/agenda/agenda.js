@@ -102,6 +102,7 @@ function warmFavorites(){
 function renderContent(){
  const home=view==='home',child=view==='department',programHome=view==='program-home',directory=home||child||programHome;
  $('export-images').hidden=view==='mine'?!favoriteIds.size:view!=='agenda'||!tracks.some(t=>t.trackCode===states.agenda.track);
+ $('export-favorites').hidden=view!=='mine'||!favoriteIds.size&&!favoriteVenues.size;$('import-favorites').hidden=view!=='mine';
  $('search-toggle').hidden=directory;(view==='program'?document.querySelector('.title-line'):$('kind-search-row')).appendChild($('search-toggle'));$('app').classList.remove('single-activity');$('program-information').hidden=true;$('history-toggle').hidden=view!=='mine';$('favorite-history').hidden=view!=='mine'||!historyOpen;document.querySelector('.filters-bar').hidden=false;
  $('home-view').hidden=!home;$('department-view').hidden=!child;$('program-home-view').hidden=!programHome;$('schedule-view').hidden=directory;$('back-home').hidden=home||programHome;$('venue-favorite').hidden=true;$('saved-total').hidden=!home;$('app').dataset.view=view;$('search-panel').hidden=!searchOpen;$('search-toggle').setAttribute('aria-expanded',String(searchOpen));
  const active=M.area(view)==='branch'?'home':M.area(view);for(const name of ['program','home','mine']){if(name===active)$('tab-'+name).setAttribute('aria-current','page');else $('tab-'+name).removeAttribute('aria-current');}
@@ -176,6 +177,38 @@ $('export-images').addEventListener('click',async()=>{
    return {rows:M.select(book.reports,{track:code,kind,date,query:''},new Set(),false)};
   }});
  }catch(error){toast(error.message||'暂时无法导出，请重试');}finally{button.disabled=false;}
+});
+function favoritePayload(){return {kind:'cps2026-agenda-favorites',schema:1,exportedAt:new Date().toISOString(),reports:{schema:1,ids:Array.from(favoriteIds),priorities:{...priorities},removed:removedFavorites},venues:{schema:1,ids:Array.from(favoriteVenues)}};}
+$('export-favorites').addEventListener('click',()=>{
+ try{
+  const blob=new Blob([JSON.stringify(favoritePayload(),null,1)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download='cps2026-我的日程收藏-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
+  toast('收藏文件已导出；在另一浏览器的“我的日程”里选择“导入收藏”即可恢复');
+ }catch(error){toast('当前浏览器无法导出文件，请改用系统浏览器重试');}
+});
+$('import-favorites').addEventListener('click',()=>$('import-favorites-file').click());
+$('import-favorites-file').addEventListener('change',async event=>{
+ const file=event.target.files&&event.target.files[0];event.target.value='';if(!file)return;
+ try{
+  const data=JSON.parse(await file.text());
+  if(!data||data.kind!=='cps2026-agenda-favorites'||data.schema!==1||!data.reports||data.reports.schema!==1||!Array.isArray(data.reports.ids))throw Error('不是本站导出的收藏文件，请重新导出后再试');
+  const expanded=M.expandFavorites(data.reports.ids,book.favoriteMigrations),valid=expanded.filter(id=>byId.has(id)&&byId.get(id).kind!=='break');
+  const nextIds=new Set(favoriteIds),nextPriorities={...priorities};let added=0;
+  for(const id of valid)if(!nextIds.has(id)){added++;nextIds.add(id);if(data.reports.priorities&&data.reports.priorities[id]==='backup')nextPriorities[id]='backup';}
+  const mergedRemoved=new Map(removedFavorites.map(r=>[r.id,r]));
+  if(Array.isArray(data.reports.removed))for(const r of data.reports.removed)if(r&&typeof r.id==='string'&&byId.has(r.id)&&byId.get(r.id).kind!=='break'&&!nextIds.has(r.id)&&Number.isFinite(r.removedAt)){const prev=mergedRemoved.get(r.id);if(!prev||r.removedAt>prev.removedAt)mergedRemoved.set(r.id,{id:r.id,removedAt:r.removedAt,priority:r.priority==='backup'?'backup':'primary'});}
+  const removed=Array.from(mergedRemoved.values()).sort((a,b)=>b.removedAt-a.removedAt).slice(0,50);
+  if(!saveFavorites({schema:1,ids:Array.from(nextIds),priorities:nextPriorities,removed}))return;
+  const importedVenues=data.venues&&data.venues.schema===1&&Array.isArray(data.venues.ids)?data.venues.ids.filter(id=>typeof id==='string'&&venueById.has(id)):[];
+  const venueNext=new Set(favoriteVenues);let venueAdded=0;
+  for(const id of importedVenues)if(!venueNext.has(id)){venueAdded++;venueNext.add(id);}
+  try{localStorage.setItem(VENUE_KEY,JSON.stringify({schema:1,ids:Array.from(venueNext)}));favoriteVenues=venueNext;}catch(error){warn('会场收藏未保存：浏览器存储不可用或空间不足。');}
+  render();warmFavorites();
+  const skipped=expanded.length-valid.length;
+  if(!added&&!venueAdded&&!skipped)toast('收藏文件与当前浏览器一致，无需导入');
+  else toast('已导入 '+added+' 项收藏'+(venueAdded?'、'+venueAdded+' 个分会场':'')+(skipped?'；'+skipped+' 项未出现在当前日程中，已跳过':''));
+ }catch(error){toast(error instanceof SyntaxError?'收藏文件格式有误，请重新导出后再试':error&&error.message||'收藏文件读取失败，请重试');}
 });
 function moveDay(step){const next=visibleDates[visibleDates.indexOf(states[view].date)+step];if(next){changeFilter({date:next});scrollToResults();}}
 $('previous').addEventListener('click',()=>moveDay(-1));$('next').addEventListener('click',()=>moveDay(1));
