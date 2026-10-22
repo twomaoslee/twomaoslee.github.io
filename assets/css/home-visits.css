@@ -1,0 +1,13 @@
+.home-visits {
+  margin: 0 0 0.75rem;
+  min-height: 1.5em;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-visits .fa-eye {
+  margin-right: 0.35em;
+}
+
+.home-visits[hidden] {
+  display: none;
+}
