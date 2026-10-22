@@ -27,11 +27,11 @@ test('R更新后的导出保留茶歇和新主持人，不含已取消报告，�
  const track=book.meta.tracks.find(t=>t.trackCode==='R'),rows=M.select(book.reports,{track:'R',kind:'oral',date:'2026-10-24',query:''},new Set(),false),before=JSON.stringify(rows);const p=E.plan({track,label:'10月24日 周六',rows},measure);assert.equal(p.reportCount,18);const text=p.pages.flatMap(p=>p.units).flatMap(u=>u.lines).map(l=>l.text).join('');assert(text.includes('14:50—15:25'));assert(text.includes('李俊'));assert(!text.includes('龚韬'));assert(!reportIds(p).includes('R-013'));assert.equal(JSON.stringify(rows),before);
 });
 test('个人日程按日期仅导出收藏，跨会场按时间排列，保留地点与备选标记',()=>{
- const programs=require('../source/data/main-programs.json').flatMap(p=>p.reports),all=book.reports.concat(programs),ids=new Set(['L-044','R-014','K-005','L-019','L-P001','topic-aps-workshop']),before=JSON.stringify(all);
- const rows=M.select(all,{kind:'oral',date:'2026-10-24',track:'',query:''},ids,true),p=E.plan({personal:true,label:'10月24日 周六',rows,priorities:{'R-014':'backup'},overlaps:new Set(['L-044'])},measure);
- assert.equal(p.pages.length,1);assert.deepEqual(reportIds(p),['K-005','R-014','L-044']);assert(p.header.lines.some(l=>l.text==='我的日程'));assert(!p.header.lines.some(l=>l.text.includes('undefined')));assert(p.pages[0].units.every(u=>u.type==='report'));
+ const programs=require('../source/data/main-programs.json').flatMap(p=>p.reports),all=book.reports.concat(programs),ids=new Set(['L-019','R-014','K-005','L-P001','topic-aps-workshop']),before=JSON.stringify(all);
+ const rows=M.select(all,{kind:'oral',date:'2026-10-24',track:'',query:''},ids,true),p=E.plan({personal:true,label:'10月24日 周六',rows,priorities:{'R-014':'backup'},overlaps:new Set(['L-019'])},measure);
+ assert.equal(p.pages.length,1);assert.deepEqual(reportIds(p),['K-005','R-014','L-019']);assert(p.header.lines.some(l=>l.text==='我的日程'));assert(!p.header.lines.some(l=>l.text.includes('undefined')));assert(p.pages[0].units.every(u=>u.type==='report'));
  for(const r of rows){const u=p.pages[0].units.find(u=>u.id===r.id),text=u.lines.map(l=>l.text).join('');assert(normalized(text).includes(normalized(r.title)));assert(normalized(text).includes(normalized(r.room)));assert(text.includes(r.trackCode+'会场'));}
- assert(p.pages[0].units.find(u=>u.id==='R-014').backup);assert(p.pages[0].units.find(u=>u.id==='R-014').lines.some(l=>l.text.includes('备选')));assert(p.pages[0].units.find(u=>u.id==='L-044').lines.some(l=>l.text.includes('首选')));
+ assert(p.pages[0].units.find(u=>u.id==='R-014').backup);assert(p.pages[0].units.find(u=>u.id==='R-014').lines.some(l=>l.text.includes('备选')));assert(p.pages[0].units.find(u=>u.id==='L-019').lines.some(l=>l.text.includes('首选')));
  const posters=M.select(all,{kind:'poster',date:'',query:''},ids,true),poster=E.plan({personal:true,label:'张贴报告',rows:posters,poster:true},measure);assert.deepEqual(reportIds(poster),['L-P001']);assert(poster.pages[0].units.every(u=>!u.start&&!u.end));assert.equal(JSON.stringify(all),before);
 });
 test('个人导出支持大会及专题，未列单场时间的大报告保留场次时段说明',()=>{
