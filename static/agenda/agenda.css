@@ -170,3 +170,13 @@
 /* Import/export actions wrap on narrow screens instead of overflowing the viewport. */
 .filter-footer{flex-wrap:wrap;row-gap:2px}
 .filter-actions{flex-wrap:wrap;flex-shrink:1;min-width:0;justify-content:flex-end}
+
+/* 当前时段标记：进入分会场默认落在今天的正在/即将进行的报告上 */
+.now-chip{display:inline-block;margin-left:5px;padding:0 5px;border-radius:3px;font-size:10px;font-weight:650;line-height:1.7;color:#fff;background:#d9480f;vertical-align:1px;letter-spacing:.02em}
+.now-chip.is-next{background:#0f7a3d}
+.program-row.row-marked{background:#fff6ef}
+.program-row.row-marked.tinted{background:#fff6ef}
+.program-row.row-live{box-shadow:inset 3px 0 0 #d9480f}
+.program-row.row-marked .start-time{color:#b8410d}
+.jump-now{position:fixed;left:12px;bottom:calc(70px + env(safe-area-inset-bottom));z-index:4;min-height:38px;padding:0 14px;border-radius:19px;background:#d9480f;color:#fff;font-size:12.5px;font-weight:650;box-shadow:0 3px 12px #183b5433}
+.jump-now:active{background:#b8410d}
