@@ -1,0 +1,43 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),M=require('../source/agenda-model.js'),book=require('../source/data/conference-latest.json');
+
+test('时钟按北京时间取当天日期与分钟',()=>{
+ assert.deepEqual(M.clockNow('2026-10-24T05:40:00Z'),{date:'2026-10-24',minutes:820,time:'13:40'});
+ assert.equal(M.clockNow('2026-10-24T16:30:00Z').date,'2026-10-25');
+ assert.equal(M.clockNow('2026-10-24T16:30:00Z').time,'00:30');
+ assert.equal(M.clockNow('nonsense').minutes,null);
+ assert.equal(M.minutesOf('08:05'),485);
+ assert.equal(M.minutesOf(''),null);
+});
+
+test('默认日期优先今天，其次最近的将来，会议结束后停在最后一天',()=>{
+ const dates=['2026-10-22','2026-10-23','2026-10-24','2026-10-25'];
+ assert.equal(M.defaultDate(dates,'2026-10-24'),'2026-10-24');
+ assert.equal(M.defaultDate(dates,'2026-10-23'),'2026-10-23');
+ assert.equal(M.defaultDate(['2026-10-25'],'2026-10-23'),'2026-10-25');
+ assert.equal(M.defaultDate(['2026-10-22'],'2026-10-23'),'2026-10-22');
+ assert.equal(M.defaultDate(['2026-10-23','2026-10-25'],'2026-10-24'),'2026-10-25');
+ assert.equal(M.defaultDate([],'2026-10-24'),'');
+});
+
+test('当前报告取正在进行的一场，没有则取下一场，当天结束返回空',()=>{
+ const rows=[{id:'a',kind:'invited',start:'09:00',end:'09:20'},{id:'b',kind:'break',start:'09:20',end:'09:40'},{id:'c',kind:'oral',start:'09:40',end:'10:00'},{id:'p',kind:'poster',start:'',end:''}];
+ const day='2026-10-24';
+ assert.deepEqual(M.currentReport(rows,day,{date:day,minutes:9*60+50}),{id:'c',status:'live'});
+ assert.deepEqual(M.currentReport(rows,day,{date:day,minutes:9*60+30}),{id:'c',status:'next'});
+ assert.deepEqual(M.currentReport(rows,day,{date:day,minutes:8*60+30}),{id:'a',status:'next'});
+ assert.equal(M.currentReport(rows,day,{date:day,minutes:10*60+30}),null);
+ assert.equal(M.currentReport(rows,'2026-10-25',{date:day,minutes:9*60+50}),null);
+ assert.equal(M.currentReport(rows,'',{date:day,minutes:9*60+50}),null);
+});
+
+test('真实日程：10月24日下午 G1 会场命中正在进行的报告',()=>{
+ const rows=book.reports.filter(r=>r.trackCode==='G1'&&r.date==='2026-10-24');
+ const now=M.clockNow('2026-10-24T07:00:00Z');
+ assert.equal(now.time,'15:00');
+ const mark=M.currentReport(rows,'2026-10-24',now);
+ assert.ok(mark,'应命中一场报告');
+ const row=rows.find(r=>r.id===mark.id);
+ assert.equal(row.kind==='oral'||row.kind==='invited',true);
+ assert.ok(row.start<=now.time&&now.time<row.end,'命中报告应覆盖当前时间');
+});
