@@ -199,13 +199,18 @@
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.65rem;
+    gap: 0.35rem;
   }
 
   .biography-details-row .ul-interests > li,
   .biography-details-row .ul-edu > li {
     margin-bottom: 0;
     padding-bottom: 0;
+  }
+
+  .biography-details-row .ul-interests > li,
+  .biography-details-row .ul-edu .description p {
+    line-height: 1.4;
   }
 }
 
