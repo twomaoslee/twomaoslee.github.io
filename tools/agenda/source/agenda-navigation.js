@@ -5,14 +5,14 @@ function historyNavigation(win,options){
  const owned=state=>state&&state.agendaNav&&state.agendaNav.version===1&&Number.isSafeInteger(state.agendaNav.index)&&state.agendaNav.index>=0;
  function replace(){win.history.replaceState(Object.assign({},win.history.state,{agendaNav:{version:1,index,limit,snapshot:options.capture()}}),'',options.url());}
  function navigate(change,overwrite){replace();change();if(!overwrite){index++;limit=index;}win.history[overwrite?'replaceState':'pushState'](Object.assign({},win.history.state,{agendaNav:{version:1,index,limit,snapshot:options.capture()}}),'',options.url());}
- function receive(state){pending=false;if(owned(state)){index=state.agendaNav.index;limit=Math.max(limit,index);options.restore(state.agendaNav.snapshot);replace();}else{index=0;limit=0;options.parse();replace();}}
+ function receive(state,fresh){pending=false;if(owned(state)){index=state.agendaNav.index;limit=Math.max(limit,index);options.restore(state.agendaNav.snapshot,fresh===true);replace();}else{index=0;limit=0;options.parse();replace();}}
  function back(){if(pending)return;if(index>0){replace();pending=true;win.history.back();}else if(options.fallback)navigate(options.fallback,true);}
  function forward(){if(pending||index>=limit)return;replace();pending=true;win.history.forward();}
  win.addEventListener('popstate',e=>receive(e.state));
  win.addEventListener('hashchange',()=>{if(!owned(win.history.state))receive(win.history.state);});
  win.addEventListener('pagehide',replace);
  if('scrollRestoration' in win.history)win.history.scrollRestoration='manual';
- if(owned(win.history.state)){const saved=win.history.state.agendaNav;limit=Number.isSafeInteger(saved.limit)?Math.max(saved.index,saved.limit):saved.index;receive(win.history.state);}else{options.parse();replace();}
+ if(owned(win.history.state)){const saved=win.history.state.agendaNav;limit=Number.isSafeInteger(saved.limit)?Math.max(saved.index,saved.limit):saved.index;receive(win.history.state,true);}else{options.parse();replace();}
  return {navigate,replace,back,forward,canBack:()=>index>0,canForward:()=>index<limit};
 }
 function installSwipe(win,options){

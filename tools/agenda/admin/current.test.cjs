@@ -20,6 +20,26 @@ test('默认日期优先今天，其次最近的将来，会议结束后停在�
  assert.equal(M.defaultDate([],'2026-10-24'),'');
 });
 
+test('当天日程全部结束后默认跳到下一个有会的日子',()=>{
+ const dates=['2026-10-24','2026-10-25'];
+ const rows=[{kind:'oral',date:'2026-10-24',start:'16:00',end:'17:10'},{kind:'poster',date:'2026-10-24'},{kind:'break',date:'2026-10-24',start:'17:10',end:'18:00'},{kind:'oral',date:'2026-10-25',start:'08:30',end:'09:00'}];
+ assert.equal(M.defaultDate(dates,{date:'2026-10-24',minutes:15*60},rows),'2026-10-24');
+ assert.equal(M.defaultDate(dates,{date:'2026-10-24',minutes:17*60+5},rows),'2026-10-24');
+ assert.equal(M.defaultDate(dates,{date:'2026-10-24',minutes:17*60+10},rows),'2026-10-25');
+ assert.equal(M.defaultDate(dates,{date:'2026-10-24',minutes:21*60+50},rows),'2026-10-25');
+ assert.equal(M.defaultDate(['2026-10-24'],{date:'2026-10-24',minutes:21*60},rows),'2026-10-24');
+ assert.equal(M.defaultDate(dates,{date:'2026-10-26',minutes:600},rows),'2026-10-25');
+ assert.equal(M.defaultDate(dates,{date:'2026-10-24',minutes:null},rows),'2026-10-24');
+});
+
+test('真实日程：散场后进入 G1 默认落在 10月25日，白天仍在当天',()=>{
+ const rows=book.reports.filter(r=>r.trackCode==='G1');
+ const dates=[...new Set(rows.filter(r=>r.kind!=='break'&&r.date).map(r=>r.date))].sort();
+ assert.equal(M.defaultDate(dates,M.clockNow('2026-10-24T03:00:00Z'),rows),'2026-10-24');
+ assert.equal(M.defaultDate(dates,M.clockNow('2026-10-24T13:50:00Z'),rows),'2026-10-25');
+ assert.equal(M.defaultDate(dates,M.clockNow('2026-10-24T10:00:00Z'),rows),'2026-10-25');
+});
+
 test('当前报告取正在进行的一场，没有则取下一场，当天结束返回空',()=>{
  const rows=[{id:'a',kind:'invited',start:'09:00',end:'09:20'},{id:'b',kind:'break',start:'09:20',end:'09:40'},{id:'c',kind:'oral',start:'09:40',end:'10:00'},{id:'p',kind:'poster',start:'',end:''}];
  const day='2026-10-24';
