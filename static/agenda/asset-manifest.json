@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "revision": "7234222858",
+  "revision": "d9a5be5b71",
   "assets": {
-    "conference-catalog.js": "./assets/conference-catalog.493415c75d6621bc.js",
+    "conference-catalog.js": "./assets/conference-catalog.7c8aa28aa9f9074d.js",
     "agenda-data.js": "./assets/agenda-data.ff8c9ee30924eb05.js",
     "agenda.js": "./assets/agenda.fdbffc15478a9ba4.js",
     "agenda-model.js": "./assets/agenda-model.c05425ea431e996e.js",
@@ -40,7 +40,7 @@
     "./assets/chunk-track-h.0078c53eb3d1a6bd.json",
     "./assets/chunk-poster-h.97bf1931cbb20b98.json",
     "./assets/chunk-track-i.bb21e4a01e2af831.json",
-    "./assets/chunk-poster-i.78187182556426e3.json",
+    "./assets/chunk-poster-i.65549b107c077e3a.json",
     "./assets/chunk-track-ja.72dad7ebc4c1da2d.json",
     "./assets/chunk-track-jb.4a44f2af0e505099.json",
     "./assets/chunk-track-jc.4e51932643202848.json",
@@ -82,5 +82,5 @@
     "./assets/chunk-program-topic-aps.bfbe9acb5796536b.json",
     "./assets/chunk-program-topic-iop.0eb85e9aae801007.json"
   ],
-  "fullData": "./assets/conference-complete.cbe257d51eccdac3.json"
+  "fullData": "./assets/conference-complete.13042d0466a07fd8.json"
 }
