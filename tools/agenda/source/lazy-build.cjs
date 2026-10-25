@@ -22,7 +22,7 @@ function split(book){
   preview.speakers=p.reports.filter(r=>r.portrait).map(({id,speaker,portrait})=>({id,speaker,portrait}));
   return preview;
  });
- const catalog={schema:1,version:book.version,title:book.title,source:book.source,tracks:book.tracks,favoriteMigrations:book.favoriteMigrations,programs,chunks};
+ const catalog={schema:1,version:book.version,closesAt:book.closesAt,title:book.title,source:book.source,tracks:book.tracks,favoriteMigrations:book.favoriteMigrations,programs,chunks};
  return {catalog,files};
 }
 module.exports={split};

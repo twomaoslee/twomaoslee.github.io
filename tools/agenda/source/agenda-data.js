@@ -5,7 +5,7 @@ function create(catalog,env){
  const cacheName='cps2026:agenda:assets:v1',snapshotKey='cps2026:agenda:snapshot:v1';
  let boot=null,cachePromise=null,baseSnapshotURL='';
  const tracks=new Map(catalog.tracks.map(t=>[t.trackCode,t])),byId=new Map(),locations=new Map(),loaded=new Set(),pending=new Map();
- const book={version:catalog.version,title:catalog.title,source:catalog.source,tracks:catalog.tracks,favoriteMigrations:catalog.favoriteMigrations,programs:[],reports:[]};
+ const book={version:catalog.version,closesAt:catalog.closesAt,title:catalog.title,source:catalog.source,tracks:catalog.tracks,favoriteMigrations:catalog.favoriteMigrations,programs:[],reports:[]};
  const programs=new Map(catalog.programs.map(p=>[p.id,Object.assign({},p,{reports:[]})]));book.programs=Array.from(programs.values());
  for(const [key,c]of Object.entries(catalog.chunks)){
   if(!/^\.\/assets\/chunk-[a-z0-9-]+\.[a-f0-9]{16}\.json$/.test(c.url))throw Error('日程文件地址无效');

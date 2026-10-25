@@ -68,3 +68,26 @@ test('真实日程：10月24日下午 G1 会场命中正在进行的报告',()=>
  assert.equal(row.kind==='oral'||row.kind==='invited',true);
  assert.ok(row.start<=now.time&&now.time<row.end,'命中报告应覆盖当前时间');
 });
+
+
+test('会议是否已结束：以最后一场报告的结束时刻为界',()=>{
+ const at=(h,m)=>({date:'2026-10-25',minutes:h*60+m});
+ assert.equal(M.conferenceOver('2026-10-25T18:15',at(12,0)),false);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',at(18,0)),false);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',at(18,14)),false);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',at(18,15)),true);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',at(21,0)),true);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',{date:'2026-10-26',minutes:9*60}),true);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',{date:'2026-10-23',minutes:9*60}),false);
+ assert.equal(M.conferenceOver('',at(21,0)),false);
+ assert.equal(M.conferenceOver(undefined,at(21,0)),false);
+ assert.equal(M.conferenceOver('2026-10-25T18:15',{date:'',minutes:null}),false);
+});
+
+test('真实日程：结束时刻与数据一致，18:15 之后才算散会',()=>{
+ assert.equal(book.closesAt,'2026-10-25T18:15');
+ assert.equal(M.conferenceOver(book.closesAt,M.clockNow('2026-10-25T09:00:00Z')),false);
+ assert.equal(M.conferenceOver(book.closesAt,M.clockNow('2026-10-25T10:14:00Z')),false);
+ assert.equal(M.conferenceOver(book.closesAt,M.clockNow('2026-10-25T10:15:00Z')),true);
+ assert.equal(M.conferenceOver(book.closesAt,M.clockNow('2026-10-26T01:00:00Z')),true);
+});
