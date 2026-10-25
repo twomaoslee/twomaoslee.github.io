@@ -79,7 +79,8 @@ function applyPosition(){
  if(lazy&&(!lazy.ready(dataKeys())||pendingPosition.detail&&byId.has(pendingPosition.detail)&&!lazy.readyId(pendingPosition.detail)))return;
  window.scrollTo({top:Math.max(0,Number(pendingPosition.scroll)||0),behavior:'auto'});$('detail').scrollTop=Number(pendingPosition.detailScroll)||0;pendingPosition=null;
 }
-function render(){const restoring=!!pendingPosition;currentMark=null;renderContent();applyPosition();if(!restoring)scrollToCurrent();refreshJump();}
+function refreshBar(){const bar=$('page-bar');if(bar.hidden)return;bar.classList.toggle('is-off',$('page-title').getBoundingClientRect().bottom>0);}
+function render(){const restoring=!!pendingPosition;currentMark=null;renderContent();applyPosition();if(!restoring)scrollToCurrent();refreshBar();refreshJump();}
 function prepareData(){
  if(!lazy)return true;
  const keys=dataKeys(),signature=screenSignature();
@@ -100,6 +101,7 @@ function warmFavorites(){
  warmTimer=setTimeout(()=>{const keys=lazy.keysForIds(favoriteIds).concat(...Array.from(favoriteVenues,id=>lazy.keysForVenue(id)));lazy.start(keys).catch(()=>{});},150);
 }
 function renderContent(){
+ $('page-bar').hidden=true;
  const home=view==='home',child=view==='department',programHome=view==='program-home',directory=home||child||programHome;
  $('export-images').hidden=view==='mine'?!favoriteIds.size:view!=='agenda'||!tracks.some(t=>t.trackCode===states.agenda.track);
  $('export-favorites').hidden=view!=='mine'||!favoriteIds.size&&!favoriteVenues.size;$('import-favorites').hidden=view!=='mine';
@@ -124,6 +126,7 @@ function renderContent(){
  $('saved-total').textContent=mine?favoriteIds.size+' 项收藏':'已收藏 '+favoriteIds.size;
  $('summary').hidden=true;$('summary').textContent=mine?'口头报告按时间排列，张贴报告单独列出。':totals.oral+' 场报告'+(totals.activity?' · '+totals.activity+' 项活动':'')+' · '+totals.poster+' 项张贴报告';
  $('venue').hidden=mine||!track||s.kind==='poster';$('venue').textContent=track?'地点：'+track.room:'';
+ if(view==='agenda'&&!mine&&track&&s.kind!=='poster'){$('page-bar-title').textContent=track.trackCode+'会场 · '+track.trackName;$('page-bar-venue').textContent=track.room?room(track.room):'';$('page-bar').hidden=false;}
  document.querySelector('.info-label').textContent=programView?(track&&track.section==='main'?'会场信息':'专题信息'):'分会信息';
  $('track-info').hidden=mine||!track;if(track)$('track-info-body').innerHTML=programView?'':[['召集人',track.convener],['工作委员会',track.committee],['联系人',track.contact]].filter(pair=>pair[1]).map(pair=>`<p>${pair[0]}：${esc(pair[1])}</p>`).join('');
  const single=programView&&track&&track.reports.filter(r=>r.kind!=='break').length===1;$('app').classList.toggle('single-activity',!!single);if(programView&&track){$('track-info').hidden=true;$('program-information').hidden=!!single;$('program-information').innerHTML=`<p class="program-location">${esc(track.room)}</p>`+programIntroduction(track);}if(single){$('search-toggle').hidden=true;$('track-info').hidden=true;document.querySelector('.filters-bar').hidden=true;$('conflict-warning').hidden=true;$('empty').hidden=true;$('pager').hidden=true;$('results').innerHTML=renderSingleActivity(track);return;}
@@ -155,7 +158,7 @@ function renderRow(r,index,mine){
 function refreshJump(){const button=$('jump-now'),s=states[view],label=view==='agenda'&&s.kind!=='poster'?M.jumpLabel(jumpTarget,s.date):'';if(!label){button.hidden=true;return;}if(button.dataset.label!==label){button.textContent=label;button.dataset.label=label;button.setAttribute('aria-label',label==='回到现在'?'回到当前时段的报告':'回到'+label.slice(5,label.indexOf('）'))+'当前时段的报告');}if(jumpTarget!==s.date){button.hidden=false;return;}const row=currentMark?$('results').querySelector('[data-now]'):null;if(!row){button.hidden=true;return;}const rect=row.getBoundingClientRect();button.hidden=rect.top>=-40&&rect.top<window.innerHeight-160;}
 function jumpToNow(){const s=states[view];if(jumpTarget&&jumpTarget!==s.date){s.date=jumpTarget;pendingCurrent=true;render();navigation.replace();if(!currentMark)scrollToResults();return;}const row=$('results').querySelector('[data-now]');if(!row)return;const top=row.getBoundingClientRect().top+window.scrollY-72;window.scrollTo({top:Math.max(0,top),behavior:'smooth'});}
 $('jump-now').addEventListener('click',jumpToNow);
-let jumpFrame=0;document.addEventListener('scroll',()=>{if(jumpFrame)return;jumpFrame=requestAnimationFrame(()=>{jumpFrame=0;refreshJump();});},{passive:true});
+let jumpFrame=0;document.addEventListener('scroll',()=>{if(jumpFrame)return;jumpFrame=requestAnimationFrame(()=>{jumpFrame=0;refreshBar();refreshJump();});},{passive:true});
 function scrollToResults(){const top=$('app').getBoundingClientRect().top+window.scrollY;window.scrollTo({top:Math.max(0,top),behavior:'auto'});}
 function scrollToCurrent(){if(!pendingCurrent)return;if(view!=='agenda'){pendingCurrent=false;return;}if(!currentMark){if($('results').querySelector('.program-row'))pendingCurrent=false;return;}const row=$('results').querySelector('[data-now]');if(!row)return;pendingCurrent=false;const top=row.getBoundingClientRect().top+window.scrollY-72;window.scrollTo({top:Math.max(0,top),behavior:'auto'});}
 function changeFilter(values){Object.assign(states[view],values);render();navigation.replace();}
