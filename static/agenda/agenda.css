@@ -178,5 +178,5 @@
 .program-row.row-marked.tinted{background:#fff6ef}
 .program-row.row-live{box-shadow:inset 3px 0 0 #d9480f}
 .program-row.row-marked .start-time{color:#b8410d}
-.jump-now{position:fixed;left:12px;bottom:calc(70px + env(safe-area-inset-bottom));z-index:4;min-height:38px;padding:0 14px;border-radius:19px;background:#d9480f;color:#fff;font-size:12.5px;font-weight:650;box-shadow:0 3px 12px #183b5433}
+.jump-now{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(70px + env(safe-area-inset-bottom));z-index:4;min-height:38px;padding:0 14px;border-radius:19px;background:#d9480f;color:#fff;font-size:12.5px;font-weight:650;box-shadow:0 3px 12px #183b5433}
 .jump-now:active{background:#b8410d}
