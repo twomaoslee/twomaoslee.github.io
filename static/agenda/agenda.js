@@ -102,6 +102,7 @@ function warmFavorites(){
 }
 function renderContent(){
  $('page-bar').hidden=true;
+ const now=M.clockNow(),over=M.conferenceOver(book.closesAt,now);$('farewell').hidden=true;
  const home=view==='home',child=view==='department',programHome=view==='program-home',directory=home||child||programHome;
  $('export-images').hidden=view==='mine'?!favoriteIds.size:view!=='agenda'||!tracks.some(t=>t.trackCode===states.agenda.track);
  $('export-favorites').hidden=view!=='mine'||!favoriteIds.size&&!favoriteVenues.size;$('import-favorites').hidden=view!=='mine';
@@ -111,7 +112,7 @@ function renderContent(){
  renderHomeNavigation();
  $('mine-badge').textContent=favoriteIds.size?'('+favoriteIds.size+')':'';
  if(directory){clearScreenRequest();$('summary').hidden=false;$('venue').hidden=true;$('track-info').hidden=true;$('results').innerHTML='';$('saved-total').textContent='会场收藏 '+favoriteVenues.size;
- if(home){$('page-title').textContent='选择分会场';$('summary').textContent='点选分会即定位到当前时段的报告，☆收藏常用分会场。';$('saved-venues').hidden=!favoriteVenues.size;$('all-venues-heading').hidden=!favoriteVenues.size;$('saved-entries').innerHTML=Array.from(venueById.values()).filter(v=>favoriteVenues.has(v.id)).map(v=>venueEntry(v,false)).join('');$('track-entries').innerHTML=departments.map(g=>venueEntry(venueById.get('group:'+g.code),false)).join('');}
+ if(home){$('page-title').textContent='选择分会场';$('summary').textContent='点选分会即定位到当前时段的报告，☆收藏常用分会场。';$('farewell').hidden=!over;$('summary').hidden=over;$('saved-venues').hidden=!favoriteVenues.size;$('all-venues-heading').hidden=!favoriteVenues.size;$('saved-entries').innerHTML=Array.from(venueById.values()).filter(v=>favoriteVenues.has(v.id)).map(v=>venueEntry(v,false)).join('');$('track-entries').innerHTML=departments.map(g=>venueEntry(venueById.get('group:'+g.code),false)).join('');}
  else if(programHome){$('page-title').textContent='主会场与专题';$('summary').textContent='10月23日 周五 · 中南大学潇湘校区';$('saved-total').hidden=true;$('main-program-entries').innerHTML=programs.filter(p=>p.section==='main').map(programEntry).join('');$('topic-program-entries').innerHTML=programs.filter(p=>p.section==='topic').map(programEntry).join('');}
  else{const g=departments.find(g=>g.code===departmentCode);$('page-title').textContent=g.code+'分会 · '+g.name;$('summary').textContent='选择子会场；收藏子会场后可从首页直接进入。';$('child-entries').innerHTML=g.tracks.map(t=>venueEntry(venueById.get('track:'+t.trackCode),true)).join('');renderVenueFavorite('group:'+g.code);}
  return;}
@@ -119,13 +120,13 @@ function renderContent(){
  const s=states[view],mine=view==='mine',programView=view==='program',track=programView?programById.get(s.track):tracks.find(t=>t.trackCode===s.track),available=mine?allReports:programView?programReports:book.reports,trackBook=available.filter(r=>M.matches(r,s.track));
  const own=allReports.filter(r=>favoriteIds.has(r.id)&&r.kind!=='break');conflictIds=M.conflicts(own);primaryConflicts=new Set(M.conflictPairs(own,priorities).flatMap(pair=>pair.map(r=>r.id)));
  if(mine&&priorityFilter!=='all')s.kind='all';
- const dates=Array.from(new Set((mine?own.filter(r=>M.matches(r,s.track)):trackBook).filter(r=>r.kind!=='break').map(r=>r.date).filter(Boolean))).sort();visibleDates=dates;const now=M.clockNow();if(s.kind==='poster')s.date='';else if(!s.date||!dates.includes(s.date))s.date=mine?dates[0]||'':M.defaultDate(dates,now,trackBook);
+ const dates=Array.from(new Set((mine?own.filter(r=>M.matches(r,s.track)):trackBook).filter(r=>r.kind!=='break').map(r=>r.date).filter(Boolean))).sort();visibleDates=dates;if(s.kind==='poster')s.date='';else if(!s.date||!dates.includes(s.date))s.date=mine?dates[0]||'':M.defaultDate(dates,now,trackBook);
  if(!mine&&!programView&&track){const g=departments.find(g=>g.tracks.some(t=>t.trackCode===track.trackCode));renderVenueFavorite(g.tracks.length>1?'track:'+track.trackCode:'group:'+g.code);}
  const totals=M.counts(trackBook);
  $('page-title').textContent=mine?'我的日程':programView?(track?track.title:'主会场与专题'):track?track.trackCode+'会场 · '+track.trackName:'分会场日程';
  $('saved-total').textContent=mine?favoriteIds.size+' 项收藏':'已收藏 '+favoriteIds.size;
  $('summary').hidden=true;$('summary').textContent=mine?'口头报告按时间排列，张贴报告单独列出。':totals.oral+' 场报告'+(totals.activity?' · '+totals.activity+' 项活动':'')+' · '+totals.poster+' 项张贴报告';
- $('venue').hidden=mine||!track||s.kind==='poster';$('venue').textContent=track?'地点：'+track.room:'';
+ $('farewell-note').hidden=!(over&&view==='agenda'&&!mine&&s.kind!=='poster');$('venue').hidden=mine||!track||s.kind==='poster';$('venue').textContent=track?'地点：'+track.room:'';
  if(view==='agenda'&&!mine&&track&&s.kind!=='poster'){$('page-bar-title').textContent=track.trackCode+'会场 · '+track.trackName;$('page-bar-venue').textContent=track.room?room(track.room):'';$('page-bar').hidden=false;}
  document.querySelector('.info-label').textContent=programView?(track&&track.section==='main'?'会场信息':'专题信息'):'分会信息';
  $('track-info').hidden=mine||!track;if(track)$('track-info-body').innerHTML=programView?'':[['召集人',track.convener],['工作委员会',track.committee],['联系人',track.contact]].filter(pair=>pair[1]).map(pair=>`<p>${pair[0]}：${esc(pair[1])}</p>`).join('');
@@ -138,7 +139,7 @@ function renderContent(){
  if(mine){renderHistory();renderConflicts(own,s.kind==='poster'?'':s.date);}else $('conflict-warning').hidden=true;
  const filtered=M.select(available,s,favoriteIds,mine).filter(r=>!mine||priorityFilter==='all'||(priorities[r.id]==='backup'?'backup':'primary')===priorityFilter),dayIndex=dates.indexOf(s.date);
  currentMark=mine||s.kind==='poster'?null:M.currentReport(filtered,s.date,now);
- jumpTarget=view==='agenda'&&!mine&&s.kind!=='poster'?M.defaultDate(dates,now,trackBook):'';
+ jumpTarget=over?'':view==='agenda'&&!mine&&s.kind!=='poster'?M.defaultDate(dates,now,trackBook):'';
  const total=filtered.filter(r=>r.kind!=='break').length;$('result-count').textContent=total+' 项'+(mine?'收藏':'日程')+(s.query?' · 搜索：'+s.query:'');$('clear').hidden=!s.query;$('search-toggle').classList.toggle('has-query',!!s.query);
  $('results').innerHTML=M.group(filtered,mine).map(g=>renderGroup(g,mine)).join('');
  $('empty').hidden=!!filtered.length;$('empty-title').textContent=mine&&!favoriteIds.size?'还没有收藏日程':'没有匹配的日程';$('empty-help').textContent=mine&&!favoriteIds.size?'在报告旁点击“☆”，即可加入这里。':'试试其他日期、分会场或关键词。';

@@ -14,6 +14,7 @@ fs.writeFileSync(out+'/conference-data.js',code);
 // old pages, but the current HTML only requests the lightweight catalog.
 const sandbox={window:{}};require('node:vm').runInNewContext(code,sandbox);
 const partition=split(sandbox.window.CONFERENCE);
+partition.catalog.closesAt=book.closesAt;
 // The first visit downloads one compact snapshot after rendering the directory.
 // It also records chunk hashes, so subsequent visits can reuse unchanged parts
 // of an older cached snapshot without downloading a new complete file.
