@@ -40,6 +40,13 @@ test('真实日程：散场后进入 G1 默认落在 10月25日，白天仍在�
  assert.equal(M.defaultDate(dates,M.clockNow('2026-10-24T10:00:00Z'),rows),'2026-10-25');
 });
 
+test('「回到现在」按钮文案随目标日期变化',()=>{
+ assert.equal(M.jumpLabel('','2026-10-24'),'');
+ assert.equal(M.jumpLabel('2026-10-25','2026-10-25'),'回到现在');
+ assert.equal(M.jumpLabel('2026-10-25','2026-10-24'),'回到现在（25日）');
+ assert.equal(M.jumpLabel('2026-10-22','2026-10-25'),'回到现在（22日）');
+});
+
 test('当前报告取正在进行的一场，没有则取下一场，当天结束返回空',()=>{
  const rows=[{id:'a',kind:'invited',start:'09:00',end:'09:20'},{id:'b',kind:'break',start:'09:20',end:'09:40'},{id:'c',kind:'oral',start:'09:40',end:'10:00'},{id:'p',kind:'poster',start:'',end:''}];
  const day='2026-10-24';
