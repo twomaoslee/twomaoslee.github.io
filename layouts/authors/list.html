@@ -34,7 +34,7 @@
     {{ end }}
     {{ $zh := eq site.Language.Lang "zh" }}
     {{ $groups := slice
-      (dict "title" (cond $zh "参与发表的论文" "Publications") "pages" (where $query "Type" "publication"))
+      (dict "title" (cond $zh "参与发表的论文" "Publications") "pages" (where $query "Type" "publication") "sort_publications" true)
       (dict "title" (cond $zh "文章" "Posts") "pages" (where $query "Type" "post"))
       (dict "title" (cond $zh "其他内容" "Other Content") "pages" (where (where $query "Type" "ne" "publication") "Type" "ne" "post"))
     }}
@@ -43,7 +43,11 @@
     <div class="article-widget content-widget-hr">
       <h3>{{ .title }}</h3>
       <ul>
-        {{ range .pages.ByDate.Reverse }}
+        {{ $items := .pages.ByDate.Reverse }}
+        {{ if .sort_publications }}
+          {{ $items = partial "functions/sort-publications" .pages }}
+        {{ end }}
+        {{ range $items }}
         <li>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>

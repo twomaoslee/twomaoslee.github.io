@@ -1,0 +1,5 @@
+{{- $status := lower (.Params.publication_status | default "") -}}
+{{- $pending_statuses := slice "preprint" "submitted" "under-review" "under review" "in-review" "in review" "in-preparation" "in preparation" "unpublished" -}}
+{{- $publication := lower (.Params.publication | default "") -}}
+{{- $pending_label := gt (len (findRE "arxiv|preprint|e-prints|submitted|under review|in review|in preparation|预印本|在审|审稿中|投稿中" $publication)) 0 -}}
+{{- return (or (in .Params.publication_types "manuscript") (in $pending_statuses $status) $pending_label) -}}

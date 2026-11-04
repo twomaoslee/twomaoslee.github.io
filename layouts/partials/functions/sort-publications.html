@@ -1,0 +1,13 @@
+{{- $ordered := slice -}}
+{{- $pending := slice -}}
+{{- range sort . "Date" "desc" -}}
+  {{- if partial "functions/is-unpublished-publication" . -}}
+    {{- $pending = $pending | append . -}}
+  {{- else -}}
+    {{- $ordered = $ordered | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- range $pending -}}
+  {{- $ordered = $ordered | append . -}}
+{{- end -}}
+{{- return $ordered -}}

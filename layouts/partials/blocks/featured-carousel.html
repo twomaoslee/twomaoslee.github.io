@@ -1,6 +1,6 @@
 {{ .wcPage.Store.Set "has_featured_carousel" true }}
 {{ $zh := eq site.Language.Lang "zh" }}
-{{ $papers := (where (where site.RegularPages "Type" "publication") "Params.featured" true).ByDate.Reverse }}
+{{ $papers := partial "functions/sort-publications" (where (where site.RegularPages "Type" "publication") "Params.featured" true) }}
 <div class="col-12" data-publication-carousel>
   <div class="gallery-toolbar">
     <a href="{{ "publication/" | relLangURL }}">{{ if $zh }}全部论文{{ else }}All Publications{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
