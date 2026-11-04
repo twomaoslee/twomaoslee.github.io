@@ -52,7 +52,7 @@ zh:
       weight: 60
     - name: 大学物理
       parent: courses
-      url: "/course/university-physics/"
+      url: "https://zimin.li/university-physics/"
       weight: 20
     - name: 量子光学
       parent: courses

@@ -1,18 +1,11 @@
 ---
+external_link: https://zimin.li/university-physics/
 title: University Physics
-summary: A foundational undergraduate course connecting mechanics, thermodynamics, electromagnetism, waves, optics, and modern physics through physical reasoning and quantitative problem solving.
+summary: "University Physics B (I): mechanics, waves, optics, and thermodynamics. Course overview, syllabus, and teaching calendar; HTML slides will be added later."
 weight: 10
 show_date: false
 ---
 
-University Physics introduces the central concepts and methods used to describe the physical world. The course develops a connected understanding of mechanics, thermodynamics, electromagnetism, waves, optics, and selected topics in modern physics.
+[Enter the University Physics B (I) course website](https://zimin.li/university-physics/)
 
-Teaching emphasizes:
-
-- translating physical situations into clear models;
-- connecting equations with measurable phenomena;
-- checking approximations, dimensions, and limiting cases;
-- developing systematic problem-solving habits;
-- relating foundational principles to modern science and technology.
-
-Course materials and announcements can be added here as they become available.
+The website presents the spring 2026 course overview, syllabus, and teaching calendar. HTML slides will be published once they are ready. Course materials are in Chinese.
