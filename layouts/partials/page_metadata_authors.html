@@ -1,12 +1,23 @@
 {{/* Keep publication bylines unchanged while linking members to their profiles. */}}
+{{- $page := . -}}
+{{- $highlight_author := false -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- with .highlight_author -}}
+    {{- $highlight_author = . -}}
+  {{- end -}}
+{{- end -}}
 {{- $taxonomy := "authors" -}}
-{{- if .Param $taxonomy -}}
-  {{- range $index, $value := (.GetTerms $taxonomy) -}}
+{{- if $page.Param $taxonomy -}}
+  {{- range $index, $value := ($page.GetTerms $taxonomy) -}}
     {{- $target := . -}}
     {{- with partialCached "functions/author-profile.html" .LinkTitle .LinkTitle site.Language.Lang -}}
       {{- $target = . -}}
     {{- end -}}
     {{- $highlight_name := $target.Params.highlight_name | default false -}}
+    {{- if $highlight_author -}}
+      {{- $highlight_name = eq $target.RelPermalink $highlight_author.RelPermalink -}}
+    {{- end -}}
     {{- if gt $index 0 }}, {{ end -}}
     <span {{ if $highlight_name }}class="author-highlighted"{{ end }}>
       {{- if $target.RelPermalink -}}
@@ -15,8 +26,8 @@
         {{- .LinkTitle -}}
       {{- end -}}
     </span>
-    {{- if isset $.Params "author_notes" -}}
-      {{- with (index $.Params.author_notes $index) -}}
+    {{- if isset $page.Params "author_notes" -}}
+      {{- with (index $page.Params.author_notes $index) -}}
         <i class="author-notes fas fa-info-circle" data-toggle="tooltip" title="{{ . }}"></i>
       {{- end -}}
     {{- end -}}

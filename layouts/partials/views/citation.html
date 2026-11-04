@@ -9,7 +9,7 @@
 
 <article class="pub-list-item view-publication-rows">
   <div class="publication-row publication-row-authors article-metadata">
-    {{ partial "page_metadata_authors" $item }}
+    {{ partial "page_metadata_authors" (dict "page" $item "highlight_author" .highlight_author) }}
   </div>
 
   <h3 class="publication-row publication-row-title">

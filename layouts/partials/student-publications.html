@@ -6,7 +6,7 @@
   <h2>{{ if $zh }}参与发表的论文{{ else }}Publications{{ end }}</h2>
   {{ if $papers }}
     {{ range partial "functions/sort-publications" $papers }}
-      {{ partial "views/citation.html" (dict "item" .) }}
+      {{ partial "views/citation.html" (dict "item" . "highlight_author" $.page) }}
     {{ end }}
   {{ else }}
     <p class="text-muted">{{ if $zh }}暂无已收录论文。{{ else }}No papers listed yet.{{ end }}</p>
