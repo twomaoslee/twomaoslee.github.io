@@ -1,6 +1,15 @@
 {{- $ordered := slice -}}
 {{- $pending := slice -}}
+{{- $year := "" -}}
 {{- range sort . "Date" "desc" -}}
+  {{- $item_year := .Date.Format "2006" -}}
+  {{- if ne $item_year $year -}}
+    {{- range $pending -}}
+      {{- $ordered = $ordered | append . -}}
+    {{- end -}}
+    {{- $pending = slice -}}
+    {{- $year = $item_year -}}
+  {{- end -}}
   {{- if partial "functions/is-unpublished-publication" . -}}
     {{- $pending = $pending | append . -}}
   {{- else -}}
