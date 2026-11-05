@@ -10,7 +10,7 @@ date: '2026-10-20'
 publishDate: '2026-10-20T15:51:27Z'
 publication_types:
 - manuscript
-publication: '*arXiv preprint* arXiv:2610.28415'
+publication: 'arXiv:2610.28415'
 doi: 10.48550/arXiv.2610.28415
 featured: false
 summary: The connection between chaos and scrambling differs in Dicke and Rabi limits because of their classical degrees of freedom and eigenstate delocalization.

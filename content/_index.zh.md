@@ -34,7 +34,7 @@ sections:
 - block: featured-carousel
   id: featured
   content:
-    title: 代表性论文
+    title: 代表性工作
     filters:
       folders:
       - publication

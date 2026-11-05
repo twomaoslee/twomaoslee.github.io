@@ -10,7 +10,7 @@ date: '2026-10-20'
 publishDate: '2026-10-20T15:51:27Z'
 publication_types:
 - manuscript
-publication: '*arXiv 预印本* arXiv:2610.28415'
+publication: 'arXiv:2610.28415'
 doi: 10.48550/arXiv.2610.28415
 featured: false
 summary: 比较 Dicke 与 Rabi 极限中混沌和信息扰乱的对应关系，揭示经典自由度数目与本征态离域化的不同作用。

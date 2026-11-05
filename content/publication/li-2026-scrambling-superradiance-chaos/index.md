@@ -10,7 +10,7 @@ date: '2026-10-20'
 publishDate: '2026-10-20T15:51:08Z'
 publication_types:
 - manuscript
-publication: '*arXiv preprint* arXiv:2610.28412'
+publication: 'arXiv:2610.28412'
 doi: 10.48550/arXiv.2610.28412
 featured: false
 summary: Fidelity OTOCs distinguish local instability from global chaos and reconstruct spectral singularity amplitudes in anisotropic Dicke and Rabi models.

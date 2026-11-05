@@ -10,7 +10,7 @@ date: '2026-10-20'
 publishDate: '2026-10-20T15:51:08Z'
 publication_types:
 - manuscript
-publication: '*arXiv 预印本* arXiv:2610.28412'
+publication: 'arXiv:2610.28412'
 doi: 10.48550/arXiv.2610.28412
 featured: false
 summary: 通过保真度 OTOC 区分局域不稳定性与全局混沌，并重构各向异性 Dicke 和 Rabi 模型中谱奇异性的绝对幅度。
