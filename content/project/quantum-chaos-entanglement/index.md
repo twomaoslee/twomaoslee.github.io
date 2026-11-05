@@ -13,4 +13,4 @@ Quantum chaos and entanglement are related but distinct aspects of quantum dynam
 
 A complementary strand studies entanglement structure and state preparation in coupled qubit-oscillator systems. We explore how interactions, detuning, and parameter ramps redistribute quantum correlations and enable controlled preparation of entangled states.
 
-Our [2026 preprint on tripartite quantum Rabi models](https://arxiv.org/abs/2607.10334) studies static entanglement structure and adiabatic Bell-state preparation. It is listed as a preprint, separately from peer-reviewed journal publications. Current projects also explore asymmetric and mixed-coupling extensions.
+Our [work on tripartite quantum Rabi models]({{< relref "/publication/gao-2026-tripartite-rabi" >}}) studies static entanglement structure and adiabatic Bell-state preparation and has been accepted for publication in Physical Review A as a Regular Article. The arXiv preprint remains available while the final publication details are pending. Current projects also explore asymmetric and mixed-coupling extensions.
