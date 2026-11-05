@@ -29,6 +29,6 @@ links:
 url_pdf: https://arxiv.org/pdf/2607.10334
 ---
 
-Accepted for publication as a **Regular Article** in **Physical Review A**.
+Accepted for publication in **Physical Review A**.
 
 The arXiv link and PDF provide the preprint. The journal DOI, volume, issue, and article number will be added once available.

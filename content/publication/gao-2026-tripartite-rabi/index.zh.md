@@ -29,6 +29,6 @@ links:
 url_pdf: https://arxiv.org/pdf/2607.10334
 ---
 
-论文已被 **Physical Review A** 接收，文章类型为 **Regular Article**。
+论文已被 **Physical Review A** 接收。
 
 目前提供 arXiv 预印本及 PDF，正式 DOI、卷期和文章编号将在公布后补充。
